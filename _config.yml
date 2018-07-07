@@ -9,17 +9,6 @@ url: "https://msg901216.github.io"              # your host, for absolute URL
 baseurl: ""         # for example, '/blog' if your blog hosted on 'host/blog'
 
 
-
-# SNS settings
-# RSS: false
-# weibo_username:     msg
-# zhihu_username:     msg
-# github_username:    msg901216
-#twitter_username:  msg
-#facebook_username:  msg
-
-
-
 # Build settings
 # from 2016, 'pygments' is unsupported on GitHub Pages. Use 'rouge' for highlighting instead.
 highlighter: rouge
@@ -45,47 +34,12 @@ kramdown:
   input: GFM                            # use Github Flavored Markdown !important
 
 
-
-# Disqus settings
-#disqus_username: _your_disqus_short_name_
-
-# Duoshuo settings
-# duoshuo_username: msg
-# # Share component is depend on Comment so we can NOT use share only.
-# duoshuo_share: true                     # set to false if you want to use Comment without Sharing
-
-
-
-
-# Analytics settings
-# Baidu Analytics
-ba_track_id: 4cc1f2d8f3067386cc5cdb626a202900
-# Google Analytics
-ga_track_id: 'UA-49627206-1'            # Format: UA-xxxxxx-xx
-ga_domain: huangxuan.me
-
-
-
 # Sidebar settings
 sidebar: true                           # whether or not using Sidebar.
 sidebar-about-description: "多读书，读好书，多记笔记，不断完善自己。"
 sidebar-avatar: /img/avatar-hux.jpg      # use absolute URL, seeing it's used in both `/` and `/about/`
 
 
-
 # Featured Tags
 featured-tags: true                     # whether or not using Feature-Tags
 featured-condition-size: 1              # A tag will be featured if the size of it is more than this condition value
-
-
-
-# Friends
-# friends: [
-#     {
-#         title: "MSG Blog",
-#         href: "https://msg901216.github.io"
-#     },{
-#         title: "Foo",
-#         href: "#"
-#     }
-# ]
