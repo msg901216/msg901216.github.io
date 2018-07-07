@@ -9,6 +9,8 @@ tags:
     - regex
     - 正则
     - NLP
+    - NLP
+    - 正则
 ---
 
 <script src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
