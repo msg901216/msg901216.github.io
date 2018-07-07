@@ -3,10 +3,10 @@
   <channel>
     <title>慢时光的读书笔记</title>
     <description></description>
-    <link>http://localhost:4000/huxblog-boilerplate/</link>
-    <atom:link href="http://localhost:4000/huxblog-boilerplate/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Sat, 07 Jul 2018 13:29:31 +0800</pubDate>
-    <lastBuildDate>Sat, 07 Jul 2018 13:29:31 +0800</lastBuildDate>
+    <link>http://localhost:4000//</link>
+    <atom:link href="http://localhost:4000//feed.xml" rel="self" type="application/rss+xml" />
+    <pubDate>Sat, 07 Jul 2018 13:31:47 +0800</pubDate>
+    <lastBuildDate>Sat, 07 Jul 2018 13:31:47 +0800</lastBuildDate>
     <generator>Jekyll v3.8.3</generator>
     
       <item>
@@ -209,8 +209,8 @@
 &lt;h4 id=&quot;返回主目录&quot;&gt;&lt;a href=&quot;https://github.com/msg901216/get-rid-of-my-books/blob/master/README.md&quot;&gt;返回主目录&lt;/a&gt;&lt;/h4&gt;
 </description>
         <pubDate>Sat, 07 Jul 2018 00:00:00 +0800</pubDate>
-        <link>http://localhost:4000/huxblog-boilerplate/2018/07/07/Teach-Yourself-Regular-Expressions-in-10-Minutes/</link>
-        <guid isPermaLink="true">http://localhost:4000/huxblog-boilerplate/2018/07/07/Teach-Yourself-Regular-Expressions-in-10-Minutes/</guid>
+        <link>http://localhost:4000//2018/07/07/Teach-Yourself-Regular-Expressions-in-10-Minutes/</link>
+        <guid isPermaLink="true">http://localhost:4000//2018/07/07/Teach-Yourself-Regular-Expressions-in-10-Minutes/</guid>
         
         <category>regex</category>
         
@@ -499,8 +499,8 @@ Android’s source code is released by Google under open source licenses, althou
 &lt;p&gt;For Detail, Chromium OS based on &lt;a href=&quot;http://en.wikipedia.org/wiki/Gentoo_Linux&quot;&gt;Gentoo Linux&lt;/a&gt;, emm…&lt;/p&gt;
 </description>
         <pubDate>Tue, 14 Apr 2015 00:00:00 +0800</pubDate>
-        <link>http://localhost:4000/huxblog-boilerplate/2015/04/14/unix-linux-note/</link>
-        <guid isPermaLink="true">http://localhost:4000/huxblog-boilerplate/2015/04/14/unix-linux-note/</guid>
+        <link>http://localhost:4000//2015/04/14/unix-linux-note/</link>
+        <guid isPermaLink="true">http://localhost:4000//2015/04/14/unix-linux-note/</guid>
         
         <category>OS</category>
         
@@ -581,8 +581,8 @@ Android’s source code is released by Google under open source licenses, althou
 &lt;p&gt;—— Hux 后记于 2015.10&lt;/p&gt;
 </description>
         <pubDate>Thu, 29 Jan 2015 20:00:00 +0800</pubDate>
-        <link>http://localhost:4000/huxblog-boilerplate/2015/01/29/hello-2015/</link>
-        <guid isPermaLink="true">http://localhost:4000/huxblog-boilerplate/2015/01/29/hello-2015/</guid>
+        <link>http://localhost:4000//2015/01/29/hello-2015/</link>
+        <guid isPermaLink="true">http://localhost:4000//2015/01/29/hello-2015/</guid>
         
         <category>生活</category>
         
