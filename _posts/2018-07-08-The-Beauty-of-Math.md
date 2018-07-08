@@ -1,7 +1,7 @@
 ---
 layout:     post
 title:      "The Beauty of Math"
-subtitle:   "《数学之美》"
+subtitle:   "《数学之美》---吴军"
 date:       2018-07-08
 author:     "msg"
 header-img: "img/post-bg-unix-linux.jpg"
@@ -126,3 +126,5 @@ tags:
 > 接下来，从$M_{\theta_1}$出发，可以找到一个更好的模型$M_{\theta_2}$，不断地寻找下去，直到模型的质量不再有明显提高。
 
 10) 鲍姆-韦尔奇算法每次迭代都是不断估计新的参数，使得输出的概率达到最大化，这个过程被称为期望值最大化(Expectation-Maximization)，简称EM过程。
+
+### 第6章 待读
