@@ -10,6 +10,3 @@ tags:
     - 正则
     - NLP
 ---
-
-<script src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-<link rel="dns-prefetch" href="//cdn.mathjax.org" />
