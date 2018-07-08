@@ -1,7 +1,7 @@
 ---
 layout:     post
 title:      "The Beauty of Math"
-subtitle:   "数学之美"
+subtitle:   "《数学之美》"
 date:       2018-07-08
 author:     "msg"
 header-img: "img/post-bg-unix-linux.jpg"
