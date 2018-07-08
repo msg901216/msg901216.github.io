@@ -90,7 +90,7 @@ InstantClick.init();
 1) 贾里尼克的出发点很简单,一个句子是否合理,就看它出现的可能性大小.
 > 假定S是某一有意义的句子,由一系列特定顺序排列的词w1,w2,...wn组成,n是句子的长度.句子出现的概率```P(S)=P(w1,w2,...,wn)=P(w1)*P(w2|w1)...P(wn|w1,w2,...wn-1)```。
 
-When \(a \ne 0\), there are two solutions to \(ax^2 + bx + c = 0\) and they are
+When \\(a \ne 0\\), there are two solutions to \\(ax^2 + bx + c = 0\\) and they are
   $$x = {-b \pm \sqrt{b^2-4ac} \over 2a}.$$
 
 > 19世纪到20世纪初,俄国马尔科夫提出了一种偷懒但有效的方法,假定任意一个词wi只与出现在它前边的词wi-1相关,于是:```P(s)=P(w1)*P(w2|w1)...P(wn|wn-1)```即是所谓的二元模型.
