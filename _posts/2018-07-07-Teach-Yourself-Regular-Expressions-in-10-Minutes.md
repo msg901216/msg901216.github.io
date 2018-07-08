@@ -18,7 +18,7 @@ tags:
 
   讲述何为正则表达式，以及正则表达式可以做什么。
   
-   1) 正则表达式是一种工具(regular expression,简称regex),是文本处理方面功能最强大的工具之一，正则表达式语言用来构造正则表达式，正则表达式用来完成搜索和替换功能。
+   1) 正则表达式是一种工具(regular expression,简称regex)，是文本处理方面功能最强大的工具之一，正则表达式语言用来构造正则表达式，正则表达式用来完成搜索和替换功能。
 
    2) 正则表达式语言并不是一种完备的程序设计语言，而是一种内置于其他语言或软件之内的“迷你”语言。
 
@@ -58,36 +58,66 @@ tags:
   
    2) 匹配特定的字符类型，表格如下：
 
+<table>
+  <thead>
+    <tr>
+      <th>元字符</th>
+      <th style="text-align: left">说明</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>\d</td>
+      <td style="text-align: left">任何一个数字字符（等价于[0-9]）</td>
+    </tr>
+    <tr>
+      <td>\D</td>
+      <td style="text-align: left">任何一个非数字字符(等价于[^0-9])</td>
+    </tr>
+    <tr>
+      <td>\w</td>
+      <td style="text-align: left">任何一个字母数字字符或下划线字符（等价于[a-zA-Z0-9_]）</td>
+    </tr>
+    <tr>
+      <td>\W</td>
+      <td style="text-align: left">任何一个非字母数字字符或下划线字符（等价于[^a-zA-Z0-9_]）</td>
+    </tr>
+    <tr>
+      <td>\s</td>
+      <td style="text-align: left">任何一个空白字符（等价于[\f\n\r\t\v]）</td>
+    </tr>
+    <tr>
+      <td>\S</td>
+      <td style="text-align: left">任何一个非空白字符（等价于[^\f\n\r\t\v]）</td>
+    </tr>
+    <tr>
+      <td>\f </td> 
+      <td style="text-align: left"> 换页符 </td>
+    </tr>
+    <tr>
+      <td>\n </td>
+      <td style="text-align: left">换行符 </td>
+    </tr>
+    <tr>
+      <td>\t </td>
+      <td style="text-align: left"> 制表符 </td>
+    </tr>
+    <tr>
+      <td>\v </td> 
+      <td style="text-align: left"> 垂直制表符 </td>
+    </tr>
+    <tr> 
+      <td>\x </td>
+      <td style="text-align: left"> 匹配十六进制数字 </td>
+    </tr>
+    <tr>
+      <td>\0 </td>
+      <td style="text-align: left"> 匹配八进制数字 </td>
+    </tr>
+  </tbody>
+</table>
 
-<!-- <table>
-  <tr>
-    <th>元字符</th>
-    <th >说明</th>
-  </tr>
-  <tr>
-    <td> \d </td>
-    <td> 任何一个数字字符（等价于[0-9]）  </td>
-  </tr>
-  <tr>
-    <td >\D </td>
-    <td> 任何一个非数字字符(等价于[^0-9]) </td>
-  <tr>
-    <td>\w </td>
-    <td> 任何一个字母数字字符或下划线字符（等价于[a-zA-Z0-9_]） </td>
-  </tr>
-  <tr>
-    <td>\W </td>
-    <td> 任何一个非字母数字字符或下划线字符（等价于[^a-zA-Z0-9_]） </td>
-  </tr>
-  <tr>
-    <td>\s </td>
-    <td> 任何一个空白字符（等价于[\f\n\r\t\v]） </td>
-  </tr>
-  <tr>
-    <td>\s </td>
-    <td> 任何一个非空白字符（等价于[^\f\n\r\t\v]） </td>
-  </tr>
-</table> -->
+
 
 
 
@@ -168,35 +198,3 @@ tags:
 ```
 
 这个正则表达式提供了一个电话号码的解决方案,```(\()?```匹配一个可选的左括号,用括号括起来得到了一个子表达式,随后的\d{3}匹配以为数字的区号,```(?(1)\)|-)```是一个回溯引用条件,它根据条件是否得到满足而去匹配)或-;如果(1)存在,```\)```必须被匹配,否则,-必须被匹配.
-
-### 附录:元字符
-
-<!-- <table>
-  <tr>
-    <th>元字符</th><th>说明</th>
-  </tr>
-  <tr>
-    <td> \d </td> <td> 任何一个数字字符（等价于[0-9]）  </td>
-  </tr>
-  <tr>
-    <td >\D </td> <td> 任何一个非数字字符(等价于[^0-9]) </td>
-  <tr>
-    <td>\w </td> <td> 任何一个字母数字字符或下划线字符（等价于[a-zA-Z0-9_]） </td>
-  </tr>
-  <tr>
-    <td>\W </td> <td> 任何一个非字母数字字符或下划线字符（等价于[^a-zA-Z0-9_]） </td>
-  </tr>
-  <tr>
-    <td>\s </td> <td> 任何一个空白字符（等价于[\f\n\r\t\v]） </td>
-  </tr>
-  <tr>
-    <td>\s </td> <td> 任何一个非空白字符（等价于[^\f\n\r\t\v]） </td>
-  </tr>
-  <tr><td>\f </td> <td> 换页符 </td></tr>
-  <tr><td>\n </td><td>换行符 </td></tr>
-  <tr><td>\t </td><td> 制表符 </td> </tr>
-  <tr><td>\v </td> <td> 垂直制表符 </td></tr>
-  <tr> <td>\x </td><td> 匹配十六进制数字 </td></tr>
-  <tr><td>\0 </td><td> 匹配八进制数字 </td></tr>
-
-</table> -->
