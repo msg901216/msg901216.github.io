@@ -11,8 +11,7 @@ tags:
     - NLP
 ---
 
-<script src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-<link rel="dns-prefetch" href="//cdn.mathjax.org" />
+<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML' async></script>
 
 
 > 这是我读的第二本书,因为这本书基本上是一本通俗读物,作者将复杂的数学和自然语言处理方面的理论知识,用平易近人的文字,娓娓道来,让不具备相关知识的人,也能轻易的看懂.作者确实很厉害!
@@ -58,7 +57,7 @@ tags:
 让计算机理解自然语言,首先要建立统计语言模型.
 
 1) 贾里尼克的出发点很简单,一个句子是否合理,就看它出现的可能性大小.
-> 假定S是某一有意义的句子,由一系列特定顺序排列的词w1,w2,...wn组成,n是句子的长度.句子出现的概率```P(S)=P(w1,w2,...,wn)=P(w1)*P(w2|w1)...P(wn|w1,w2,...wn-1)    \\(x=\frac{-b\pm\sqrt{b^2-4ac}}{2a}\\)```。
+> 假定S是某一有意义的句子,由一系列特定顺序排列的词w1,w2,...wn组成,n是句子的长度.句子出现的概率```\\(P(S)=P(w1,w2,...,wn)=P(w1)*P(w2|w1)...P(wn|w1,w2,...wn-1)\\)```。
 
 > 19世纪到20世纪初,俄国马尔科夫提出了一种偷懒但有效的方法,假定任意一个词wi只与出现在它前边的词wi-1相关,于是:```P(s)=P(w1)*P(w2|w1)...P(wn|wn-1)```即是所谓的二元模型.
 
