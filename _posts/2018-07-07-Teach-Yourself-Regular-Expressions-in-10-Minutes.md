@@ -11,9 +11,6 @@ tags:
     - NLP
 ---
 
-<script src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-<link rel="dns-prefetch" href="//cdn.mathjax.org" />
-
 
 > 万事开头难，我选择先从最容易的开始看，这本书几乎是一本小册子，加上附录130页，看得快的话，一两个小时就可以看完。
 
