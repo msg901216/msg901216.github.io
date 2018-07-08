@@ -86,6 +86,3 @@ tags:
 
 6)分词的不一致性可以分为错误和颗粒度不一致的问题:错误分为越界型错误和覆盖型错误;要继续做数据挖掘,不断完善复合词的词典。
 
-
-
-#### <div align=center bgclor=white>[返回主目录](https://github.com/msg901216/get-rid-of-my-books/blob/master/README.md)</div>
