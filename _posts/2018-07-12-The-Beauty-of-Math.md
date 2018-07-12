@@ -2,7 +2,7 @@
 layout:     post
 title:      "The Beauty of Math"
 subtitle:   "《数学之美》---吴军"
-date:       2018-07-10
+date:       2018-07-12
 author:     "msg"
 header-img: "img/post-bg-unix-linux.jpg"
 tags:
