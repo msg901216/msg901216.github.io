@@ -1,6 +1,6 @@
 ---
 layout:     post
-title:      "The Beauty of Math"
+title:      "The Beauty of Math(11-15)"
 subtitle:   "《数学之美》---吴军"
 date:       2018-07-10
 author:     "msg"
