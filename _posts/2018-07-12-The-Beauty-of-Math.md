@@ -4,7 +4,7 @@ title:      "The Beauty of Math"
 subtitle:   "《数学之美》---吴军"
 date:       2018-07-12
 author:     "msg"
-header-img: "img/post-bg-unix-linux.jpg"
+header-img: "img/book.jpg"
 tags:
     - 数学
     - 自然语言处理
