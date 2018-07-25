@@ -5,6 +5,8 @@ subtitle:   "《数学之美》---吴军"
 date:       2018-07-13
 author:     "msg"
 header-img: "img/book.jpg"
+header-mask: 0.3
+catalog:    true
 tags:
     - 数学
     - 自然语言处理
