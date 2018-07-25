@@ -4,7 +4,7 @@ title:      "The Beauty of Math(17-19)"
 subtitle:   "《数学之美》---吴军"
 date:       2018-07-13
 author:     "msg"
-header-img: "img/book.jpg"
+header-img: "img/post-bg-unix-linux.jpg"
 header-mask: 0.3
 catalog:    true
 tags:
