@@ -4,7 +4,7 @@ title:      "程序员问大师"
 subtitle:   "李运华"
 date:       2018-07-12
 author:     "msg"
-header-img: "img/guyun3.jpg"
+header-img: "img/post-bg-os-metro.jpg"
 tags:
     - 励志
     - 趣闻
