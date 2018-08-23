@@ -75,9 +75,9 @@ $$x_1$$|$$x_2$$|$$y$$
 
 
 $$\begin{align}
-y&=f(\mathrm{w}\bullet\mathrm{x}+b)              (2)\\
-&=f(w_1x_1+w_2x_2+b)                             (3)\\
-&=f(0.5\times0+0.5\times0-0.8)                   (4)\\
-&=f(-0.8)                                        (5)\\
-&=0                                              (6)
+y&=f(\mathrm{w}\bullet\mathrm{x}+b)\\
+&=f(w_1x_1+w_2x_2+b)\\
+&=f(0.5\times0+0.5\times0-0.8)\\
+&=f(-0.8)\\
+&=0
 \end{align}$$
