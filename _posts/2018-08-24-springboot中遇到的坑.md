@@ -25,7 +25,9 @@ tags:
 public class WebConfig implements WebMvcConfigurer {
     @Override
     public void extendMessageConverters(List<HttpMessageConverter<?>> converters) {
-        MappingJackson2HttpMessageConverter jackson2HttpMessageConverter = new MappingJackson2HttpMessageConverter();
+        MappingJackson2HttpMessageConverter jackson2HttpMessageConverter = new 
+        
+        MappingJackson2HttpMessageConverter();
         ObjectMapper objectMapper = new ObjectMapper();
         objectMapper.setDateFormat(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss"));
         jackson2HttpMessageConverter.setObjectMapper(objectMapper);
@@ -50,7 +52,9 @@ spring:
 public class WebConfig implements WebMvcConfigurer {
     @Override
     public void extendMessageConverters(List<HttpMessageConverter<?>> converters) {
-        MappingJackson2HttpMessageConverter jackson2HttpMessageConverter = new MappingJackson2HttpMessageConverter();
+        MappingJackson2HttpMessageConverter jackson2HttpMessageConverter = new 
+        
+        MappingJackson2HttpMessageConverter();
         ObjectMapper objectMapper = new ObjectMapper();
         objectMapper.setTimeZone(TimeZone.getTimeZone("GMT+8"));
         jackson2HttpMessageConverter.setObjectMapper(objectMapper);
