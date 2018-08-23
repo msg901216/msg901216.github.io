@@ -49,7 +49,7 @@ tags:
 
 * 激活函数 感知器的激活函数可以有很多选择，比如我们可以选择下面这个阶跃函数来作为激活函数：
 
-$$f(z)=\begin{equation}\begin{cases}1\qquad z>0\\0\qquad otherwise\end{cases}\end{equation}$$
+$$f(z)=\begin{equation}\begin{cases}1\qquad z>0\\0\qquad otherwise\end{cases}\end{equation} (1)$$
 
 * 输出 感知器的输出由下面这个公式来计算
 
@@ -58,13 +58,19 @@ $$y=f(\mathrm{w}\bullet\mathrm{x}+b)\qquad 公式(1)$$
 用一个简单的例子来帮助理解。
 
 例子：用感知器实现and函数
-我们设计一个感知器，让它来实现and运算。程序员都知道，and是一个二元函数（带有两个参数和），下面是它的真值表:
+我们设计一个感知器，让它来实现and运算。程序员都知道，and是一个二元函数（带有两个参数和），下面是它的**真值表**:
 
 $$x_1$$|$$x_2$$|$$y$$
 0|0|0
 0|1|0
 1|0|0
 1|1|1
+
+为了计算方便，我们用0表示false，用1表示true。
+
+
+
+
 
 
 
