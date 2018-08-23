@@ -49,7 +49,7 @@ tags:
 
 * 激活函数 感知器的激活函数可以有很多选择，比如我们可以选择下面这个阶跃函数来作为激活函数：
 
-$$f(z)=\begin{equation}\begin{cases}1\qquad z>0\\0\qquad otherwise\end{cases}\end{equation} (1)$$
+$$f(z)=\begin{equation}\begin{cases}1\qquad z>0\\0\qquad otherwise\end{cases}\end{equation}           (1)$$
 
 * 输出 感知器的输出由下面这个公式来计算
 
@@ -75,9 +75,9 @@ $$x_1$$|$$x_2$$|$$y$$
 
 
 $$\begin{align}
-y&=f(\mathrm{w}\bullet\mathrm{x}+b)\\
-&=f(w_1x_1+w_2x_2+b)\\
-&=f(0.5\times0+0.5\times0-0.8)\\
-&=f(-0.8)\\
-&=0
+y&=f(\mathrm{w}\bullet\mathrm{x}+b)\\              (2)
+&=f(w_1x_1+w_2x_2+b)\\                             (3)
+&=f(0.5\times0+0.5\times0-0.8)\\                   (4)
+&=f(-0.8)\\                                        (5)
+&=0                                                (6)
 \end{align}$$
