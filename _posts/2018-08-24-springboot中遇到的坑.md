@@ -19,6 +19,7 @@ tags:
 ## 时间类型返回时间戳
 
 > 这个问题是jackson将时间类型转换为json格式的时候，默认转为时间戳格式，要想自己控制时间输出的格式，可以进行如下的设置：
+
 * 代码配置方式
 ```java
 public class WebConfig implements WebMvcConfigurer {
