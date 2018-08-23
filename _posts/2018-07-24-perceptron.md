@@ -45,4 +45,14 @@ tags:
 ![感知器](/img/posts/ganzhiqi.png)
 
 可以看到，一个感知器有如下组成部分：
+* 输入权值 一个感知器可以接收多个输入$$(x_1, x_2,...,x_n\mid x_i\in\Re)$$，每个输入上有一个权值$$w_i\in\Re$$，此外还有一个偏置项$$b\in\Re$$，就是上图中的$$w_0$$。
 
+* 激活函数 感知器的激活函数可以有很多选择，比如我们可以选择下面这个阶跃函数来作为激活函数：
+
+$f(z)=\begin{equation}\begin{cases}1\qquad z>0\\0\qquad otherwise\end{cases}\end{equation}$
+
+* 输出 感知器的输出由下面这个公式来计算
+
+$y=f(\mathrm{w}\bullet\mathrm{x}+b)\qquad 公式(1)$
+
+用一个简单的例子来帮助理解。
