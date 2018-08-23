@@ -34,7 +34,7 @@ public class WebConfig implements WebMvcConfigurer {
 }
 ```
 
-* 配置文件方式(applicatin.yml)
+* 配置文件方式(application.yml)
 ```
 spring:
   jackson:
