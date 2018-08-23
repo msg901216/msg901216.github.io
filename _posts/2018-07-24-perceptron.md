@@ -56,3 +56,11 @@ $$f(z)=\begin{equation}\begin{cases}1\qquad z>0\\0\qquad otherwise\end{cases}\en
 $$y=f(\mathrm{w}\bullet\mathrm{x}+b)\qquad 公式(1)$$
 
 用一个简单的例子来帮助理解。
+
+$$\begin{align}
+y&=f(\mathrm{w}\bullet\mathrm{x}+b)\\
+&=f(w_1x_1+w_2x_2+b)\\
+&=f(0.5\times0+0.5\times0-0.8)\\
+&=f(-0.8)\\
+&=0
+\end{align}$$
