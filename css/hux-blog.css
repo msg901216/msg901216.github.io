@@ -312,6 +312,7 @@ body {
 }
 p {
   margin: 30px 0;
+  text-indent: 2em;
 }
 h1,
 h2,
