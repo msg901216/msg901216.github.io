@@ -1,7 +1,7 @@
 ---
 layout:     post
-title:      "Annoy(Approximate Nearest Neighbors Oh Yeah)"
-subtitle:   "Annoy学习"
+title:      "Annoy"
+subtitle:   "Annoy(Approximate Nearest Neighbors Oh Yeah)学习"
 date:       2018-09-07
 author:     "msg"
 header-img: "img/posts/02.jpg"
@@ -16,11 +16,13 @@ tags:
 
 > 工作中用到$$Annoy$$，学习的过程中记录一下。
 
-一旦文档经过$$word2vec$$变成***稠密向量***形式，如何从海量文本中快速查找出相似的$$TopN$$文本呢？
+一旦文档经过$$word2vec$$或者$$paragraph2vec$$变成***稠密向量***形式，如何从海量文本中快速查找出相似的$$TopN$$文本呢？
 
 ### 建立索引过程
 
 $$Annoy$$的目标是建立一个数据结构，使得查询一个点的最近邻点的时间复杂度是次线性。$$Annoy$$通过建立一个二叉树来使得每个点查找时间复杂度是$$O(logn)$$。随机选择两个点，以这两个节点为初始中心节点，执行聚类数为$$2$$的$$kmeans$$过程，最终产生收敛后两个聚类中心点。这两个聚类中心点之间连一条线段（灰色短线），建立一条垂直于这条灰线，并且通过灰线中心点的线（黑色粗线）。这条黑色粗线把数据空间分成两部分。在多维空间的话，这条黑色粗线可以看成等距垂直超平面。
+
+![分割](/img/posts/annoy/split.png)
 
 在划分的子空间内进行不停的递归迭代继续划分，直到每个子空间最多只剩下$$K$$个数据节点。
 
