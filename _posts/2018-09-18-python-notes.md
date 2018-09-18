@@ -28,8 +28,12 @@ print("Hello world")
 
 如果某个版本中出现了某个新的功能特性，而且这个特性和当前版本中使用的不兼容，也就是它在该版本中不是语言标准，那么我如果想要使用的话就需要从future模块导入。
 其他例子： 
-　　　　from __future__ import division ， 
-　　　　from __future__ import absolute_import ， 
-　　　　from __future__ import with_statement 。
+
+```python
+　　　　from __future__ import division 
+　　　　from __future__ import absolute_import 
+　　　　from __future__ import with_statement
+ ```
+ 
 等等
 加上这些，如果你的python版本是python2.X，你也得按照python3.X那样使用这些函数。
