@@ -31,5 +31,4 @@ from __future__ import division
 from __future__ import absolute_import 
 from __future__ import with_statement
  ```
-等等
 加上这些，就算python版本是python2.X，也得按照python3.X标准使用这些函数。
