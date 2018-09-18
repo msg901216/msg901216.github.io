@@ -85,7 +85,7 @@ $$Annoy$$的目标是建立一个数据结构，使得查询一个点的最近�
 
 　　$$search_k$$在运行时提供，并影响搜索性能。 较大的值将给出更准确的结果，但将需要更长的时间返回。
 
-如果不提供$$search_k$$，它将默认为$$n * n_trees$$，其中$$n$$是近似最近邻的数目。 否则，$$search_k$$和$$n_tree$$大致是独立的，即如果$$search_k$$保持不变，$$n_tree$$的值不会影响搜索时间，反之亦然。 基本上，建议在可用负载量的情况下尽可能大地设置$$n_trees$$，并且考虑到查询的时间限制，建议将$$search_k$$设置为尽可能大。
+如果不提供$$search_k$$，它将默认为$$n * n_{trees}$$，其中$$n$$是近似最近邻的数目。 否则，$$search_k$$和$$n_{trees}$$大致是独立的，即如果$$search_k$$保持不变，$$n_{trees}$$的值不会影响搜索时间，反之亦然。 基本上，建议在可用负载量的情况下尽可能大地设置$$n_{trees}$$，并且考虑到查询的时间限制，建议将$$search_k$$设置为尽可能大。
 
 ### python代码例子
 
@@ -111,15 +111,27 @@ print(u.get_nns_by_item(0, 1000)) # will find the 1000 nearest neighbors
 ### python api
 
 ```python
+
 AnnoyIndex(f, metric='angular') returns a new index that's read-write and stores vector of f dimensions. Metric can be either "angular" or "euclidean".
+
 a.add_item(i, v) adds item i (any nonnegative integer) with vector v. Note that it will allocate memory for max(i)+1 items.
+
 a.build(n_trees) builds a forest of n_trees trees. More trees gives higher precision when querying. After calling build, no more items can be added.
+
 a.save(fn) saves the index to disk.
+
 a.load(fn) loads (mmaps) an index from disk.
+
 a.unload() unloads.
+
 a.get_nns_by_item(i, n, search_k=-1, include_distances=False) returns the n closest items. During the query it will inspect up to search_k nodes which defaults to n_trees * n if not provided. search_k gives you a run-time tradeoff between better accuracy and speed. If you set include_distances to True, it will return a 2 element tuple with two lists in it: the second one containing all corresponding distances.
+
 a.get_nns_by_vector(v, n, search_k=-1, include_distances=False) same but query by vector v.
+
 a.get_item_vector(i) returns the vector for item i that was previously added.
+
 a.get_distance(i, j) returns the distance between items i and j. NOTE: this used to returned the squared distance, but has been changed as of Aug 2016.
+
 a.get_n_items() returns the number of items in the index.
+
 ```
