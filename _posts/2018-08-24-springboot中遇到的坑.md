@@ -180,3 +180,30 @@ public class WebConfig implements WebMvcConfigurer {
     }
 }
 ```
+
+## 6、springboot获取sessionId
+```java
+public String getSessionId(){
+    HttpSession httpSession = getSession();
+    String id = httpSession.getId();
+    return id;
+}
+
+
+private HttpSession getSession() {
+    HttpSession session = null;
+    try {
+        session = getRequest().getSession();
+    } catch (Exception e) {
+        log.error("获取session失败！");
+    }
+    return session;
+}
+
+private HttpServletRequest getRequest() {
+    ServletRequestAttributes attrs = (ServletRequestAttributes) RequestContextHolder
+            .getRequestAttributes();
+    return attrs.getRequest();
+}
+```
+
