@@ -211,3 +211,51 @@ The first layer should contain the same amount of nodes as the columns in the tr
 The second dense layer will contain three nodes. This is the value we can variate, but the number of outputs in the previous layer has to be the same.
 
 The final output layer should contain the number of nodes matching the number of classes (3). The structure of the network is shown in the picture:
+
+
+After successful training, we’ll have a network that receives four values via its inputs and sends a signal to one of its three outputs. This is a simple classifier.
+
+Finally, to finish building the network, we set up back propagation (one of the most effective training methods) and disable pre-training with the line .backprop(true).pretrain(false).
+
+### 6. Creating and Training a Network
+Now let’s create a neural network from the configuration, initialize and run it:
+
+```java
+MultiLayerNetwork model = new MultiLayerNetwork(configuration);
+model.init();
+model.fit(trainingData);
+```
+
+Now we can test the trained model by using the rest of the dataset and verify the results with evaluation metrics for three classes:
+
+```java
+INDArray output = model.output(testData.getFeatureMatrix());
+Evaluation eval = new Evaluation(3);
+eval.eval(testData.getLabels(), output);
+```
+
+If we now print out the eval.stats(), we’ll see that our network is pretty good at classifying iris flowers, although it did mistake class 1 for class 2 three times.
+
+```
+Examples labeled as 0 classified by model as 0: 19 times
+Examples labeled as 1 classified by model as 1: 16 times
+Examples labeled as 1 classified by model as 2: 3 times
+Examples labeled as 2 classified by model as 2: 15 times
+ 
+==========================Scores========================================
+# of classes: 3
+Accuracy: 0.9434
+Precision: 0.9444
+Recall: 0.9474
+F1 Score: 0.9411
+Precision, recall & F1: macro-averaged (equally weighted avg. of 3 classes)
+========================================================================
+```
+
+The fluent configuration builder allows us to add or modify layers of the network quickly, or tweak some other parameters to see if our model can be improved.
+
+### 7. Conclusion
+In this article, we’ve built a simple yet powerful neural network by using the deeplearning4j library.
+
+As always, the source code for the article is available over on GitHub.
+
