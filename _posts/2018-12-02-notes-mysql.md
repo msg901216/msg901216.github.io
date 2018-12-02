@@ -15,7 +15,7 @@ tags:
     - 转载
 ---
 
-### mysql中添加数据时,报错(incorrect string value:'\xf0\x9f ) 字符转换不正确
+### incorrect string value:'\xf0\x9f
 
 * 在mysql的安装目录下找到my.ini,作如下修改：
 
@@ -31,7 +31,7 @@ default-character-set=utf8mb4
 
 修改后重启Mysql
 
-* 将已经建好的表也转换成utf8mb4
+### 将已经建好的表也转换成utf8mb4
 
 命令：
 
