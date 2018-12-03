@@ -23,7 +23,7 @@ Cypher is a declarative, SQL-inspired language for describing patterns in graphs
 
 It allows us to state what we want to select, insert, update or delete from our graph data without requiring us to describe exactly how to do it.
 
-![cypher pattern](cypher_pattern_simple.png)
+![cypher pattern](img/posts/cypher_pattern_simple.png)
 
 ### Nodes
 
