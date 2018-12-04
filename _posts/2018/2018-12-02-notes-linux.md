@@ -18,7 +18,7 @@ tags:
 ### 拷贝ssh
 
 ```shell
-xclip -sel clip < file 
+xclip -sel clip < file
 ```
 
 ### 解压7zip
@@ -94,5 +94,5 @@ gOpt=
 #gOptExt=-multiply
 ```
 
-#### 原因：环境变量未正确设置，以上可以直接针对wps设置。
+* 原因：环境变量未正确设置，以上可以直接针对wps设置。
 
