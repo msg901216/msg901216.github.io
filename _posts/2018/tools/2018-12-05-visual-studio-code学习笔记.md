@@ -10,7 +10,6 @@ catalog:    true
 
 tags:
     - visual studio code
-    - question answer system
     - 学习
     - 转载
 
