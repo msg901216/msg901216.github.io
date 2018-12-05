@@ -22,7 +22,7 @@ tags:
 
 点击 fork 到自己帐号下，比如[HanLP](https://github.com/hankcs/HanLP)这个仓库:
 
-![Selection_033](/home/msg/Pictures/Selection_033.png)
+![Selection_033](/img/posts/tools/Selection_033.png)
 
 然后就可以在自己的帐号下 clone 相应的仓库
 
