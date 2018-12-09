@@ -103,3 +103,38 @@ pipreqs ./ --force
 ```
 
 --force是用来覆盖掉之前已经生成的requirements.txt文件
+
+### sklearn里的warning
+
+**格式转换warning**
+
+```python
+DataConversionWarning: Data with input dtype int64, float64 were all converted to float64 by MinMaxS
+```
+
+* 原因：导入的数据，会被MinMaxScaler转换为float64类型
+
+
+* 解决办法：一开始显式声明导入的数据格式为float64
+
+**imp问题报错**
+
+```python
+
+DeprecationWarning: the imp module is deprecated in favour of importlib; see the module's documentation for alternative uses
+  import imp
+
+```
+
+* 原因：imp已经被importlib取代，sklearn旧版本中用了imp,所以导致warning
+
+* 解决办法： 修改sklearn中的代码，或者直接更新scikit-learn版本为最新。
+
+### tensorflow报错
+
+```python
+
+ImportError: libcublas.so.9.0: cannot open shared object file: No such file or directory
+
+```
+
