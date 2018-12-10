@@ -104,7 +104,7 @@ pipreqs ./ --force
 
 --force是用来覆盖掉之前已经生成的requirements.txt文件
 
-### sklearn里的warning
+### 7、sklearn里的warning
 
 **格式转换warning**
 
@@ -130,11 +130,30 @@ DeprecationWarning: the imp module is deprecated in favour of importlib; see the
 
 * 解决办法： 修改sklearn中的代码，或者直接更新scikit-learn版本为最新。
 
-### tensorflow报错
+### 8、tensorflow报错
 
 ```python
 
 ImportError: libcublas.so.9.0: cannot open shared object file: No such file or directory
 
 ```
+### 9、os.path使用方法
 
+```python
+#encoding: utf8
+import os
+
+#当前文件的完整路径名：C:\Python27\Scripts\djangotest\justtest.py
+
+print os.path.dirname(os.path.dirname(__file__))#获取当前文件所在目录的上级目录：C:/Python27/Scripts
+print os.path.dirname(__file__)#获取当前文件所在目录：C:/Python27/Scripts/djangotest
+print os.getcwd()#获取当前文件目录：C:\Python27\Scripts\djangotest
+print os.path.dirname(r'd:\workspace\R')#获取指定目录的上级目录：d:\workspace
+
+#******************************获取相对路径********************************************************
+print os.path.basename(__file__)#获取当前文件名称:justtest.py
+print os.path.basename(r'd:\workspace\R')#获取指定目录的相对路径，即当前目录名:R
+
+#******************************获取绝对路径********************************************************
+print os.path.abspath(__file__)#获取当前文件的绝对路径：C:\Python27\Scripts\djangotest\justtest.py
+```
