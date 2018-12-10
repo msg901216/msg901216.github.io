@@ -157,7 +157,7 @@ print os.path.basename(r'd:\workspace\R')#获取指定目录的相对路径，�
 #******************************获取绝对路径********************************************************
 print os.path.abspath(__file__)#获取当前文件的绝对路径：C:\Python27\Scripts\djangotest\justtest.py
 ```
-### External file changes sync may be slow
+### 10、External file changes sync may be slow
 
 Add the following line to either **/etc/sysctl.conf** file or a new *.conf file (e.g. idea.conf) under **/etc/sysctl.d/** directory:
 
