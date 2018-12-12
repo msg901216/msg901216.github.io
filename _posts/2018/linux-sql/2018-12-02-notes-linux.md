@@ -96,3 +96,49 @@ gOpt=
 
 * 原因：环境变量未正确设置，以上可以直接针对wps设置。
 
+### ubuntu开放指定端口
+
+一般linux中端口都是默认关闭的，需要开启的时候需要自己开启
+
+#### 开放端口
+
+**1 安装**
+
+```bash
+$ sudo apt-get install iptables
+```
+
+**2 添加规则**
+
+```bash
+$ iptables -I INPUT -p tcp --dport 80 -j ACCEPT
+```
+
+中间的80为所需要开放的端口
+
+**3 保存规则**
+
+```bash
+$ iptables-save
+```
+
+如果此时服务器重启，上述规则就没有了，所以需要对规则进行一下持续化操作
+
+#### 持续化规则
+
+使用 iptables-persistent
+
+```bash
+$ sudo apt-get install iptables-persistent
+```
+
+1. 持久化规则
+
+```bash
+$ sudo netfilter-persistent save
+$ sudo netfilter-persistent reload
+```
+
+完成上述操作就可以永久打开需要的端口了
+
+
