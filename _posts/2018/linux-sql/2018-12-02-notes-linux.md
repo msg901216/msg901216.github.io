@@ -15,13 +15,13 @@ tags:
     - 转载
 ---
 
-### 拷贝ssh
+### (一)拷贝ssh
 
 ```shell
 xclip -sel clip < file
 ```
 
-### 解压7zip
+### (二)解压7zip
 
 #### 1.安装
 
@@ -41,13 +41,13 @@ sudo apt-get install p7zip
 7zr x xxx.7z
 ```
 
-### 排序文本内容
+### (三)排序文本内容
 
 ```shell
 sort text.txt > text-sorted.txt
 ```
 
-### 删除命令
+### (四)删除命令
 
 * dd:删除游标所在的一整行(常用)
 
@@ -65,7 +65,7 @@ sort text.txt > text-sorted.txt
 
 * nx:n为数字，连续向后删除n个字符
 
-### wps for linux 不能使用搜狗输入法
+### (五)wps for linux 不能使用搜狗输入法
 
 ubuntu版本：18.04
 中文输入法：搜狗
@@ -96,7 +96,7 @@ gOpt=
 
 * 原因：环境变量未正确设置，以上可以直接针对wps设置。
 
-### ubuntu开放指定端口
+### (六)ubuntu开放指定端口
 
 一般linux中端口都是默认关闭的，需要开启的时候需要自己开启
 
@@ -141,7 +141,7 @@ $ sudo netfilter-persistent reload
 
 完成上述操作就可以永久打开需要的端口了
 
-### 使用curl发送请求
+### (七)使用curl发送请求
 
 **使用curl发送GET请求**
 
