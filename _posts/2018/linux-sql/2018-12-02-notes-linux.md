@@ -141,6 +141,17 @@ $ sudo netfilter-persistent reload
 
 完成上述操作就可以永久打开需要的端口了
 
+
+#### 关闭防火墙
+
+```bash
+iptables -P INPUT ACCEPT 
+iptables -P FORWARD ACCEPT 
+iptables -P OUTPUT ACCEPT 
+iptables -F 
+```
+
+
 ### (七)使用curl发送请求
 
 **使用curl发送GET请求**
