@@ -173,10 +173,16 @@ sudo sysctl -p --system
 
 And don't forget to restart your IDE.
 
-### sudo: pip: command not found
+### 11、sudo: pip: command not found
 
 ```bash
 vi  ~/.bashrc 
 alias sudo='sudo env PATH=$PATH'
 source ~/.bashrc
+```
+
+### 12、jupyter notebook 插件
+
+```bash
+sudo pip install jupyter_contrib_nbextensions && jupyter contrib nbextension install
 ```
