@@ -173,3 +173,10 @@ sudo sysctl -p --system
 
 And don't forget to restart your IDE.
 
+### sudo: pip: command not found
+
+```bash
+vi  ~/.bashrc 
+alias sudo='sudo env PATH=$PATH'
+source ~/.bashrc
+```
