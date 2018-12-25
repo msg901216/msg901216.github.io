@@ -17,7 +17,7 @@ tags:
 
 > [PostgreSQL的安装和基本用法](http://www.ruanyifeng.com/blog/2013/12/getting_started_with_postgresql.html)。
 
-**一、安装**
+### 一、安装
 
 首先，安装PostgreSQL客户端。
 
@@ -39,13 +39,13 @@ sudo apt-get install postgresql
 sudo apt-get install pgadmin4
 ```
 
-**二、添加新用户和新数据库**
+### 二、添加新用户和新数据库
 
 初次安装后，默认生成一个名为postgres的数据库和一个名为postgres的数据库用户。这里需要注意的是，同时还生成了一个名为postgres的Linux系统用户。
 
 下面，我们使用postgres用户，来生成其他用户和新数据库。好几种方法可以达到这个目的，这里介绍两种。
 
-**第一种方法，使用PostgreSQL控制台。**
+#### 第一种方法，使用PostgreSQL控制台。
 
 首先，新建一个Linux新用户，可以取你想要的名字，这里为dbuser。
 
@@ -97,7 +97,7 @@ GRANT ALL PRIVILEGES ON DATABASE exampledb to dbuser;
 \q
 ```
 
-**第二种方法，使用shell命令行。**
+#### 第二种方法，使用shell命令行。
 
 添加新用户和新数据库，除了在PostgreSQL控制台内，还可以在shell命令行下完成。这是因为PostgreSQL提供了命令行程序createuser和createdb。还是以新建用户dbuser和数据库exampledb为例。
 
@@ -121,7 +121,7 @@ sudo -u postgres psql
 sudo -u postgres createdb -O dbuser exampledb
 ```
 
-**三、登录数据库**
+### 三、登录数据库
 
 添加新用户和新数据库以后，就要以新用户的名义登录数据库，这时使用的是psql命令。
 
@@ -151,7 +151,7 @@ psql
 psql exampledb < exampledb.sql
 ```
 
-**四、控制台命令**
+### 四、控制台命令
 
 除了前面已经用到的\password命令（设置密码）和\q命令（退出）以外，控制台还提供一系列其他命令。
 
@@ -167,7 +167,7 @@ psql exampledb < exampledb.sql
 \conninfo：列出当前数据库和连接的信息。
 ```
 
-**五、数据库操作**
+### 五、数据库操作
 
 基本的数据库操作，就是使用一般的SQL语言。
 
