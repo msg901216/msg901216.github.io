@@ -15,7 +15,7 @@ tags:
     - 转载
 ---
 
-> PostgreSQL的安装和基本用法。
+> [PostgreSQL的安装和基本用法](http://www.ruanyifeng.com/blog/2013/12/getting_started_with_postgresql.html)。
 
 **一、安装**
 
