@@ -321,6 +321,12 @@ $ git branch -d dev
 $ git branch
 ```
 
+删除远程分支
+
+```bash
+git push origin --delete dev
+```
+
 ### 12、解决冲突
 
 准备新的`feature1`分支，继续新分支开发：
