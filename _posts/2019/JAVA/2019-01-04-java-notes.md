@@ -44,3 +44,25 @@ public class MyErrorController extends AbstractErrorController {
     }
 }
 ```
+
+### elasticsearch-data返回score
+
+```java
+return template.query(query, response -> {
+        List<BotSentenceWithScore> botSentences = new ArrayList<>();
+        SearchHit[] hits = response.getHits().getHits();
+        for (SearchHit hit : hits) {
+            try {
+                BotSentenceWithScore botSentence  = entityMapper.mapToObject(hit.getSourceAsString(), BotSentenceWithScore.class);
+                float documentScore = hit.getScore();
+                botSentence.setScore(documentScore);
+                botSentences.add(botSentence);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        return botSentences;
+    });
+```
+
+
