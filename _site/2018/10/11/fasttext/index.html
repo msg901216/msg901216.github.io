@@ -1,0 +1,955 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="keywords"  content="">
+    <meta name="theme-color" content="">
+    
+    <title>FastText - 学习笔记 | Reading Blog</title>
+
+    <!-- Web App Manifest -->
+    <link rel="manifest" href="/pwa/manifest.json">
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://msgi.github.io/2018/10/11/fasttext/">
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/hux-blog.min.css">
+
+    <!-- Pygments Github CSS -->
+    <link rel="stylesheet" href="/css/syntax.css">
+
+    <!-- Custom Fonts -->
+    <!-- <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"> -->
+    <!-- Hux change font-awesome CDN to qiniu -->
+    <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- ga & ba script hoook -->
+    <script type="text/javascript" async
+src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML" async>
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        showProcessingMessages: false,
+        messageStyle: "none",
+        extensions: ["tex2jax.js"],
+        jax: ["input/TeX", "output/HTML-CSS"],
+        tex2jax: {
+            inlineMath:  [ ["$", "$"] ],
+            displayMath: [ ["$$","$$"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre','code','a'],
+            ignoreClass:"comment-content"
+        },
+        "HTML-CSS": {
+            availableFonts: ["STIX","TeX"],
+            showMathMenu: false
+        }
+    });
+    MathJax.Hub.Queue(["Typeset",MathJax.Hub]);
+    </script>
+    
+    <script data-no-instant>
+    InstantClick.on('change', function(isInitialLoad){
+        if (isInitialLoad === false) {
+            if (typeof MathJax !== 'undefined'){
+                MathJax.Hub.Queue(["Typeset",MathJax.Hub]);
+            }
+        }
+    });
+    InstantClick.init();
+    </script>
+</head>
+
+
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="">
+
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">慢时光的学习笔记</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+                    
+                    <li>
+                        <a href="/about/">About</a>
+                    </li>
+                    
+                    <li>
+                        <a href="/tags/">Tags</a>
+                    </li>
+                    
+                </ul>
+            </div>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    var __HuxNav__ = {
+        close: function(){
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        },
+        open: function(){
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+
+    // Bind Event
+    $toggle.addEventListener('click', function(e){
+        if ($navbar.className.indexOf('in') > 0) {
+            __HuxNav__.close()
+        }else{
+            __HuxNav__.open()
+        }
+    })
+
+    /**
+     * Since Fastclick is used to delegate 'touchstart' globally
+     * to hack 300ms delay in iOS by performing a fake 'click',
+     * Using 'e.stopPropagation' to stop 'touchstart' event from 
+     * $toggle/$collapse will break global delegation.
+     * 
+     * Instead, we use a 'e.target' filter to prevent handler
+     * added to document close HuxNav.  
+     *
+     * Also, we use 'click' instead of 'touchstart' as compromise
+     */
+    document.addEventListener('click', function(e){
+        if(e.target == $toggle) return;
+        if(e.target.className == 'icon-bar') return;
+        __HuxNav__.close();
+    })
+</script>
+
+
+    <!-- Image to hack wechat -->
+<!-- <img src="/img/icon_wechat.png" width="0" height="0"> -->
+<!-- <img src="/img/posts/01.jpg" width="0" height="0"> -->
+
+<!-- Post Header -->
+<style type="text/css">
+    header.intro-header{
+        position: relative;
+        background-image: url('/img/posts/01.jpg')
+    }
+
+    
+    header.intro-header .header-mask{
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        background: rgba(0,0,0, 0.3);
+    }
+    
+</style>
+<header class="intro-header" >
+    <div class="header-mask"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <div class="tags">
+                        
+                        <a class="tag" href="/tags/#python" title="python">python</a>
+                        
+                        <a class="tag" href="/tags/#学习" title="学习">学习</a>
+                        
+                        <a class="tag" href="/tags/#自然语言处理" title="自然语言处理">自然语言处理</a>
+                        
+                        <a class="tag" href="/tags/#fastText" title="fastText">fastText</a>
+                        
+                        <a class="tag" href="/tags/#转载" title="转载">转载</a>
+                        
+                    </div>
+                    <h1>FastText</h1>
+                    
+                    
+                    <h2 class="subheading">FastText学习</h2>
+                    
+                    <span class="meta">Posted by msg on October 11, 2018</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+    <!-- Post Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
+
+                <!-- Multi-Lingual -->
+                
+
+				<blockquote>
+  <p>用到了fastText，记录一下。这里记录的是Facebook的fastText工具包，实现了词向量和分类，因为要用Python，所以github找到一个封装了fasttext的Python包，实现上就用这个。</p>
+</blockquote>
+
+<h3 id="fasttext">fastText介绍</h3>
+
+<p>不同于word2vec, fasttext利用的是词的形态学信息，也就是词的内部构造信息，也就是子词信息。</p>
+
+<p>那什么是子词信息？fasttext采用的character n-gram来做的，比如where这个词，那么它的character 3-gram 子词包含如下&lt;wh, whe, her, ere, re&gt;以及本身<where>。</where></p>
+
+<p>这对尖括号可以方便的将her这个单词与where的子词her进行区分，her的character 3-gram子词不包含 her，于是这两个便可以区分开来。</p>
+
+<p>那么为什么要利用子词信息呢？脸书的研究者们认为，像word2vec这类词分布表示模型，词与词之间的信息没有更好的共享，也就是参数没有得到有效的共享，分解为粒度更小的子词后，通过共享子词表示，来达到信息共享的目的。</p>
+
+<h3 id="section">原理</h3>
+
+<p>给定一个character n-gram 字典，假设大小为G，并且每个子词都有自己的词向量表示，那么词w的词向量，可以由构成它的所有子词对应的向量求和来表示。另一点，与word2vec不一样的是，fasttext使用的分类的方法，也就是根据与它计算score的另一个词是否是上下文来进行二分类，具体用到的是logistics 回归方法。</p>
+
+<p>根据上面这些描述，可以发现一些端倪</p>
+
+<p>fasttext对罕见词非常有利，因为罕见词罕见是本身出现的次数足够少，但是构成其的character n-gram肯定比词本身出现的次数多，由于这些子词是共享的，因此可以从高频词中受益。</p>
+
+<p>其次，对于OOV(out of vocabulary)问题， 由于一个词可以被拆分成多个子词，当前词OOV，其大部分子词讲道理不会OOV，因此利用这些没有OOV的子词，可以在一定程度上缓解OOV问题。</p>
+
+<h3 id="section-1">代码示例</h3>
+
+<h4 id="python">安装(python)</h4>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>
+<span class="n">pip</span> <span class="n">install</span> <span class="n">fasttext</span>
+
+</code></pre>
+</div>
+
+<h4 id="section-2">训练词向量</h4>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>
+<span class="kn">import</span> <span class="nn">fasttext</span>
+
+<span class="c"># Skipgram model</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">fasttext</span><span class="o">.</span><span class="n">skipgram</span><span class="p">(</span><span class="s">'data.txt'</span><span class="p">,</span> <span class="s">'model'</span><span class="p">)</span>
+<span class="k">print</span> <span class="n">model</span><span class="o">.</span><span class="n">words</span> <span class="c"># list of words in dictionary</span>
+
+<span class="c"># CBOW model</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">fasttext</span><span class="o">.</span><span class="n">cbow</span><span class="p">(</span><span class="s">'data.txt'</span><span class="p">,</span> <span class="s">'model'</span><span class="p">)</span>
+<span class="k">print</span> <span class="n">model</span><span class="o">.</span><span class="n">words</span> <span class="c"># list of words in dictionary</span>
+
+</code></pre>
+</div>
+
+<p>训练好后，可以得到两个文件，model.bin 和 model.vec，model.bin保存了所有的词以及向量信息，后期可以用来继续训练，model.vec只保存了向量信息。</p>
+
+<p>用训练好的词向量，可以直接得到词的向量</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="k">print</span> <span class="n">model</span><span class="p">[</span><span class="s">'king'</span><span class="p">]</span> <span class="c"># get the vector of the word 'king'</span>
+</code></pre>
+</div>
+
+<h4 id="section-3">加载词向量</h4>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>
+<span class="n">model</span> <span class="o">=</span> <span class="n">fasttext</span><span class="o">.</span><span class="n">load_model</span><span class="p">(</span><span class="s">'model.bin'</span><span class="p">)</span>
+<span class="k">print</span> <span class="n">model</span><span class="o">.</span><span class="n">words</span> <span class="c"># list of words in dictionary</span>
+<span class="k">print</span> <span class="n">model</span><span class="p">[</span><span class="s">'king'</span><span class="p">]</span> <span class="c"># get the vector of the word 'king'</span>
+
+</code></pre>
+</div>
+
+<h4 id="section-4">文本分类</h4>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="n">classifier</span> <span class="o">=</span> <span class="n">fasttext</span><span class="o">.</span><span class="n">supervised</span><span class="p">(</span><span class="s">'data.train.txt'</span><span class="p">,</span> <span class="s">'model'</span><span class="p">)</span>
+</code></pre>
+</div>
+<p>可以指明类别标签</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="n">classifier</span> <span class="o">=</span> <span class="n">fasttext</span><span class="o">.</span><span class="n">supervised</span><span class="p">(</span><span class="s">'data.train.txt'</span><span class="p">,</span> <span class="s">'model'</span><span class="p">,</span> <span class="n">label_prefix</span><span class="o">=</span><span class="s">'__label__'</span><span class="p">)</span>
+</code></pre>
+</div>
+
+<p>训练好后，得到model.bin和model.vec文件，训练好后，可以根据训练好的模型，测试效果。</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="n">result</span> <span class="o">=</span> <span class="n">classifier</span><span class="o">.</span><span class="n">test</span><span class="p">(</span><span class="s">'test.txt'</span><span class="p">)</span>
+</code></pre>
+</div>
+
+<p>可以推理某个文本所属的类别</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="n">texts</span> <span class="o">=</span> <span class="p">[</span><span class="s">'example very long text 1'</span><span class="p">,</span> <span class="s">'example very longtext 2'</span><span class="p">]</span>
+<span class="n">labels</span> <span class="o">=</span> <span class="n">classifier</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">texts</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">labels</span><span class="p">)</span>
+
+<span class="c"># Or with the probability</span>
+<span class="n">labels</span> <span class="o">=</span> <span class="n">classifier</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">texts</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">labels</span><span class="p">)</span>
+</code></pre>
+</div>
+
+<p>可以指明前K个可能所属的类别</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="n">labels</span> <span class="o">=</span> <span class="n">classifier</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">texts</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">labels</span><span class="p">)</span>
+
+<span class="c"># Or with the probability</span>
+<span class="n">labels</span> <span class="o">=</span> <span class="n">classifier</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">texts</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">labels</span><span class="p">)</span>
+</code></pre>
+</div>
+
+<h4 id="section-5">模型参数</h4>
+
+<p><strong><em>1) skipgram</em></strong></p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="n">model</span> <span class="o">=</span> <span class="n">fasttext</span><span class="o">.</span><span class="n">skipgram</span><span class="p">(</span><span class="n">params</span><span class="p">)</span>
+</code></pre>
+</div>
+
+<p>params的参数如下</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>input_file     training file path (required)
+output         output file path (required)
+lr             learning rate [0.05]
+lr_update_rate change the rate of updates for the learning rate [100]
+dim            size of word vectors [100]
+ws             size of the context window [5]
+epoch          number of epochs [5]
+min_count      minimal number of word occurences [5]
+neg            number of negatives sampled [5]
+word_ngrams    max length of word ngram [1]
+loss           loss function {ns, hs, softmax} [ns]
+bucket         number of buckets [2000000]
+minn           min length of char ngram [3]
+maxn           max length of char ngram [6]
+thread         number of threads [12]
+t              sampling threshold [0.0001]
+silent         disable the log output from the C++ extension [1]
+encoding       specify input_file encoding [utf-8]
+</code></pre>
+</div>
+<p>例如：</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="n">model</span> <span class="o">=</span> <span class="n">fasttext</span><span class="o">.</span><span class="n">skipgram</span><span class="p">(</span><span class="s">'train.txt'</span><span class="p">,</span> <span class="s">'model'</span><span class="p">,</span> <span class="n">lr</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="mi">300</span><span class="p">)</span>
+</code></pre>
+</div>
+
+<p><strong><em>2) cbow</em></strong></p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="n">model</span> <span class="o">=</span> <span class="n">fasttext</span><span class="o">.</span><span class="n">cbow</span><span class="p">(</span><span class="n">params</span><span class="p">)</span>
+</code></pre>
+</div>
+
+<p>params列表如下：</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>input_file     training file path (required)
+output         output file path (required)
+lr             learning rate [0.05]
+lr_update_rate change the rate of updates for the learning rate [100]
+dim            size of word vectors [100]
+ws             size of the context window [5]
+epoch          number of epochs [5]
+min_count      minimal number of word occurences [5]
+neg            number of negatives sampled [5]
+word_ngrams    max length of word ngram [1]
+loss           loss function {ns, hs, softmax} [ns]
+bucket         number of buckets [2000000]
+minn           min length of char ngram [3]
+maxn           max length of char ngram [6]
+thread         number of threads [12]
+t              sampling threshold [0.0001]
+silent         disable the log output from the C++ extension [1]
+encoding       specify input_file encoding [utf-8]
+</code></pre>
+</div>
+
+<p>例如：</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="n">model</span> <span class="o">=</span> <span class="n">fasttext</span><span class="o">.</span><span class="n">cbow</span><span class="p">(</span><span class="s">'train.txt'</span><span class="p">,</span> <span class="s">'model'</span><span class="p">,</span> <span class="n">lr</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="mi">300</span><span class="p">)</span>
+</code></pre>
+</div>
+
+<p><strong><em>3) 加载预训练模型</em></strong></p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="n">model</span> <span class="o">=</span> <span class="n">fasttext</span><span class="o">.</span><span class="n">load_model</span><span class="p">(</span><span class="s">'model.bin'</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s">'utf-8'</span><span class="p">)</span>
+</code></pre>
+</div>
+
+<p><strong><em>4) 词向量模型的参数</em></strong></p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>model.model_name       # Model name
+model.words            # List of words in the dictionary
+model.dim              # Size of word vector
+model.ws               # Size of context window
+model.epoch            # Number of epochs
+model.min_count        # Minimal number of word occurences
+model.neg              # Number of negative sampled
+model.word_ngrams      # Max length of word ngram
+model.loss_name        # Loss function name
+model.bucket           # Number of buckets
+model.minn             # Min length of char ngram
+model.maxn             # Max length of char ngram
+model.lr_update_rate   # Rate of updates for the learning rate
+model.t                # Value of sampling threshold
+model.encoding         # Encoding of the model
+model[word]            # Get the vector of specified word
+</code></pre>
+</div>
+
+<p><strong><em>5) 有监督训练</em></strong></p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="n">classifier</span> <span class="o">=</span> <span class="n">fasttext</span><span class="o">.</span><span class="n">supervised</span><span class="p">(</span><span class="n">params</span><span class="p">)</span>
+</code></pre>
+</div>
+
+<p>params如下：</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>input_file     			training file path (required)
+output         			output file path (required)
+label_prefix   			label prefix ['__label__']
+lr             			learning rate [0.1]
+lr_update_rate 			change the rate of updates for the learning rate [100]
+dim            			size of word vectors [100]
+ws             			size of the context window [5]
+epoch          			number of epochs [5]
+min_count      			minimal number of word occurences [1]
+neg            			number of negatives sampled [5]
+word_ngrams    			max length of word ngram [1]
+loss           			loss function {ns, hs, softmax} [softmax]
+bucket         			number of buckets [0]
+minn           			min length of char ngram [0]
+maxn           			max length of char ngram [0]
+thread         			number of threads [12]
+t              			sampling threshold [0.0001]
+silent         			disable the log output from the C++ extension [1]
+encoding       			specify input_file encoding [utf-8]
+pretrained_vectors		pretrained word vectors (.vec file) for supervised learning []
+</code></pre>
+</div>
+
+<p>示例：</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="n">classifier</span> <span class="o">=</span> <span class="n">fasttext</span><span class="o">.</span><span class="n">supervised</span><span class="p">(</span><span class="s">'train.txt'</span><span class="p">,</span> <span class="s">'model'</span><span class="p">,</span> <span class="n">label_prefix</span><span class="o">=</span><span class="s">'__myprefix__'</span><span class="p">,</span>
+                                 <span class="n">thread</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+</code></pre>
+</div>
+
+<p><strong><em>6) 加载训练模型</em></strong></p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="n">classifier</span> <span class="o">=</span> <span class="n">fasttext</span><span class="o">.</span><span class="n">load_model</span><span class="p">(</span><span class="s">'classifier.bin'</span><span class="p">,</span> <span class="n">label_prefix</span><span class="o">=</span><span class="s">'some_prefix'</span><span class="p">)</span>
+</code></pre>
+</div>
+
+<p><strong><em>7) 测试分类</em></strong></p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="n">result</span> <span class="o">=</span> <span class="n">classifier</span><span class="o">.</span><span class="n">test</span><span class="p">(</span><span class="n">params</span><span class="p">)</span>
+
+<span class="c"># Properties</span>
+<span class="n">result</span><span class="o">.</span><span class="n">precision</span> <span class="c"># Precision at one</span>
+<span class="n">result</span><span class="o">.</span><span class="n">recall</span>    <span class="c"># Recall at one</span>
+<span class="n">result</span><span class="o">.</span><span class="n">nexamples</span> <span class="c"># Number of test examples</span>
+</code></pre>
+</div>
+
+<p><strong><em>8) 推理分类</em></strong></p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="n">labels</span> <span class="o">=</span> <span class="n">classifier</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">texts</span><span class="p">,</span> <span class="n">k</span><span class="p">)</span>
+
+<span class="c"># Or with probability</span>
+<span class="n">labels</span> <span class="o">=</span> <span class="n">classifier</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">texts</span><span class="p">,</span> <span class="n">k</span><span class="p">)</span>
+</code></pre>
+</div>
+
+<p><strong><em>9) 分类器参数</em></strong></p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>classifier.labels                  # List of labels
+classifier.label_prefix            # Prefix of the label
+classifier.dim                     # Size of word vector
+classifier.ws                      # Size of context window
+classifier.epoch                   # Number of epochs
+classifier.min_count               # Minimal number of word occurences
+classifier.neg                     # Number of negative sampled
+classifier.word_ngrams             # Max length of word ngram
+classifier.loss_name               # Loss function name
+classifier.bucket                  # Number of buckets
+classifier.minn                    # Min length of char ngram
+classifier.maxn                    # Max length of char ngram
+classifier.lr_update_rate          # Rate of updates for the learning rate
+classifier.t                       # Value of sampling threshold
+classifier.encoding                # Encoding that used by classifier
+classifier.test(filename, k)       # Test the classifier
+classifier.predict(texts, k)       # Predict the most likely label
+classifier.predict_proba(texts, k) # Predict the most likely label include their probability
+</code></pre>
+</div>
+
+
+                <hr style="visibility: hidden;">
+
+                <ul class="pager">
+                    
+                    <li class="previous">
+                        <a href="/2018/10/05/Thymeleaf/" data-toggle="tooltip" data-placement="top" title="Thymeleaf">
+                        Previous<br>
+                        <span>Thymeleaf</span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li class="next">
+                        <a href="/2018/10/19/deeplearning4j-iris/" data-toggle="tooltip" data-placement="top" title="deeplearning4j-(01)-iris">
+                        Next<br>
+                        <span>deeplearning4j-(01)-iris</span>
+                        </a>
+                    </li>
+                    
+                </ul>
+
+
+                
+
+                
+            </div>  
+
+    <!-- Side Catalog Container -->
+        
+            <div class="
+                col-lg-2 col-lg-offset-0
+                visible-lg-block
+                sidebar-container
+                catalog-container">
+                <div class="side-catalog">
+                    <hr class="hidden-sm hidden-xs">
+                    <h5>
+                        <a class="catalog-toggle" href="#">CATALOG</a>
+                    </h5>
+                    <ul class="catalog-body"></ul>
+                </div>
+            </div>
+        
+
+    <!-- Sidebar Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+                <section>
+                    <hr class="hidden-sm hidden-xs">
+                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
+                    <div class="tags">
+        				
+                            
+        				
+                            
+        				
+                            
+                				<a href="/tags/#NLP" title="NLP" rel="9">
+                                    NLP
+                                </a>
+                            
+        				
+                            
+        				
+                            
+        				
+                            
+                				<a href="/tags/#数学" title="数学" rel="6">
+                                    数学
+                                </a>
+                            
+        				
+                            
+                				<a href="/tags/#自然语言处理" title="自然语言处理" rel="10">
+                                    自然语言处理
+                                </a>
+                            
+        				
+                            
+                				<a href="/tags/#励志" title="励志" rel="5">
+                                    励志
+                                </a>
+                            
+        				
+                            
+        				
+                            
+                				<a href="/tags/#转载" title="转载" rel="23">
+                                    转载
+                                </a>
+                            
+        				
+                            
+        				
+                            
+                				<a href="/tags/#学习" title="学习" rel="25">
+                                    学习
+                                </a>
+                            
+        				
+                            
+                				<a href="/tags/#java" title="java" rel="7">
+                                    java
+                                </a>
+                            
+        				
+                            
+        				
+                            
+        				
+                            
+        				
+                            
+        				
+                            
+        				
+                            
+        				
+                            
+                				<a href="/tags/#笔记" title="笔记" rel="3">
+                                    笔记
+                                </a>
+                            
+        				
+                            
+        				
+                            
+        				
+                            
+        				
+                            
+        				
+                            
+        				
+                            
+        				
+                            
+        				
+                            
+        				
+                            
+                				<a href="/tags/#ubuntu" title="ubuntu" rel="5">
+                                    ubuntu
+                                </a>
+                            
+        				
+                            
+        				
+                            
+        				
+                            
+        				
+                            
+        				
+                            
+        				
+                            
+        				
+                            
+        				
+                            
+        				
+                            
+        				
+                            
+        				
+                            
+        				
+                            
+        				
+                            
+        				
+                            
+        				
+                            
+        				
+        			</div>
+                </section>
+                
+
+                <!-- Friends Blog -->
+                
+            </div>
+        </div>
+    </div>
+</article>
+
+
+
+
+
+
+
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+<!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
+<script>
+    async("//cdnjs.cloudflare.com/ajax/libs/anchor-js/1.1.1/anchor.min.js",function(){
+        anchors.options = {
+          visible: 'always',
+          placement: 'right',
+          icon: '#'
+        };
+        anchors.add().remove('.intro-header h1').remove('.subheading').remove('.sidebar-container h5');
+    })
+</script>
+<style>
+    /* place left on bigger screen */
+    @media all and (min-width: 800px) {
+        .anchorjs-link{
+            position: absolute;
+            left: -0.75em;
+            font-size: 1.1em;
+            margin-top : -0.1em;
+        }
+    }
+</style>
+
+
+
+    <!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                    
+                    
+
+                    <!-- add Weibo, Zhihu by Hux, add target = "_blank" to <a> by Hux -->
+                    
+                    
+
+
+                    
+                    
+                    
+                </ul>
+                <p class="copyright text-muted">
+                    Copyright &copy; 慢时光的学习笔记 2019
+                    <br>
+                    Theme by <a href="http://huangxuan.me">Hux</a> |
+                    <iframe
+                        style="margin-left: 2px; margin-bottom:-5px;"
+                        frameborder="0" scrolling="0" width="100px" height="20px"
+                        src="https://ghbtns.com/github-btn.html?user=huxpro&repo=huxpro.github.io&type=star&count=true" >
+                    </iframe>
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- jQuery -->
+<script src="/js/jquery.min.js "></script>
+
+<!-- Bootstrap Core JavaScript -->
+<!-- Currently, only navbar scroll-down effect at desktop still depends on this -->
+<script src="/js/bootstrap.min.js "></script>
+
+<!-- Custom Theme JavaScript -->
+<script src="/js/hux-blog.min.js "></script>
+
+<!-- Service Worker -->
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+<!--
+     Because of the native support for backtick-style fenced code blocks
+     right within the Markdown is landed in Github Pages,
+     From V1.6, There is no need for Highlight.js,
+     so Huxblog drops it officially.
+
+     - https://github.com/blog/2100-github-pages-now-faster-and-simpler-with-jekyll-3-0
+     - https://help.github.com/articles/creating-and-highlighting-code-blocks/
+     - https://github.com/jneen/rouge/wiki/list-of-supported-languages-and-lexers
+-->
+<!--
+    <script>
+        async("http://cdn.bootcss.com/highlight.js/8.6/highlight.min.js", function(){
+            hljs.initHighlightingOnLoad();
+        })
+    </script>
+    <link href="http://cdn.bootcss.com/highlight.js/8.6/styles/github.min.css" rel="stylesheet">
+-->
+
+
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async('/js/jquery.tagcloud.js',function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+<!--fastClick.js -->
+<script>
+    async("//cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.6/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+<!-- Google Analytics -->
+
+
+
+<!-- Baidu Tongji -->
+
+
+
+<!-- Side Catalog -->
+
+<script type="text/javascript">
+    function generateCatalog (selector) {
+
+        // interop with multilangual 
+        if ('' == 'true') {
+            _containerSelector = 'div.post-container.active'
+        } else {
+            _containerSelector = 'div.post-container'
+        }
+
+        // init
+        var P = $(_containerSelector),a,n,t,l,i,c;
+        a = P.find('h1,h2,h3,h4,h5,h6');
+
+        // clean
+        $(selector).html('')
+
+        // appending
+        a.each(function () {
+            n = $(this).prop('tagName').toLowerCase();
+            i = "#"+$(this).prop('id');
+            t = $(this).text();
+            c = $('<a href="'+i+'" rel="nofollow">'+t+'</a>');
+            l = $('<li class="'+n+'_nav"></li>').append(c);
+            $(selector).append(l);
+        });
+        return true;
+    }
+
+    generateCatalog(".catalog-body");
+
+    // toggle side catalog
+    $(".catalog-toggle").click((function(e){
+        e.preventDefault();
+        $('.side-catalog').toggleClass("fold")
+    }))
+
+    /*
+     * Doc: https://github.com/davist11/jQuery-One-Page-Nav
+     * Fork by Hux to support padding
+     */
+    async("/js/jquery.nav.js", function () {
+        $('.catalog-body').onePageNav({
+            currentClass: "active",
+            changeHash: !1,
+            easing: "swing",
+            filter: "",
+            scrollSpeed: 700,
+            scrollOffset: 0,
+            scrollThreshold: .2,
+            begin: null,
+            end: null,
+            scrollChange: null,
+            padding: 80
+        });
+    });
+</script>
+
+
+
+<!-- Multi-Lingual -->
+
+
+
+
+<!-- Image to hack wechat -->
+<img src="/img/icon_wechat.png" width="0" height="0" />
+<!-- Migrate from head to bottom, no longer block render and still work -->
+
+</body>
+
+</html>

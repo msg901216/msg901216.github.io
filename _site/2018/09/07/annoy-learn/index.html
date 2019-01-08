@@ -1,0 +1,778 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="keywords"  content="">
+    <meta name="theme-color" content="">
+    
+    <title>Annoy - 学习笔记 | Reading Blog</title>
+
+    <!-- Web App Manifest -->
+    <link rel="manifest" href="/pwa/manifest.json">
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://msgi.github.io/2018/09/07/annoy-learn/">
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/hux-blog.min.css">
+
+    <!-- Pygments Github CSS -->
+    <link rel="stylesheet" href="/css/syntax.css">
+
+    <!-- Custom Fonts -->
+    <!-- <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"> -->
+    <!-- Hux change font-awesome CDN to qiniu -->
+    <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- ga & ba script hoook -->
+    <script type="text/javascript" async
+src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML" async>
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        showProcessingMessages: false,
+        messageStyle: "none",
+        extensions: ["tex2jax.js"],
+        jax: ["input/TeX", "output/HTML-CSS"],
+        tex2jax: {
+            inlineMath:  [ ["$", "$"] ],
+            displayMath: [ ["$$","$$"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre','code','a'],
+            ignoreClass:"comment-content"
+        },
+        "HTML-CSS": {
+            availableFonts: ["STIX","TeX"],
+            showMathMenu: false
+        }
+    });
+    MathJax.Hub.Queue(["Typeset",MathJax.Hub]);
+    </script>
+    
+    <script data-no-instant>
+    InstantClick.on('change', function(isInitialLoad){
+        if (isInitialLoad === false) {
+            if (typeof MathJax !== 'undefined'){
+                MathJax.Hub.Queue(["Typeset",MathJax.Hub]);
+            }
+        }
+    });
+    InstantClick.init();
+    </script>
+</head>
+
+
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="">
+
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">慢时光的学习笔记</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+                    
+                    <li>
+                        <a href="/about/">About</a>
+                    </li>
+                    
+                    <li>
+                        <a href="/tags/">Tags</a>
+                    </li>
+                    
+                </ul>
+            </div>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    var __HuxNav__ = {
+        close: function(){
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        },
+        open: function(){
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+
+    // Bind Event
+    $toggle.addEventListener('click', function(e){
+        if ($navbar.className.indexOf('in') > 0) {
+            __HuxNav__.close()
+        }else{
+            __HuxNav__.open()
+        }
+    })
+
+    /**
+     * Since Fastclick is used to delegate 'touchstart' globally
+     * to hack 300ms delay in iOS by performing a fake 'click',
+     * Using 'e.stopPropagation' to stop 'touchstart' event from 
+     * $toggle/$collapse will break global delegation.
+     * 
+     * Instead, we use a 'e.target' filter to prevent handler
+     * added to document close HuxNav.  
+     *
+     * Also, we use 'click' instead of 'touchstart' as compromise
+     */
+    document.addEventListener('click', function(e){
+        if(e.target == $toggle) return;
+        if(e.target.className == 'icon-bar') return;
+        __HuxNav__.close();
+    })
+</script>
+
+
+    <!-- Image to hack wechat -->
+<!-- <img src="/img/icon_wechat.png" width="0" height="0"> -->
+<!-- <img src="/img/posts/02.jpg" width="0" height="0"> -->
+
+<!-- Post Header -->
+<style type="text/css">
+    header.intro-header{
+        position: relative;
+        background-image: url('/img/posts/02.jpg')
+    }
+
+    
+    header.intro-header .header-mask{
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        background: rgba(0,0,0, 0.3);
+    }
+    
+</style>
+<header class="intro-header" >
+    <div class="header-mask"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <div class="tags">
+                        
+                        <a class="tag" href="/tags/#算法" title="算法">算法</a>
+                        
+                        <a class="tag" href="/tags/#相似度" title="相似度">相似度</a>
+                        
+                        <a class="tag" href="/tags/#Annoy" title="Annoy">Annoy</a>
+                        
+                    </div>
+                    <h1>Annoy</h1>
+                    
+                    
+                    <h2 class="subheading">Annoy(Approximate Nearest Neighbors Oh Yeah)学习</h2>
+                    
+                    <span class="meta">Posted by msg on September 7, 2018</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+    <!-- Post Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
+
+                <!-- Multi-Lingual -->
+                
+
+				<blockquote>
+  <p>工作中用到<script type="math/tex">Annoy</script>，学习的过程中记录一下。</p>
+</blockquote>
+
+<p>一旦文档经过<script type="math/tex">word2vec</script>或者<script type="math/tex">paragraph2vec</script>变成<strong><em>稠密向量</em></strong>形式，如何从海量文本中快速查找出相似的<script type="math/tex">TopN</script>文本呢？</p>
+
+<h3 id="section">建立索引过程</h3>
+
+<p><script type="math/tex">Annoy</script>的目标是建立一个数据结构，使得查询一个点的最近邻点的时间复杂度是次线性。<script type="math/tex">Annoy</script>通过建立一个二叉树来使得每个点查找时间复杂度是<script type="math/tex">O(logn)</script>。随机选择两个点，以这两个节点为初始中心节点，执行聚类数为<script type="math/tex">2</script>的<script type="math/tex">kmeans</script>过程，最终产生收敛后两个聚类中心点。这两个聚类中心点之间连一条线段（灰色短线），建立一条垂直于这条灰线，并且通过灰线中心点的线（黑色粗线）。这条黑色粗线把数据空间分成两部分。在多维空间的话，这条黑色粗线可以看成等距垂直超平面。</p>
+
+<p><img src="/img/posts/annoy/split.png" alt="分割" /></p>
+
+<p>在划分的子空间内进行不停的递归迭代继续划分，直到每个子空间最多只剩下<script type="math/tex">K</script>个数据节点。<br />
+<img src="/img/posts/annoy/split2.png" alt="最终分割" /></p>
+
+<p>通过多次递归迭代划分的话，最终原始数据会形成二叉树结构。二叉树底层是叶子节点记录原始数据节点，其他中间节点记录的是分割超平面的信息。<script type="math/tex">Annoy</script>建立这样的二叉树结构是希望满足这样的一个假设:相似的数据节点应该在二叉树上位置更接近，一个分割超平面不应该把相似的数据节点分在二叉树的不同分支上。<br />
+<img src="/img/posts/annoy/split3.png" alt="树状结构" /></p>
+
+<h3 id="section-1">查询过程</h3>
+
+<p>完成节点索引建立过程后如何进行对一个数据点进行查找相似节点集合呢？查找的过程就是不断看查询数据节点在分割超平面的哪一边。从二叉树索引结构来看，就是从根节点不停的往叶子节点遍历的过程。通过对二叉树每个中间节点（分割超平面相关信息）和查询数据节点进行相关计算来确定二叉树遍历过程是往这个中间节点左子节点走还是右子节点走。</p>
+
+<h4 id="section-2">存在问题</h4>
+
+<p>上述描述存在两个问题：</p>
+
+<p>1) 查询过程最终落到叶子节点的数据节点数小于我们需要的<script type="math/tex">TopN</script>相似邻居节点数目怎么办？</p>
+
+<p>2）两个相近的数据节点划分到二叉树不同分支上怎么办？</p>
+
+<h4 id="section-3">解决方法</h4>
+
+<p>1）如果分割超平面的两边都很相似，那可以两边都遍历；下面是是个示意图：</p>
+
+<p><img src="/img/posts/annoy/01.png" alt="示意图" /></p>
+
+<p>如果一个划分的两边“靠得足够近”（量化方式在后面介绍），我们就两边都遍历。这样就不只是遍历一个节点的一边，我们将遍历更多的点。</p>
+
+<p>我们可以设置一个阈值，用来表示是否愿意搜索划分“错”的一遍。如果设置为0，我们将总是遍历“对”的一片。但是如果设置成0.5，就按照上面的搜索路径。</p>
+
+<p>这个技巧实际上是利用优先级队列，依据两边的最大距离。好处是我们能够设置比0大的阈值，逐渐增加搜索范围。</p>
+
+<p>2) 建立多棵二叉树树，构成一个森林，每个树建立机制都如上面所述那样。</p>
+
+<p><img src="/img/posts/annoy/tree.jpg" alt="森林" /></p>
+
+<p>用一个优先级队列，同时搜索所有的树。这样有另外一个好处，搜索会聚焦到那些与已知点靠得最近的那些树——能够把距离最远的空间划分出去</p>
+
+<p>每棵树都包含所有的点，所以当我们搜索多棵树的时候，将找到多棵树上的多个点。如果我们把所有的搜索结果的叶子节点都合在一起，那么得到的最近邻就非常符合要求。</p>
+
+<p>3）采用优先队列机制：采用一个优先队列来遍历二叉树，从根节点往下的路径，根据查询节点与当前分割超平面距离进行排序。</p>
+
+<h3 id="section-4">返回最终近邻节点</h3>
+
+<p>每棵树都返回一堆近邻点后，如何得到最终的<script type="math/tex">TopN</script>相似集合呢？<br />
+首先所有树返回近邻点都插入到优先队列中，求并集去重, 然后计算和查询点距离， 最终根据距离值从近距离到远距离排序， 返回<script type="math/tex">TopN</script>近邻节点集合。</p>
+
+<h3 id="tips">tips</h3>
+
+<p>1.距离计算，采用归一化的欧氏距离：<script type="math/tex">vectors = \sqrt{(2-2 \cdot cos(u, v))}</script></p>
+
+<p>2.向量维度较小<script type="math/tex">% <![CDATA[
+(<100) %]]></script>,即使维度到达1000表现也不错</p>
+
+<p>3.内存占用小</p>
+
+<p>4.索引创建与查找分离（特别是一旦树已经创建，就不能添加更多项）</p>
+
+<p>5.有两个参数可以用来调节<script type="math/tex">Annoy</script>树的数量<script type="math/tex">n_{trees}</script>和搜索期间检查的节点数量<script type="math/tex">search_k</script></p>
+
+<ul>
+  <li>
+    <p><script type="math/tex">n_{trees}</script>在构建时提供，并影响构建时间和索引大小。 较大的值将给出更准确的结果，但更大的索引。</p>
+  </li>
+  <li>
+    <p><script type="math/tex">search_k</script>在运行时提供，并影响搜索性能。 较大的值将给出更准确的结果，但将需要更长的时间返回。</p>
+  </li>
+</ul>
+
+<p>如果不提供<script type="math/tex">search_k</script>，它将默认为<script type="math/tex">n * n_{trees}</script>，其中<script type="math/tex">n</script>是近似最近邻的数目。 否则，<script type="math/tex">search_k</script>和<script type="math/tex">n_{trees}</script>大致是独立的，即如果<script type="math/tex">search_k</script>保持不变，<script type="math/tex">n_{trees}</script>的值不会影响搜索时间，反之亦然。 基本上，建议在可用负载量的情况下尽可能大地设置<script type="math/tex">n_{trees}</script>，并且考虑到查询的时间限制，建议将<script type="math/tex">search_k</script>设置为尽可能大。</p>
+
+<h3 id="python">python代码例子</h3>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">annoy</span> <span class="kn">import</span> <span class="n">AnnoyIndex</span>
+<span class="kn">import</span> <span class="nn">random</span>
+
+<span class="n">f</span> <span class="o">=</span> <span class="mi">40</span>
+<span class="n">t</span> <span class="o">=</span> <span class="n">AnnoyIndex</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>  <span class="c"># Length of item vector that will be indexed</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">xrange</span><span class="p">(</span><span class="mi">1000</span><span class="p">):</span>
+    <span class="n">v</span> <span class="o">=</span> <span class="p">[</span><span class="n">random</span><span class="o">.</span><span class="n">gauss</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="k">for</span> <span class="n">z</span> <span class="ow">in</span> <span class="nb">xrange</span><span class="p">(</span><span class="n">f</span><span class="p">)]</span>
+    <span class="n">t</span><span class="o">.</span><span class="n">add_item</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span>
+
+<span class="n">t</span><span class="o">.</span><span class="n">build</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span> <span class="c"># 10 trees</span>
+<span class="n">t</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s">'test.ann'</span><span class="p">)</span>
+
+<span class="c"># ...</span>
+
+<span class="n">u</span> <span class="o">=</span> <span class="n">AnnoyIndex</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+<span class="n">u</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s">'test.ann'</span><span class="p">)</span> <span class="c"># super fast, will just mmap the file</span>
+<span class="k">print</span><span class="p">(</span><span class="n">u</span><span class="o">.</span><span class="n">get_nns_by_item</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1000</span><span class="p">))</span> <span class="c"># will find the 1000 nearest neighbors</span>
+</code></pre>
+</div>
+<p>### python api</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>
+<span class="n">AnnoyIndex</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">metric</span><span class="o">=</span><span class="s">'angular'</span><span class="p">)</span> <span class="c"># returns a new index that's read-write and stores vector of f dimensions. Metric can be either "angular" or "euclidean".</span>
+<span class="n">a</span><span class="o">.</span><span class="n">add_item</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span> <span class="c">#adds item i (any nonnegative integer) with vector v. Note that it will allocate memory for max(i)+1 items.</span>
+<span class="n">a</span><span class="o">.</span><span class="n">build</span><span class="p">(</span><span class="n">n_trees</span><span class="p">)</span> <span class="c">#builds a forest of n_trees trees. More trees gives higher precision when querying. After calling build, no more items can be added.</span>
+<span class="n">a</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">fn</span><span class="p">)</span> <span class="c">#saves the index to disk.</span>
+<span class="n">a</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">fn</span><span class="p">)</span> <span class="c">#loads (mmaps) an index from disk.</span>
+<span class="n">a</span><span class="o">.</span><span class="n">unload</span><span class="p">()</span> <span class="c">#unloads.</span>
+<span class="n">a</span><span class="o">.</span><span class="n">get_nns_by_item</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">search_k</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">include_distances</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span> <span class="c">#returns the n closest items. During the query it will inspect up to search_k nodes which defaults to n_trees * n if not provided. search_k gives you a run-time tradeoff between better accuracy and speed. If you set include_distances to True, it will return a 2 element tuple with two lists in it: the second one containing all corresponding distances.</span>
+<span class="n">a</span><span class="o">.</span><span class="n">get_nns_by_vector</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">search_k</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">include_distances</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span> <span class="c">#same but query by vector v.</span>
+<span class="n">a</span><span class="o">.</span><span class="n">get_item_vector</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="c">#returns the vector for item i that was previously added.</span>
+<span class="n">a</span><span class="o">.</span><span class="n">get_distance</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">)</span> <span class="c">#returns the distance between items i and j. NOTE: this used to returned the squared distance, but has been changed as of Aug 2016.</span>
+<span class="n">a</span><span class="o">.</span><span class="n">get_n_items</span><span class="p">()</span> <span class="c">#returns the number of items in the index.</span>
+
+</code></pre>
+</div>
+
+
+                <hr style="visibility: hidden;">
+
+                <ul class="pager">
+                    
+                    <li class="previous">
+                        <a href="/2018/08/23/springboot%E4%B8%AD%E9%81%87%E5%88%B0%E7%9A%84%E5%9D%91/" data-toggle="tooltip" data-placement="top" title="springboot (1)">
+                        Previous<br>
+                        <span>springboot (1)</span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li class="next">
+                        <a href="/2018/09/08/spring-cloud/" data-toggle="tooltip" data-placement="top" title="Spring Cloud">
+                        Next<br>
+                        <span>Spring Cloud</span>
+                        </a>
+                    </li>
+                    
+                </ul>
+
+
+                
+
+                
+            </div>  
+
+    <!-- Side Catalog Container -->
+        
+            <div class="
+                col-lg-2 col-lg-offset-0
+                visible-lg-block
+                sidebar-container
+                catalog-container">
+                <div class="side-catalog">
+                    <hr class="hidden-sm hidden-xs">
+                    <h5>
+                        <a class="catalog-toggle" href="#">CATALOG</a>
+                    </h5>
+                    <ul class="catalog-body"></ul>
+                </div>
+            </div>
+        
+
+    <!-- Sidebar Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+                <section>
+                    <hr class="hidden-sm hidden-xs">
+                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
+                    <div class="tags">
+        				
+                            
+        				
+                            
+        				
+                            
+                				<a href="/tags/#NLP" title="NLP" rel="9">
+                                    NLP
+                                </a>
+                            
+        				
+                            
+        				
+                            
+        				
+                            
+                				<a href="/tags/#数学" title="数学" rel="6">
+                                    数学
+                                </a>
+                            
+        				
+                            
+                				<a href="/tags/#自然语言处理" title="自然语言处理" rel="10">
+                                    自然语言处理
+                                </a>
+                            
+        				
+                            
+                				<a href="/tags/#励志" title="励志" rel="5">
+                                    励志
+                                </a>
+                            
+        				
+                            
+        				
+                            
+                				<a href="/tags/#转载" title="转载" rel="23">
+                                    转载
+                                </a>
+                            
+        				
+                            
+        				
+                            
+                				<a href="/tags/#学习" title="学习" rel="25">
+                                    学习
+                                </a>
+                            
+        				
+                            
+                				<a href="/tags/#java" title="java" rel="7">
+                                    java
+                                </a>
+                            
+        				
+                            
+        				
+                            
+        				
+                            
+        				
+                            
+        				
+                            
+        				
+                            
+        				
+                            
+                				<a href="/tags/#笔记" title="笔记" rel="3">
+                                    笔记
+                                </a>
+                            
+        				
+                            
+        				
+                            
+        				
+                            
+        				
+                            
+        				
+                            
+        				
+                            
+        				
+                            
+        				
+                            
+        				
+                            
+                				<a href="/tags/#ubuntu" title="ubuntu" rel="5">
+                                    ubuntu
+                                </a>
+                            
+        				
+                            
+        				
+                            
+        				
+                            
+        				
+                            
+        				
+                            
+        				
+                            
+        				
+                            
+        				
+                            
+        				
+                            
+        				
+                            
+        				
+                            
+        				
+                            
+        				
+                            
+        				
+                            
+        				
+                            
+        				
+        			</div>
+                </section>
+                
+
+                <!-- Friends Blog -->
+                
+            </div>
+        </div>
+    </div>
+</article>
+
+
+
+
+
+
+
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+<!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
+<script>
+    async("//cdnjs.cloudflare.com/ajax/libs/anchor-js/1.1.1/anchor.min.js",function(){
+        anchors.options = {
+          visible: 'always',
+          placement: 'right',
+          icon: '#'
+        };
+        anchors.add().remove('.intro-header h1').remove('.subheading').remove('.sidebar-container h5');
+    })
+</script>
+<style>
+    /* place left on bigger screen */
+    @media all and (min-width: 800px) {
+        .anchorjs-link{
+            position: absolute;
+            left: -0.75em;
+            font-size: 1.1em;
+            margin-top : -0.1em;
+        }
+    }
+</style>
+
+
+
+    <!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                    
+                    
+
+                    <!-- add Weibo, Zhihu by Hux, add target = "_blank" to <a> by Hux -->
+                    
+                    
+
+
+                    
+                    
+                    
+                </ul>
+                <p class="copyright text-muted">
+                    Copyright &copy; 慢时光的学习笔记 2019
+                    <br>
+                    Theme by <a href="http://huangxuan.me">Hux</a> |
+                    <iframe
+                        style="margin-left: 2px; margin-bottom:-5px;"
+                        frameborder="0" scrolling="0" width="100px" height="20px"
+                        src="https://ghbtns.com/github-btn.html?user=huxpro&repo=huxpro.github.io&type=star&count=true" >
+                    </iframe>
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- jQuery -->
+<script src="/js/jquery.min.js "></script>
+
+<!-- Bootstrap Core JavaScript -->
+<!-- Currently, only navbar scroll-down effect at desktop still depends on this -->
+<script src="/js/bootstrap.min.js "></script>
+
+<!-- Custom Theme JavaScript -->
+<script src="/js/hux-blog.min.js "></script>
+
+<!-- Service Worker -->
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+<!--
+     Because of the native support for backtick-style fenced code blocks
+     right within the Markdown is landed in Github Pages,
+     From V1.6, There is no need for Highlight.js,
+     so Huxblog drops it officially.
+
+     - https://github.com/blog/2100-github-pages-now-faster-and-simpler-with-jekyll-3-0
+     - https://help.github.com/articles/creating-and-highlighting-code-blocks/
+     - https://github.com/jneen/rouge/wiki/list-of-supported-languages-and-lexers
+-->
+<!--
+    <script>
+        async("http://cdn.bootcss.com/highlight.js/8.6/highlight.min.js", function(){
+            hljs.initHighlightingOnLoad();
+        })
+    </script>
+    <link href="http://cdn.bootcss.com/highlight.js/8.6/styles/github.min.css" rel="stylesheet">
+-->
+
+
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async('/js/jquery.tagcloud.js',function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+<!--fastClick.js -->
+<script>
+    async("//cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.6/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+<!-- Google Analytics -->
+
+
+
+<!-- Baidu Tongji -->
+
+
+
+<!-- Side Catalog -->
+
+<script type="text/javascript">
+    function generateCatalog (selector) {
+
+        // interop with multilangual 
+        if ('' == 'true') {
+            _containerSelector = 'div.post-container.active'
+        } else {
+            _containerSelector = 'div.post-container'
+        }
+
+        // init
+        var P = $(_containerSelector),a,n,t,l,i,c;
+        a = P.find('h1,h2,h3,h4,h5,h6');
+
+        // clean
+        $(selector).html('')
+
+        // appending
+        a.each(function () {
+            n = $(this).prop('tagName').toLowerCase();
+            i = "#"+$(this).prop('id');
+            t = $(this).text();
+            c = $('<a href="'+i+'" rel="nofollow">'+t+'</a>');
+            l = $('<li class="'+n+'_nav"></li>').append(c);
+            $(selector).append(l);
+        });
+        return true;
+    }
+
+    generateCatalog(".catalog-body");
+
+    // toggle side catalog
+    $(".catalog-toggle").click((function(e){
+        e.preventDefault();
+        $('.side-catalog').toggleClass("fold")
+    }))
+
+    /*
+     * Doc: https://github.com/davist11/jQuery-One-Page-Nav
+     * Fork by Hux to support padding
+     */
+    async("/js/jquery.nav.js", function () {
+        $('.catalog-body').onePageNav({
+            currentClass: "active",
+            changeHash: !1,
+            easing: "swing",
+            filter: "",
+            scrollSpeed: 700,
+            scrollOffset: 0,
+            scrollThreshold: .2,
+            begin: null,
+            end: null,
+            scrollChange: null,
+            padding: 80
+        });
+    });
+</script>
+
+
+
+<!-- Multi-Lingual -->
+
+
+
+
+<!-- Image to hack wechat -->
+<img src="/img/icon_wechat.png" width="0" height="0" />
+<!-- Migrate from head to bottom, no longer block render and still work -->
+
+</body>
+
+</html>
