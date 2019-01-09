@@ -76,3 +76,19 @@ public class EntityMapperConfig {
     }
 }
 ```
+
+### idea打包可执行jar包
+
+1. 选中Java项目工程名称，在菜单中选择 File->project structure... (快捷键Ctrl+Alt+Shift+S)。
+
+2. 在弹出的窗口中左侧选中"Artifacts"，点击"+"选择jar，然后选择"from modules with dependencies"。
+
+3. 在配置窗口中配置"Main Class"。
+
+4. 配置“Directory for META-INF/MAINFEST.MF”，此项配置的缺省值是：..\src\main\java，需要改成项目根目录。选择“extract to the target JAR”，这样所有依赖的jar包都会放在生成的jar包中。
+
+5. 完成后，点击OK，Apply等按钮，回到IDEA的主菜单，选择“Build - Build Artifacts”下的“Build”或者“Rebuild”即可生成最终的可运行的jar。
+
+
+
+
