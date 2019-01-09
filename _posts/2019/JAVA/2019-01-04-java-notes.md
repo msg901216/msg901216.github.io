@@ -65,4 +65,14 @@ return template.query(query, response -> {
     });
 ```
 
+### entitymapper
 
+```java
+@Configuration
+public class EntityMapperConfig {
+    @Bean
+    public EntityMapper entityMapper(){
+        return new DefaultEntityMapper();
+    }
+}
+```
