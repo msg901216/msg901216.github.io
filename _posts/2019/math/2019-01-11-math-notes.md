@@ -1,15 +1,16 @@
 ---
 layout:     post
-title:      "similarity methods 笔记"
-subtitle:   "similariry"
-date:       2019-01-07
+title:      "数学笔记"
+subtitle:   "math notes"
+date:       2019-01-11
 author:     "msg"
 header-img: "img/posts/05.jpg"
 header-mask: 0.3
 catalog:    true
 
 tags:
-    - similarity
+    - math
+    - 数学
     - 笔记
     - 学习
 
