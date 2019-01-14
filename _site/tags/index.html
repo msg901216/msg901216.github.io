@@ -1,0 +1,3332 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="keywords"  content="">
+    <meta name="theme-color" content="">
+    
+    <title>Tags - 学习笔记 | Reading Blog</title>
+
+    <!-- Web App Manifest -->
+    <link rel="manifest" href="/pwa/manifest.json">
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="http://localhost:4000/tags/">
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/hux-blog.min.css">
+
+    <!-- Pygments Github CSS -->
+    <link rel="stylesheet" href="/css/syntax.css">
+
+    <!-- Custom Fonts -->
+    <!-- <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"> -->
+    <!-- Hux change font-awesome CDN to qiniu -->
+    <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- ga & ba script hoook -->
+    <script type="text/javascript" async
+src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML" async>
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        showProcessingMessages: false,
+        messageStyle: "none",
+        extensions: ["tex2jax.js"],
+        jax: ["input/TeX", "output/HTML-CSS"],
+        tex2jax: {
+            inlineMath:  [ ["$", "$"] ],
+            displayMath: [ ["$$","$$"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre','code','a'],
+            ignoreClass:"comment-content"
+        },
+        "HTML-CSS": {
+            availableFonts: ["STIX","TeX"],
+            showMathMenu: false
+        }
+    });
+    MathJax.Hub.Queue(["Typeset",MathJax.Hub]);
+    </script>
+    
+    <script data-no-instant>
+    InstantClick.on('change', function(isInitialLoad){
+        if (isInitialLoad === false) {
+            if (typeof MathJax !== 'undefined'){
+                MathJax.Hub.Queue(["Typeset",MathJax.Hub]);
+            }
+        }
+    });
+    InstantClick.init();
+    </script>
+</head>
+
+
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="">
+
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">慢时光的学习笔记</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+                    
+                    <li>
+                        <a href="/about/">About</a>
+                    </li>
+                    
+                    <li>
+                        <a href="/tags/">Tags</a>
+                    </li>
+                    
+                </ul>
+            </div>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    var __HuxNav__ = {
+        close: function(){
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        },
+        open: function(){
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+
+    // Bind Event
+    $toggle.addEventListener('click', function(e){
+        if ($navbar.className.indexOf('in') > 0) {
+            __HuxNav__.close()
+        }else{
+            __HuxNav__.open()
+        }
+    })
+
+    /**
+     * Since Fastclick is used to delegate 'touchstart' globally
+     * to hack 300ms delay in iOS by performing a fake 'click',
+     * Using 'e.stopPropagation' to stop 'touchstart' event from 
+     * $toggle/$collapse will break global delegation.
+     * 
+     * Instead, we use a 'e.target' filter to prevent handler
+     * added to document close HuxNav.  
+     *
+     * Also, we use 'click' instead of 'touchstart' as compromise
+     */
+    document.addEventListener('click', function(e){
+        if(e.target == $toggle) return;
+        if(e.target.className == 'icon-bar') return;
+        __HuxNav__.close();
+    })
+</script>
+
+
+    <!-- Page Header -->
+<header class="intro-header" style="background-image: url('/img/tag-bg.jpg')">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="site-heading" id="tag-heading">
+                    <h1>Tags</h1>
+                    <span class="subheading">keep hungry keep foolish</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Main Content -->
+<div class="container">
+	<div class="row">
+		<div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+            <!-- 标签云 -->
+			<div id='tag_cloud' class="tags">
+				
+				<a href="#regex" title="regex" rel="1">regex</a>
+				
+				<a href="#正则" title="正则" rel="1">正则</a>
+				
+				<a href="#NLP" title="NLP" rel="9">NLP</a>
+				
+				<a href="#算法" title="算法" rel="2">算法</a>
+				
+				<a href="#algorithm" title="algorithm" rel="1">algorithm</a>
+				
+				<a href="#数学" title="数学" rel="6">数学</a>
+				
+				<a href="#自然语言处理" title="自然语言处理" rel="10">自然语言处理</a>
+				
+				<a href="#励志" title="励志" rel="5">励志</a>
+				
+				<a href="#趣闻" title="趣闻" rel="1">趣闻</a>
+				
+				<a href="#转载" title="转载" rel="23">转载</a>
+				
+				<a href="#英语" title="英语" rel="2">英语</a>
+				
+				<a href="#学习" title="学习" rel="25">学习</a>
+				
+				<a href="#java" title="java" rel="7">java</a>
+				
+				<a href="#springboot" title="springboot" rel="2">springboot</a>
+				
+				<a href="#相似度" title="相似度" rel="1">相似度</a>
+				
+				<a href="#Annoy" title="Annoy" rel="1">Annoy</a>
+				
+				<a href="#Spring Cloud" title="Spring Cloud" rel="1">Spring Cloud</a>
+				
+				<a href="#struggle" title="struggle" rel="1">struggle</a>
+				
+				<a href="#Python" title="Python" rel="2">Python</a>
+				
+				<a href="#笔记" title="笔记" rel="3">笔记</a>
+				
+				<a href="#LSTM" title="LSTM" rel="1">LSTM</a>
+				
+				<a href="#deeplearning4j" title="deeplearning4j" rel="2">deeplearning4j</a>
+				
+				<a href="#java web" title="java web" rel="1">java web</a>
+				
+				<a href="#thymeleaf" title="thymeleaf" rel="1">thymeleaf</a>
+				
+				<a href="#前端" title="前端" rel="1">前端</a>
+				
+				<a href="#python" title="python" rel="1">python</a>
+				
+				<a href="#fastText" title="fastText" rel="1">fastText</a>
+				
+				<a href="#深度学习" title="深度学习" rel="1">深度学习</a>
+				
+				<a href="#ubuntu" title="ubuntu" rel="5">ubuntu</a>
+				
+				<a href="#linux" title="linux" rel="1">linux</a>
+				
+				<a href="#mysql" title="mysql" rel="1">mysql</a>
+				
+				<a href="#machine learning" title="machine learning" rel="1">machine learning</a>
+				
+				<a href="#neo4j" title="neo4j" rel="2">neo4j</a>
+				
+				<a href="#cypher" title="cypher" rel="1">cypher</a>
+				
+				<a href="#knowledge graph" title="knowledge graph" rel="2">knowledge graph</a>
+				
+				<a href="#question answer system" title="question answer system" rel="2">question answer system</a>
+				
+				<a href="#fork" title="fork" rel="1">fork</a>
+				
+				<a href="#github" title="github" rel="2">github</a>
+				
+				<a href="#visual studio code" title="visual studio code" rel="1">visual studio code</a>
+				
+				<a href="#计划" title="计划" rel="1">计划</a>
+				
+				<a href="#2019" title="2019" rel="1">2019</a>
+				
+				<a href="#git" title="git" rel="1">git</a>
+				
+				<a href="#PostgreSQL" title="PostgreSQL" rel="1">PostgreSQL</a>
+				
+				<a href="#similarity" title="similarity" rel="1">similarity</a>
+				
+			</div>
+
+            <!-- 标签列表 -->
+			
+			<div class="one-tag-list">
+			  	<span class="fa fa-tag listing-seperator" id="regex">
+                    <span class="tag-text">regex</span>
+                </span>
+				
+				  <!-- <li class="listing-item">
+				  <time datetime="2018-07-07">2018-07-07</time>
+				  <a href="/2018/07/07/Teach-Yourself-Regular-Expressions-in-10-Minutes/" title="Teach Yourself Regular Expressions in 10 Minutes">Teach Yourself Regular Expressions in 10 Minutes</a>
+				  </li> -->
+				 <div class="post-preview">
+				    <a href="/2018/07/07/Teach-Yourself-Regular-Expressions-in-10-Minutes/">
+				        <h2 class="post-title">
+                            Teach Yourself Regular Expressions in 10 Minutes
+				        </h2>
+				        
+				        <h3 class="post-subtitle">
+				            《正则表达式快速入门》
+				        </h3>
+				        
+				    </a>
+				    <!-- <p class="post-meta">2018-07-07</p> -->
+				</div>
+				<hr>
+				
+			</div>
+			
+			<div class="one-tag-list">
+			  	<span class="fa fa-tag listing-seperator" id="正则">
+                    <span class="tag-text">正则</span>
+                </span>
+				
+				  <!-- <li class="listing-item">
+				  <time datetime="2018-07-07">2018-07-07</time>
+				  <a href="/2018/07/07/Teach-Yourself-Regular-Expressions-in-10-Minutes/" title="Teach Yourself Regular Expressions in 10 Minutes">Teach Yourself Regular Expressions in 10 Minutes</a>
+				  </li> -->
+				 <div class="post-preview">
+				    <a href="/2018/07/07/Teach-Yourself-Regular-Expressions-in-10-Minutes/">
+				        <h2 class="post-title">
+                            Teach Yourself Regular Expressions in 10 Minutes
+				        </h2>
+				        
+				        <h3 class="post-subtitle">
+				            《正则表达式快速入门》
+				        </h3>
+				        
+				    </a>
+				    <!-- <p class="post-meta">2018-07-07</p> -->
+				</div>
+				<hr>
+				
+			</div>
+			
+			<div class="one-tag-list">
+			  	<span class="fa fa-tag listing-seperator" id="NLP">
+                    <span class="tag-text">NLP</span>
+                </span>
+				
+				  <!-- <li class="listing-item">
+				  <time datetime="2018-12-02">2018-12-02</time>
+				  <a href="/2018/12/02/notes-NLP/" title="NLP学习笔记">NLP学习笔记</a>
+				  </li> -->
+				 <div class="post-preview">
+				    <a href="/2018/12/02/notes-NLP/">
+				        <h2 class="post-title">
+                            NLP学习笔记
+				        </h2>
+				        
+				        <h3 class="post-subtitle">
+				            学习笔记
+				        </h3>
+				        
+				    </a>
+				    <!-- <p class="post-meta">2018-12-02</p> -->
+				</div>
+				<hr>
+				
+				  <!-- <li class="listing-item">
+				  <time datetime="2018-07-18">2018-07-18</time>
+				  <a href="/2018/07/18/The-Beauty-of-Math/" title="The Beauty of Math(20)">The Beauty of Math(20)</a>
+				  </li> -->
+				 <div class="post-preview">
+				    <a href="/2018/07/18/The-Beauty-of-Math/">
+				        <h2 class="post-title">
+                            The Beauty of Math(20)
+				        </h2>
+				        
+				        <h3 class="post-subtitle">
+				            《数学之美》---吴军
+				        </h3>
+				        
+				    </a>
+				    <!-- <p class="post-meta">2018-07-18</p> -->
+				</div>
+				<hr>
+				
+				  <!-- <li class="listing-item">
+				  <time datetime="2018-07-13">2018-07-13</time>
+				  <a href="/2018/07/13/The-Beauty-of-Math/" title="The Beauty of Math(17-19)">The Beauty of Math(17-19)</a>
+				  </li> -->
+				 <div class="post-preview">
+				    <a href="/2018/07/13/The-Beauty-of-Math/">
+				        <h2 class="post-title">
+                            The Beauty of Math(17-19)
+				        </h2>
+				        
+				        <h3 class="post-subtitle">
+				            《数学之美》---吴军
+				        </h3>
+				        
+				    </a>
+				    <!-- <p class="post-meta">2018-07-13</p> -->
+				</div>
+				<hr>
+				
+				  <!-- <li class="listing-item">
+				  <time datetime="2018-07-12">2018-07-12</time>
+				  <a href="/2018/07/12/The-Beauty-of-Math/" title="The Beauty of Math(16)">The Beauty of Math(16)</a>
+				  </li> -->
+				 <div class="post-preview">
+				    <a href="/2018/07/12/The-Beauty-of-Math/">
+				        <h2 class="post-title">
+                            The Beauty of Math(16)
+				        </h2>
+				        
+				        <h3 class="post-subtitle">
+				            《数学之美》---吴军
+				        </h3>
+				        
+				    </a>
+				    <!-- <p class="post-meta">2018-07-12</p> -->
+				</div>
+				<hr>
+				
+				  <!-- <li class="listing-item">
+				  <time datetime="2018-07-10">2018-07-10</time>
+				  <a href="/2018/07/10/The-Beauty-of-Math/" title="The Beauty of Math(11-15)">The Beauty of Math(11-15)</a>
+				  </li> -->
+				 <div class="post-preview">
+				    <a href="/2018/07/10/The-Beauty-of-Math/">
+				        <h2 class="post-title">
+                            The Beauty of Math(11-15)
+				        </h2>
+				        
+				        <h3 class="post-subtitle">
+				            《数学之美》---吴军
+				        </h3>
+				        
+				    </a>
+				    <!-- <p class="post-meta">2018-07-10</p> -->
+				</div>
+				<hr>
+				
+				  <!-- <li class="listing-item">
+				  <time datetime="2018-07-09">2018-07-09</time>
+				  <a href="/2018/07/09/The-Beauty-of-Math/" title="The Beauty of Math(6-10)">The Beauty of Math(6-10)</a>
+				  </li> -->
+				 <div class="post-preview">
+				    <a href="/2018/07/09/The-Beauty-of-Math/">
+				        <h2 class="post-title">
+                            The Beauty of Math(6-10)
+				        </h2>
+				        
+				        <h3 class="post-subtitle">
+				            《数学之美》---吴军
+				        </h3>
+				        
+				    </a>
+				    <!-- <p class="post-meta">2018-07-09</p> -->
+				</div>
+				<hr>
+				
+				  <!-- <li class="listing-item">
+				  <time datetime="2018-07-08">2018-07-08</time>
+				  <a href="/2018/07/08/The-Beauty-of-Math/" title="The Beauty of Math(1-5)">The Beauty of Math(1-5)</a>
+				  </li> -->
+				 <div class="post-preview">
+				    <a href="/2018/07/08/The-Beauty-of-Math/">
+				        <h2 class="post-title">
+                            The Beauty of Math(1-5)
+				        </h2>
+				        
+				        <h3 class="post-subtitle">
+				            《数学之美》---吴军
+				        </h3>
+				        
+				    </a>
+				    <!-- <p class="post-meta">2018-07-08</p> -->
+				</div>
+				<hr>
+				
+				  <!-- <li class="listing-item">
+				  <time datetime="2018-07-08">2018-07-08</time>
+				  <a href="/2018/07/08/leetCode/" title="leetCode刷题之路">leetCode刷题之路</a>
+				  </li> -->
+				 <div class="post-preview">
+				    <a href="/2018/07/08/leetCode/">
+				        <h2 class="post-title">
+                            leetCode刷题之路
+				        </h2>
+				        
+				        <h3 class="post-subtitle">
+				            第1题 两数相加
+				        </h3>
+				        
+				    </a>
+				    <!-- <p class="post-meta">2018-07-08</p> -->
+				</div>
+				<hr>
+				
+				  <!-- <li class="listing-item">
+				  <time datetime="2018-07-07">2018-07-07</time>
+				  <a href="/2018/07/07/Teach-Yourself-Regular-Expressions-in-10-Minutes/" title="Teach Yourself Regular Expressions in 10 Minutes">Teach Yourself Regular Expressions in 10 Minutes</a>
+				  </li> -->
+				 <div class="post-preview">
+				    <a href="/2018/07/07/Teach-Yourself-Regular-Expressions-in-10-Minutes/">
+				        <h2 class="post-title">
+                            Teach Yourself Regular Expressions in 10 Minutes
+				        </h2>
+				        
+				        <h3 class="post-subtitle">
+				            《正则表达式快速入门》
+				        </h3>
+				        
+				    </a>
+				    <!-- <p class="post-meta">2018-07-07</p> -->
+				</div>
+				<hr>
+				
+			</div>
+			
+			<div class="one-tag-list">
+			  	<span class="fa fa-tag listing-seperator" id="算法">
+                    <span class="tag-text">算法</span>
+                </span>
+				
+				  <!-- <li class="listing-item">
+				  <time datetime="2018-09-07">2018-09-07</time>
+				  <a href="/2018/09/07/annoy-learn/" title="Annoy">Annoy</a>
+				  </li> -->
+				 <div class="post-preview">
+				    <a href="/2018/09/07/annoy-learn/">
+				        <h2 class="post-title">
+                            Annoy
+				        </h2>
+				        
+				        <h3 class="post-subtitle">
+				            Annoy(Approximate Nearest Neighbors Oh Yeah)学习
+				        </h3>
+				        
+				    </a>
+				    <!-- <p class="post-meta">2018-09-07</p> -->
+				</div>
+				<hr>
+				
+				  <!-- <li class="listing-item">
+				  <time datetime="2018-07-08">2018-07-08</time>
+				  <a href="/2018/07/08/leetCode/" title="leetCode刷题之路">leetCode刷题之路</a>
+				  </li> -->
+				 <div class="post-preview">
+				    <a href="/2018/07/08/leetCode/">
+				        <h2 class="post-title">
+                            leetCode刷题之路
+				        </h2>
+				        
+				        <h3 class="post-subtitle">
+				            第1题 两数相加
+				        </h3>
+				        
+				    </a>
+				    <!-- <p class="post-meta">2018-07-08</p> -->
+				</div>
+				<hr>
+				
+			</div>
+			
+			<div class="one-tag-list">
+			  	<span class="fa fa-tag listing-seperator" id="algorithm">
+                    <span class="tag-text">algorithm</span>
+                </span>
+				
+				  <!-- <li class="listing-item">
+				  <time datetime="2018-07-08">2018-07-08</time>
+				  <a href="/2018/07/08/leetCode/" title="leetCode刷题之路">leetCode刷题之路</a>
+				  </li> -->
+				 <div class="post-preview">
+				    <a href="/2018/07/08/leetCode/">
+				        <h2 class="post-title">
+                            leetCode刷题之路
+				        </h2>
+				        
+				        <h3 class="post-subtitle">
+				            第1题 两数相加
+				        </h3>
+				        
+				    </a>
+				    <!-- <p class="post-meta">2018-07-08</p> -->
+				</div>
+				<hr>
+				
+			</div>
+			
+			<div class="one-tag-list">
+			  	<span class="fa fa-tag listing-seperator" id="数学">
+                    <span class="tag-text">数学</span>
+                </span>
+				
+				  <!-- <li class="listing-item">
+				  <time datetime="2018-07-18">2018-07-18</time>
+				  <a href="/2018/07/18/The-Beauty-of-Math/" title="The Beauty of Math(20)">The Beauty of Math(20)</a>
+				  </li> -->
+				 <div class="post-preview">
+				    <a href="/2018/07/18/The-Beauty-of-Math/">
+				        <h2 class="post-title">
+                            The Beauty of Math(20)
+				        </h2>
+				        
+				        <h3 class="post-subtitle">
+				            《数学之美》---吴军
+				        </h3>
+				        
+				    </a>
+				    <!-- <p class="post-meta">2018-07-18</p> -->
+				</div>
+				<hr>
+				
+				  <!-- <li class="listing-item">
+				  <time datetime="2018-07-13">2018-07-13</time>
+				  <a href="/2018/07/13/The-Beauty-of-Math/" title="The Beauty of Math(17-19)">The Beauty of Math(17-19)</a>
+				  </li> -->
+				 <div class="post-preview">
+				    <a href="/2018/07/13/The-Beauty-of-Math/">
+				        <h2 class="post-title">
+                            The Beauty of Math(17-19)
+				        </h2>
+				        
+				        <h3 class="post-subtitle">
+				            《数学之美》---吴军
+				        </h3>
+				        
+				    </a>
+				    <!-- <p class="post-meta">2018-07-13</p> -->
+				</div>
+				<hr>
+				
+				  <!-- <li class="listing-item">
+				  <time datetime="2018-07-12">2018-07-12</time>
+				  <a href="/2018/07/12/The-Beauty-of-Math/" title="The Beauty of Math(16)">The Beauty of Math(16)</a>
+				  </li> -->
+				 <div class="post-preview">
+				    <a href="/2018/07/12/The-Beauty-of-Math/">
+				        <h2 class="post-title">
+                            The Beauty of Math(16)
+				        </h2>
+				        
+				        <h3 class="post-subtitle">
+				            《数学之美》---吴军
+				        </h3>
+				        
+				    </a>
+				    <!-- <p class="post-meta">2018-07-12</p> -->
+				</div>
+				<hr>
+				
+				  <!-- <li class="listing-item">
+				  <time datetime="2018-07-10">2018-07-10</time>
+				  <a href="/2018/07/10/The-Beauty-of-Math/" title="The Beauty of Math(11-15)">The Beauty of Math(11-15)</a>
+				  </li> -->
+				 <div class="post-preview">
+				    <a href="/2018/07/10/The-Beauty-of-Math/">
+				        <h2 class="post-title">
+                            The Beauty of Math(11-15)
+				        </h2>
+				        
+				        <h3 class="post-subtitle">
+				            《数学之美》---吴军
+				        </h3>
+				        
+				    </a>
+				    <!-- <p class="post-meta">2018-07-10</p> -->
+				</div>
+				<hr>
+				
+				  <!-- <li class="listing-item">
+				  <time datetime="2018-07-09">2018-07-09</time>
+				  <a href="/2018/07/09/The-Beauty-of-Math/" title="The Beauty of Math(6-10)">The Beauty of Math(6-10)</a>
+				  </li> -->
+				 <div class="post-preview">
+				    <a href="/2018/07/09/The-Beauty-of-Math/">
+				        <h2 class="post-title">
+                            The Beauty of Math(6-10)
+				        </h2>
+				        
+				        <h3 class="post-subtitle">
+				            《数学之美》---吴军
+				        </h3>
+				        
+				    </a>
+				    <!-- <p class="post-meta">2018-07-09</p> -->
+				</div>
+				<hr>
+				
+				  <!-- <li class="listing-item">
+				  <time datetime="2018-07-08">2018-07-08</time>
+				  <a href="/2018/07/08/The-Beauty-of-Math/" title="The Beauty of Math(1-5)">The Beauty of Math(1-5)</a>
+				  </li> -->
+				 <div class="post-preview">
+				    <a href="/2018/07/08/The-Beauty-of-Math/">
+				        <h2 class="post-title">
+                            The Beauty of Math(1-5)
+				        </h2>
+				        
+				        <h3 class="post-subtitle">
+				            《数学之美》---吴军
+				        </h3>
+				        
+				    </a>
+				    <!-- <p class="post-meta">2018-07-08</p> -->
+				</div>
+				<hr>
+				
+			</div>
+			
+			<div class="one-tag-list">
+			  	<span class="fa fa-tag listing-seperator" id="自然语言处理">
+                    <span class="tag-text">自然语言处理</span>
+                </span>
+				
+				  <!-- <li class="listing-item">
+				  <time datetime="2018-12-02">2018-12-02</time>
+				  <a href="/2018/12/02/notes-NLP/" title="NLP学习笔记">NLP学习笔记</a>
+				  </li> -->
+				 <div class="post-preview">
+				    <a href="/2018/12/02/notes-NLP/">
+				        <h2 class="post-title">
+                            NLP学习笔记
+				        </h2>
+				        
+				        <h3 class="post-subtitle">
+				            学习笔记
+				        </h3>
+				        
+				    </a>
+				    <!-- <p class="post-meta">2018-12-02</p> -->
+				</div>
+				<hr>
+				
+				  <!-- <li class="listing-item">
+				  <time datetime="2018-10-11">2018-10-11</time>
+				  <a href="/2018/10/11/fasttext/" title="FastText">FastText</a>
+				  </li> -->
+				 <div class="post-preview">
+				    <a href="/2018/10/11/fasttext/">
+				        <h2 class="post-title">
+                            FastText
+				        </h2>
+				        
+				        <h3 class="post-subtitle">
+				            FastText学习
+				        </h3>
+				        
+				    </a>
+				    <!-- <p class="post-meta">2018-10-11</p> -->
+				</div>
+				<hr>
+				
+				  <!-- <li class="listing-item">
+				  <time datetime="2018-09-21">2018-09-21</time>
+				  <a href="/2018/09/21/How-to-Create-an-LSTM-Recurrent-Neural-Network-Using-DL4J/" title="How to Create an LSTM Recurrent Neural Network Using DL4J">How to Create an LSTM Recurrent Neural Network Using DL4J</a>
+				  </li> -->
+				 <div class="post-preview">
+				    <a href="/2018/09/21/How-to-Create-an-LSTM-Recurrent-Neural-Network-Using-DL4J/">
+				        <h2 class="post-title">
+                            How to Create an LSTM Recurrent Neural Network Using DL4J
+				        </h2>
+				        
+				        <h3 class="post-subtitle">
+				            用deeplearning4j创建lstm生成一定风格的句子
+				        </h3>
+				        
+				    </a>
+				    <!-- <p class="post-meta">2018-09-21</p> -->
+				</div>
+				<hr>
+				
+				  <!-- <li class="listing-item">
+				  <time datetime="2018-09-20">2018-09-20</time>
+				  <a href="/2018/09/20/%E8%87%AA%E7%84%B6%E8%AF%AD%E8%A8%80%E5%A4%84%E7%90%86%E5%B7%A5%E5%85%B7%E5%8C%85/" title="NLP tools">NLP tools</a>
+				  </li> -->
+				 <div class="post-preview">
+				    <a href="/2018/09/20/%E8%87%AA%E7%84%B6%E8%AF%AD%E8%A8%80%E5%A4%84%E7%90%86%E5%B7%A5%E5%85%B7%E5%8C%85/">
+				        <h2 class="post-title">
+                            NLP tools
+				        </h2>
+				        
+				        <h3 class="post-subtitle">
+				            自然语言处理工具
+				        </h3>
+				        
+				    </a>
+				    <!-- <p class="post-meta">2018-09-20</p> -->
+				</div>
+				<hr>
+				
+				  <!-- <li class="listing-item">
+				  <time datetime="2018-07-18">2018-07-18</time>
+				  <a href="/2018/07/18/The-Beauty-of-Math/" title="The Beauty of Math(20)">The Beauty of Math(20)</a>
+				  </li> -->
+				 <div class="post-preview">
+				    <a href="/2018/07/18/The-Beauty-of-Math/">
+				        <h2 class="post-title">
+                            The Beauty of Math(20)
+				        </h2>
+				        
+				        <h3 class="post-subtitle">
+				            《数学之美》---吴军
+				        </h3>
+				        
+				    </a>
+				    <!-- <p class="post-meta">2018-07-18</p> -->
+				</div>
+				<hr>
+				
+				  <!-- <li class="listing-item">
+				  <time datetime="2018-07-13">2018-07-13</time>
+				  <a href="/2018/07/13/The-Beauty-of-Math/" title="The Beauty of Math(17-19)">The Beauty of Math(17-19)</a>
+				  </li> -->
+				 <div class="post-preview">
+				    <a href="/2018/07/13/The-Beauty-of-Math/">
+				        <h2 class="post-title">
+                            The Beauty of Math(17-19)
+				        </h2>
+				        
+				        <h3 class="post-subtitle">
+				            《数学之美》---吴军
+				        </h3>
+				        
+				    </a>
+				    <!-- <p class="post-meta">2018-07-13</p> -->
+				</div>
+				<hr>
+				
+				  <!-- <li class="listing-item">
+				  <time datetime="2018-07-12">2018-07-12</time>
+				  <a href="/2018/07/12/The-Beauty-of-Math/" title="The Beauty of Math(16)">The Beauty of Math(16)</a>
+				  </li> -->
+				 <div class="post-preview">
+				    <a href="/2018/07/12/The-Beauty-of-Math/">
+				        <h2 class="post-title">
+                            The Beauty of Math(16)
+				        </h2>
+				        
+				        <h3 class="post-subtitle">
+				            《数学之美》---吴军
+				        </h3>
+				        
+				    </a>
+				    <!-- <p class="post-meta">2018-07-12</p> -->
+				</div>
+				<hr>
+				
+				  <!-- <li class="listing-item">
+				  <time datetime="2018-07-10">2018-07-10</time>
+				  <a href="/2018/07/10/The-Beauty-of-Math/" title="The Beauty of Math(11-15)">The Beauty of Math(11-15)</a>
+				  </li> -->
+				 <div class="post-preview">
+				    <a href="/2018/07/10/The-Beauty-of-Math/">
+				        <h2 class="post-title">
+                            The Beauty of Math(11-15)
+				        </h2>
+				        
+				        <h3 class="post-subtitle">
+				            《数学之美》---吴军
+				        </h3>
+				        
+				    </a>
+				    <!-- <p class="post-meta">2018-07-10</p> -->
+				</div>
+				<hr>
+				
+				  <!-- <li class="listing-item">
+				  <time datetime="2018-07-09">2018-07-09</time>
+				  <a href="/2018/07/09/The-Beauty-of-Math/" title="The Beauty of Math(6-10)">The Beauty of Math(6-10)</a>
+				  </li> -->
+				 <div class="post-preview">
+				    <a href="/2018/07/09/The-Beauty-of-Math/">
+				        <h2 class="post-title">
+                            The Beauty of Math(6-10)
+				        </h2>
+				        
+				        <h3 class="post-subtitle">
+				            《数学之美》---吴军
+				        </h3>
+				        
+				    </a>
+				    <!-- <p class="post-meta">2018-07-09</p> -->
+				</div>
+				<hr>
+				
+				  <!-- <li class="listing-item">
+				  <time datetime="2018-07-08">2018-07-08</time>
+				  <a href="/2018/07/08/The-Beauty-of-Math/" title="The Beauty of Math(1-5)">The Beauty of Math(1-5)</a>
+				  </li> -->
+				 <div class="post-preview">
+				    <a href="/2018/07/08/The-Beauty-of-Math/">
+				        <h2 class="post-title">
+                            The Beauty of Math(1-5)
+				        </h2>
+				        
+				        <h3 class="post-subtitle">
+				            《数学之美》---吴军
+				        </h3>
+				        
+				    </a>
+				    <!-- <p class="post-meta">2018-07-08</p> -->
+				</div>
+				<hr>
+				
+			</div>
+			
+			<div class="one-tag-list">
+			  	<span class="fa fa-tag listing-seperator" id="励志">
+                    <span class="tag-text">励志</span>
+                </span>
+				
+				  <!-- <li class="listing-item">
+				  <time datetime="2018-09-18">2018-09-18</time>
+				  <a href="/2018/09/18/struggle/" title="Become a better man!">Become a better man!</a>
+				  </li> -->
+				 <div class="post-preview">
+				    <a href="/2018/09/18/struggle/">
+				        <h2 class="post-title">
+                            Become a better man!
+				        </h2>
+				        
+				        <h3 class="post-subtitle">
+				            每天进步一点点
+				        </h3>
+				        
+				    </a>
+				    <!-- <p class="post-meta">2018-09-18</p> -->
+				</div>
+				<hr>
+				
+				  <!-- <li class="listing-item">
+				  <time datetime="2018-08-23">2018-08-23</time>
+				  <a href="/2018/08/23/you-need-a-goal/" title="You need a goal">You need a goal</a>
+				  </li> -->
+				 <div class="post-preview">
+				    <a href="/2018/08/23/you-need-a-goal/">
+				        <h2 class="post-title">
+                            You need a goal
+				        </h2>
+				        
+				        <h3 class="post-subtitle">
+				            成为一个有目标的学习者
+				        </h3>
+				        
+				    </a>
+				    <!-- <p class="post-meta">2018-08-23</p> -->
+				</div>
+				<hr>
+				
+				  <!-- <li class="listing-item">
+				  <time datetime="2018-07-30">2018-07-30</time>
+				  <a href="/2018/07/30/Never-late-never-early/" title="Never late, never early">Never late, never early</a>
+				  </li> -->
+				 <div class="post-preview">
+				    <a href="/2018/07/30/Never-late-never-early/">
+				        <h2 class="post-title">
+                            Never late, never early
+				        </h2>
+				        
+				        <h3 class="post-subtitle">
+				            幼则嬉，老则学
+				        </h3>
+				        
+				    </a>
+				    <!-- <p class="post-meta">2018-07-30</p> -->
+				</div>
+				<hr>
+				
+				  <!-- <li class="listing-item">
+				  <time datetime="2018-07-17">2018-07-17</time>
+				  <a href="/2018/07/17/Unbroken/" title="Unbroken">Unbroken</a>
+				  </li> -->
+				 <div class="post-preview">
+				    <a href="/2018/07/17/Unbroken/">
+				        <h2 class="post-title">
+                            Unbroken
+				        </h2>
+				        
+				        <h3 class="post-subtitle">
+				            坚不可摧
+				        </h3>
+				        
+				    </a>
+				    <!-- <p class="post-meta">2018-07-17</p> -->
+				</div>
+				<hr>
+				
+				  <!-- <li class="listing-item">
+				  <time datetime="2018-07-12">2018-07-12</time>
+				  <a href="/2018/07/12/Interesting/" title="程序员问大师">程序员问大师</a>
+				  </li> -->
+				 <div class="post-preview">
+				    <a href="/2018/07/12/Interesting/">
+				        <h2 class="post-title">
+                            程序员问大师
+				        </h2>
+				        
+				        <h3 class="post-subtitle">
+				            李运华
+				        </h3>
+				        
+				    </a>
+				    <!-- <p class="post-meta">2018-07-12</p> -->
+				</div>
+				<hr>
+				
+			</div>
+			
+			<div class="one-tag-list">
+			  	<span class="fa fa-tag listing-seperator" id="趣闻">
+                    <span class="tag-text">趣闻</span>
+                </span>
+				
+				  <!-- <li class="listing-item">
+				  <time datetime="2018-07-12">2018-07-12</time>
+				  <a href="/2018/07/12/Interesting/" title="程序员问大师">程序员问大师</a>
+				  </li> -->
+				 <div class="post-preview">
+				    <a href="/2018/07/12/Interesting/">
+				        <h2 class="post-title">
+                            程序员问大师
+				        </h2>
+				        
+				        <h3 class="post-subtitle">
+				            李运华
+				        </h3>
+				        
+				    </a>
+				    <!-- <p class="post-meta">2018-07-12</p> -->
+				</div>
+				<hr>
+				
+			</div>
+			
+			<div class="one-tag-list">
+			  	<span class="fa fa-tag listing-seperator" id="转载">
+                    <span class="tag-text">转载</span>
+                </span>
+				
+				  <!-- <li class="listing-item">
+				  <time datetime="2018-12-25">2018-12-25</time>
+				  <a href="/2018/12/25/notes-postgresql/" title="PostgreSQL的一些常用命令记录">PostgreSQL的一些常用命令记录</a>
+				  </li> -->
+				 <div class="post-preview">
+				    <a href="/2018/12/25/notes-postgresql/">
+				        <h2 class="post-title">
+                            PostgreSQL的一些常用命令记录
+				        </h2>
+				        
+				        <h3 class="post-subtitle">
+				            PostgreSQL commands
+				        </h3>
+				        
+				    </a>
+				    <!-- <p class="post-meta">2018-12-25</p> -->
+				</div>
+				<hr>
+				
+				  <!-- <li class="listing-item">
+				  <time datetime="2018-12-11">2018-12-11</time>
+				  <a href="/2018/12/11/neo4j-notes/" title="neo4j学习笔记">neo4j学习笔记</a>
+				  </li> -->
+				 <div class="post-preview">
+				    <a href="/2018/12/11/neo4j-notes/">
+				        <h2 class="post-title">
+                            neo4j学习笔记
+				        </h2>
+				        
+				        <h3 class="post-subtitle">
+				            neo4j notes
+				        </h3>
+				        
+				    </a>
+				    <!-- <p class="post-meta">2018-12-11</p> -->
+				</div>
+				<hr>
+				
+				  <!-- <li class="listing-item">
+				  <time datetime="2018-12-07">2018-12-07</time>
+				  <a href="/2018/12/07/git-and-github/" title="Git and github notes">Git and github notes</a>
+				  </li> -->
+				 <div class="post-preview">
+				    <a href="/2018/12/07/git-and-github/">
+				        <h2 class="post-title">
+                            Git and github notes
+				        </h2>
+				        
+				        <h3 class="post-subtitle">
+				            git notes
+				        </h3>
+				        
+				    </a>
+				    <!-- <p class="post-meta">2018-12-07</p> -->
+				</div>
+				<hr>
+				
+				  <!-- <li class="listing-item">
+				  <time datetime="2018-12-05">2018-12-05</time>
+				  <a href="/2018/12/05/visual-studio-code%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" title="visual studio code学习笔记">visual studio code学习笔记</a>
+				  </li> -->
+				 <div class="post-preview">
+				    <a href="/2018/12/05/visual-studio-code%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">
+				        <h2 class="post-title">
+                            visual studio code学习笔记
+				        </h2>
+				        
+				        <h3 class="post-subtitle">
+				            visual studio code notes
+				        </h3>
+				        
+				    </a>
+				    <!-- <p class="post-meta">2018-12-05</p> -->
+				</div>
+				<hr>
+				
+				  <!-- <li class="listing-item">
+				  <time datetime="2018-12-05">2018-12-05</time>
+				  <a href="/2018/12/05/After-fork-from-github/" title="After fork from github">After fork from github</a>
+				  </li> -->
+				 <div class="post-preview">
+				    <a href="/2018/12/05/After-fork-from-github/">
+				        <h2 class="post-title">
+                            After fork from github
+				        </h2>
+				        
+				        <h3 class="post-subtitle">
+				            fork
+				        </h3>
+				        
+				    </a>
+				    <!-- <p class="post-meta">2018-12-05</p> -->
+				</div>
+				<hr>
+				
+				  <!-- <li class="listing-item">
+				  <time datetime="2018-12-03">2018-12-03</time>
+				  <a href="/2018/12/03/kb-qa/" title="kb-qa学习笔记">kb-qa学习笔记</a>
+				  </li> -->
+				 <div class="post-preview">
+				    <a href="/2018/12/03/kb-qa/">
+				        <h2 class="post-title">
+                            kb-qa学习笔记
+				        </h2>
+				        
+				        <h3 class="post-subtitle">
+				            quesiton answer system bases on knowledge graph
+				        </h3>
+				        
+				    </a>
+				    <!-- <p class="post-meta">2018-12-03</p> -->
+				</div>
+				<hr>
+				
+				  <!-- <li class="listing-item">
+				  <time datetime="2018-12-03">2018-12-03</time>
+				  <a href="/2018/12/03/kb-qa-2/" title="kb-qa学习笔记2">kb-qa学习笔记2</a>
+				  </li> -->
+				 <div class="post-preview">
+				    <a href="/2018/12/03/kb-qa-2/">
+				        <h2 class="post-title">
+                            kb-qa学习笔记2
+				        </h2>
+				        
+				        <h3 class="post-subtitle">
+				            quesiton answer system bases on knowledge graph
+				        </h3>
+				        
+				    </a>
+				    <!-- <p class="post-meta">2018-12-03</p> -->
+				</div>
+				<hr>
+				
+				  <!-- <li class="listing-item">
+				  <time datetime="2018-12-03">2018-12-03</time>
+				  <a href="/2018/12/03/cypher-notes/" title="cypher学习笔记">cypher学习笔记</a>
+				  </li> -->
+				 <div class="post-preview">
+				    <a href="/2018/12/03/cypher-notes/">
+				        <h2 class="post-title">
+                            cypher学习笔记
+				        </h2>
+				        
+				        <h3 class="post-subtitle">
+				            cypher for neo4j notes
+				        </h3>
+				        
+				    </a>
+				    <!-- <p class="post-meta">2018-12-03</p> -->
+				</div>
+				<hr>
+				
+				  <!-- <li class="listing-item">
+				  <time datetime="2018-12-02">2018-12-02</time>
+				  <a href="/2018/12/02/notes-NLP/" title="NLP学习笔记">NLP学习笔记</a>
+				  </li> -->
+				 <div class="post-preview">
+				    <a href="/2018/12/02/notes-NLP/">
+				        <h2 class="post-title">
+                            NLP学习笔记
+				        </h2>
+				        
+				        <h3 class="post-subtitle">
+				            学习笔记
+				        </h3>
+				        
+				    </a>
+				    <!-- <p class="post-meta">2018-12-02</p> -->
+				</div>
+				<hr>
+				
+				  <!-- <li class="listing-item">
+				  <time datetime="2018-12-02">2018-12-02</time>
+				  <a href="/2018/12/02/notes-machine-learning/" title="ml学习笔记">ml学习笔记</a>
+				  </li> -->
+				 <div class="post-preview">
+				    <a href="/2018/12/02/notes-machine-learning/">
+				        <h2 class="post-title">
+                            ml学习笔记
+				        </h2>
+				        
+				        <h3 class="post-subtitle">
+				            machine learning notes
+				        </h3>
+				        
+				    </a>
+				    <!-- <p class="post-meta">2018-12-02</p> -->
+				</div>
+				<hr>
+				
+				  <!-- <li class="listing-item">
+				  <time datetime="2018-12-02">2018-12-02</time>
+				  <a href="/2018/12/02/notes-mysql/" title="mysql的一些常用命令记录">mysql的一些常用命令记录</a>
+				  </li> -->
+				 <div class="post-preview">
+				    <a href="/2018/12/02/notes-mysql/">
+				        <h2 class="post-title">
+                            mysql的一些常用命令记录
+				        </h2>
+				        
+				        <h3 class="post-subtitle">
+				            mysql commands
+				        </h3>
+				        
+				    </a>
+				    <!-- <p class="post-meta">2018-12-02</p> -->
+				</div>
+				<hr>
+				
+				  <!-- <li class="listing-item">
+				  <time datetime="2018-12-02">2018-12-02</time>
+				  <a href="/2018/12/02/notes-linux/" title="linux下的一些常用命令记录">linux下的一些常用命令记录</a>
+				  </li> -->
+				 <div class="post-preview">
+				    <a href="/2018/12/02/notes-linux/">
+				        <h2 class="post-title">
+                            linux下的一些常用命令记录
+				        </h2>
+				        
+				        <h3 class="post-subtitle">
+				            从ls开始
+				        </h3>
+				        
+				    </a>
+				    <!-- <p class="post-meta">2018-12-02</p> -->
+				</div>
+				<hr>
+				
+				  <!-- <li class="listing-item">
+				  <time datetime="2018-12-02">2018-12-02</time>
+				  <a href="/2018/12/02/notes-springboot/" title="springboot 学习笔记">springboot 学习笔记</a>
+				  </li> -->
+				 <div class="post-preview">
+				    <a href="/2018/12/02/notes-springboot/">
+				        <h2 class="post-title">
+                            springboot 学习笔记
+				        </h2>
+				        
+				        <h3 class="post-subtitle">
+				            springboot notes
+				        </h3>
+				        
+				    </a>
+				    <!-- <p class="post-meta">2018-12-02</p> -->
+				</div>
+				<hr>
+				
+				  <!-- <li class="listing-item">
+				  <time datetime="2018-12-02">2018-12-02</time>
+				  <a href="/2018/12/02/notes-java/" title="java的学习笔记">java的学习笔记</a>
+				  </li> -->
+				 <div class="post-preview">
+				    <a href="/2018/12/02/notes-java/">
+				        <h2 class="post-title">
+                            java的学习笔记
+				        </h2>
+				        
+				        <h3 class="post-subtitle">
+				            java notes
+				        </h3>
+				        
+				    </a>
+				    <!-- <p class="post-meta">2018-12-02</p> -->
+				</div>
+				<hr>
+				
+				  <!-- <li class="listing-item">
+				  <time datetime="2018-10-19">2018-10-19</time>
+				  <a href="/2018/10/19/deeplearning4j-iris/" title="deeplearning4j-(01)-iris">deeplearning4j-(01)-iris</a>
+				  </li> -->
+				 <div class="post-preview">
+				    <a href="/2018/10/19/deeplearning4j-iris/">
+				        <h2 class="post-title">
+                            deeplearning4j-(01)-iris
+				        </h2>
+				        
+				        <h3 class="post-subtitle">
+				            deeplearning4j分类iris数据集
+				        </h3>
+				        
+				    </a>
+				    <!-- <p class="post-meta">2018-10-19</p> -->
+				</div>
+				<hr>
+				
+				  <!-- <li class="listing-item">
+				  <time datetime="2018-10-11">2018-10-11</time>
+				  <a href="/2018/10/11/fasttext/" title="FastText">FastText</a>
+				  </li> -->
+				 <div class="post-preview">
+				    <a href="/2018/10/11/fasttext/">
+				        <h2 class="post-title">
+                            FastText
+				        </h2>
+				        
+				        <h3 class="post-subtitle">
+				            FastText学习
+				        </h3>
+				        
+				    </a>
+				    <!-- <p class="post-meta">2018-10-11</p> -->
+				</div>
+				<hr>
+				
+				  <!-- <li class="listing-item">
+				  <time datetime="2018-09-21">2018-09-21</time>
+				  <a href="/2018/09/21/How-to-Create-an-LSTM-Recurrent-Neural-Network-Using-DL4J/" title="How to Create an LSTM Recurrent Neural Network Using DL4J">How to Create an LSTM Recurrent Neural Network Using DL4J</a>
+				  </li> -->
+				 <div class="post-preview">
+				    <a href="/2018/09/21/How-to-Create-an-LSTM-Recurrent-Neural-Network-Using-DL4J/">
+				        <h2 class="post-title">
+                            How to Create an LSTM Recurrent Neural Network Using DL4J
+				        </h2>
+				        
+				        <h3 class="post-subtitle">
+				            用deeplearning4j创建lstm生成一定风格的句子
+				        </h3>
+				        
+				    </a>
+				    <!-- <p class="post-meta">2018-09-21</p> -->
+				</div>
+				<hr>
+				
+				  <!-- <li class="listing-item">
+				  <time datetime="2018-09-18">2018-09-18</time>
+				  <a href="/2018/09/18/struggle/" title="Become a better man!">Become a better man!</a>
+				  </li> -->
+				 <div class="post-preview">
+				    <a href="/2018/09/18/struggle/">
+				        <h2 class="post-title">
+                            Become a better man!
+				        </h2>
+				        
+				        <h3 class="post-subtitle">
+				            每天进步一点点
+				        </h3>
+				        
+				    </a>
+				    <!-- <p class="post-meta">2018-09-18</p> -->
+				</div>
+				<hr>
+				
+				  <!-- <li class="listing-item">
+				  <time datetime="2018-09-08">2018-09-08</time>
+				  <a href="/2018/09/08/spring-cloud/" title="Spring Cloud">Spring Cloud</a>
+				  </li> -->
+				 <div class="post-preview">
+				    <a href="/2018/09/08/spring-cloud/">
+				        <h2 class="post-title">
+                            Spring Cloud
+				        </h2>
+				        
+				        <h3 class="post-subtitle">
+				            Spring Cloud学习
+				        </h3>
+				        
+				    </a>
+				    <!-- <p class="post-meta">2018-09-08</p> -->
+				</div>
+				<hr>
+				
+				  <!-- <li class="listing-item">
+				  <time datetime="2018-08-23">2018-08-23</time>
+				  <a href="/2018/08/23/you-need-a-goal/" title="You need a goal">You need a goal</a>
+				  </li> -->
+				 <div class="post-preview">
+				    <a href="/2018/08/23/you-need-a-goal/">
+				        <h2 class="post-title">
+                            You need a goal
+				        </h2>
+				        
+				        <h3 class="post-subtitle">
+				            成为一个有目标的学习者
+				        </h3>
+				        
+				    </a>
+				    <!-- <p class="post-meta">2018-08-23</p> -->
+				</div>
+				<hr>
+				
+				  <!-- <li class="listing-item">
+				  <time datetime="2018-07-30">2018-07-30</time>
+				  <a href="/2018/07/30/Never-late-never-early/" title="Never late, never early">Never late, never early</a>
+				  </li> -->
+				 <div class="post-preview">
+				    <a href="/2018/07/30/Never-late-never-early/">
+				        <h2 class="post-title">
+                            Never late, never early
+				        </h2>
+				        
+				        <h3 class="post-subtitle">
+				            幼则嬉，老则学
+				        </h3>
+				        
+				    </a>
+				    <!-- <p class="post-meta">2018-07-30</p> -->
+				</div>
+				<hr>
+				
+				  <!-- <li class="listing-item">
+				  <time datetime="2018-07-17">2018-07-17</time>
+				  <a href="/2018/07/17/Unbroken/" title="Unbroken">Unbroken</a>
+				  </li> -->
+				 <div class="post-preview">
+				    <a href="/2018/07/17/Unbroken/">
+				        <h2 class="post-title">
+                            Unbroken
+				        </h2>
+				        
+				        <h3 class="post-subtitle">
+				            坚不可摧
+				        </h3>
+				        
+				    </a>
+				    <!-- <p class="post-meta">2018-07-17</p> -->
+				</div>
+				<hr>
+				
+				  <!-- <li class="listing-item">
+				  <time datetime="2018-07-12">2018-07-12</time>
+				  <a href="/2018/07/12/Interesting/" title="程序员问大师">程序员问大师</a>
+				  </li> -->
+				 <div class="post-preview">
+				    <a href="/2018/07/12/Interesting/">
+				        <h2 class="post-title">
+                            程序员问大师
+				        </h2>
+				        
+				        <h3 class="post-subtitle">
+				            李运华
+				        </h3>
+				        
+				    </a>
+				    <!-- <p class="post-meta">2018-07-12</p> -->
+				</div>
+				<hr>
+				
+			</div>
+			
+			<div class="one-tag-list">
+			  	<span class="fa fa-tag listing-seperator" id="英语">
+                    <span class="tag-text">英语</span>
+                </span>
+				
+				  <!-- <li class="listing-item">
+				  <time datetime="2018-07-30">2018-07-30</time>
+				  <a href="/2018/07/30/Never-late-never-early/" title="Never late, never early">Never late, never early</a>
+				  </li> -->
+				 <div class="post-preview">
+				    <a href="/2018/07/30/Never-late-never-early/">
+				        <h2 class="post-title">
+                            Never late, never early
+				        </h2>
+				        
+				        <h3 class="post-subtitle">
+				            幼则嬉，老则学
+				        </h3>
+				        
+				    </a>
+				    <!-- <p class="post-meta">2018-07-30</p> -->
+				</div>
+				<hr>
+				
+				  <!-- <li class="listing-item">
+				  <time datetime="2018-07-17">2018-07-17</time>
+				  <a href="/2018/07/17/Unbroken/" title="Unbroken">Unbroken</a>
+				  </li> -->
+				 <div class="post-preview">
+				    <a href="/2018/07/17/Unbroken/">
+				        <h2 class="post-title">
+                            Unbroken
+				        </h2>
+				        
+				        <h3 class="post-subtitle">
+				            坚不可摧
+				        </h3>
+				        
+				    </a>
+				    <!-- <p class="post-meta">2018-07-17</p> -->
+				</div>
+				<hr>
+				
+			</div>
+			
+			<div class="one-tag-list">
+			  	<span class="fa fa-tag listing-seperator" id="学习">
+                    <span class="tag-text">学习</span>
+                </span>
+				
+				  <!-- <li class="listing-item">
+				  <time datetime="2019-01-07">2019-01-07</time>
+				  <a href="/2019/01/07/similarity-methods/" title="similarity methods 笔记">similarity methods 笔记</a>
+				  </li> -->
+				 <div class="post-preview">
+				    <a href="/2019/01/07/similarity-methods/">
+				        <h2 class="post-title">
+                            similarity methods 笔记
+				        </h2>
+				        
+				        <h3 class="post-subtitle">
+				            similariry
+				        </h3>
+				        
+				    </a>
+				    <!-- <p class="post-meta">2019-01-07</p> -->
+				</div>
+				<hr>
+				
+				  <!-- <li class="listing-item">
+				  <time datetime="2019-01-04">2019-01-04</time>
+				  <a href="/2019/01/04/java-notes/" title="java笔记">java笔记</a>
+				  </li> -->
+				 <div class="post-preview">
+				    <a href="/2019/01/04/java-notes/">
+				        <h2 class="post-title">
+                            java笔记
+				        </h2>
+				        
+				        <h3 class="post-subtitle">
+				            java
+				        </h3>
+				        
+				    </a>
+				    <!-- <p class="post-meta">2019-01-04</p> -->
+				</div>
+				<hr>
+				
+				  <!-- <li class="listing-item">
+				  <time datetime="2018-12-25">2018-12-25</time>
+				  <a href="/2018/12/25/notes-postgresql/" title="PostgreSQL的一些常用命令记录">PostgreSQL的一些常用命令记录</a>
+				  </li> -->
+				 <div class="post-preview">
+				    <a href="/2018/12/25/notes-postgresql/">
+				        <h2 class="post-title">
+                            PostgreSQL的一些常用命令记录
+				        </h2>
+				        
+				        <h3 class="post-subtitle">
+				            PostgreSQL commands
+				        </h3>
+				        
+				    </a>
+				    <!-- <p class="post-meta">2018-12-25</p> -->
+				</div>
+				<hr>
+				
+				  <!-- <li class="listing-item">
+				  <time datetime="2018-12-11">2018-12-11</time>
+				  <a href="/2018/12/11/neo4j-notes/" title="neo4j学习笔记">neo4j学习笔记</a>
+				  </li> -->
+				 <div class="post-preview">
+				    <a href="/2018/12/11/neo4j-notes/">
+				        <h2 class="post-title">
+                            neo4j学习笔记
+				        </h2>
+				        
+				        <h3 class="post-subtitle">
+				            neo4j notes
+				        </h3>
+				        
+				    </a>
+				    <!-- <p class="post-meta">2018-12-11</p> -->
+				</div>
+				<hr>
+				
+				  <!-- <li class="listing-item">
+				  <time datetime="2018-12-07">2018-12-07</time>
+				  <a href="/2018/12/07/git-and-github/" title="Git and github notes">Git and github notes</a>
+				  </li> -->
+				 <div class="post-preview">
+				    <a href="/2018/12/07/git-and-github/">
+				        <h2 class="post-title">
+                            Git and github notes
+				        </h2>
+				        
+				        <h3 class="post-subtitle">
+				            git notes
+				        </h3>
+				        
+				    </a>
+				    <!-- <p class="post-meta">2018-12-07</p> -->
+				</div>
+				<hr>
+				
+				  <!-- <li class="listing-item">
+				  <time datetime="2018-12-05">2018-12-05</time>
+				  <a href="/2018/12/05/visual-studio-code%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" title="visual studio code学习笔记">visual studio code学习笔记</a>
+				  </li> -->
+				 <div class="post-preview">
+				    <a href="/2018/12/05/visual-studio-code%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">
+				        <h2 class="post-title">
+                            visual studio code学习笔记
+				        </h2>
+				        
+				        <h3 class="post-subtitle">
+				            visual studio code notes
+				        </h3>
+				        
+				    </a>
+				    <!-- <p class="post-meta">2018-12-05</p> -->
+				</div>
+				<hr>
+				
+				  <!-- <li class="listing-item">
+				  <time datetime="2018-12-05">2018-12-05</time>
+				  <a href="/2018/12/05/After-fork-from-github/" title="After fork from github">After fork from github</a>
+				  </li> -->
+				 <div class="post-preview">
+				    <a href="/2018/12/05/After-fork-from-github/">
+				        <h2 class="post-title">
+                            After fork from github
+				        </h2>
+				        
+				        <h3 class="post-subtitle">
+				            fork
+				        </h3>
+				        
+				    </a>
+				    <!-- <p class="post-meta">2018-12-05</p> -->
+				</div>
+				<hr>
+				
+				  <!-- <li class="listing-item">
+				  <time datetime="2018-12-03">2018-12-03</time>
+				  <a href="/2018/12/03/kb-qa/" title="kb-qa学习笔记">kb-qa学习笔记</a>
+				  </li> -->
+				 <div class="post-preview">
+				    <a href="/2018/12/03/kb-qa/">
+				        <h2 class="post-title">
+                            kb-qa学习笔记
+				        </h2>
+				        
+				        <h3 class="post-subtitle">
+				            quesiton answer system bases on knowledge graph
+				        </h3>
+				        
+				    </a>
+				    <!-- <p class="post-meta">2018-12-03</p> -->
+				</div>
+				<hr>
+				
+				  <!-- <li class="listing-item">
+				  <time datetime="2018-12-03">2018-12-03</time>
+				  <a href="/2018/12/03/kb-qa-2/" title="kb-qa学习笔记2">kb-qa学习笔记2</a>
+				  </li> -->
+				 <div class="post-preview">
+				    <a href="/2018/12/03/kb-qa-2/">
+				        <h2 class="post-title">
+                            kb-qa学习笔记2
+				        </h2>
+				        
+				        <h3 class="post-subtitle">
+				            quesiton answer system bases on knowledge graph
+				        </h3>
+				        
+				    </a>
+				    <!-- <p class="post-meta">2018-12-03</p> -->
+				</div>
+				<hr>
+				
+				  <!-- <li class="listing-item">
+				  <time datetime="2018-12-03">2018-12-03</time>
+				  <a href="/2018/12/03/cypher-notes/" title="cypher学习笔记">cypher学习笔记</a>
+				  </li> -->
+				 <div class="post-preview">
+				    <a href="/2018/12/03/cypher-notes/">
+				        <h2 class="post-title">
+                            cypher学习笔记
+				        </h2>
+				        
+				        <h3 class="post-subtitle">
+				            cypher for neo4j notes
+				        </h3>
+				        
+				    </a>
+				    <!-- <p class="post-meta">2018-12-03</p> -->
+				</div>
+				<hr>
+				
+				  <!-- <li class="listing-item">
+				  <time datetime="2018-12-02">2018-12-02</time>
+				  <a href="/2018/12/02/notes-NLP/" title="NLP学习笔记">NLP学习笔记</a>
+				  </li> -->
+				 <div class="post-preview">
+				    <a href="/2018/12/02/notes-NLP/">
+				        <h2 class="post-title">
+                            NLP学习笔记
+				        </h2>
+				        
+				        <h3 class="post-subtitle">
+				            学习笔记
+				        </h3>
+				        
+				    </a>
+				    <!-- <p class="post-meta">2018-12-02</p> -->
+				</div>
+				<hr>
+				
+				  <!-- <li class="listing-item">
+				  <time datetime="2018-12-02">2018-12-02</time>
+				  <a href="/2018/12/02/notes-machine-learning/" title="ml学习笔记">ml学习笔记</a>
+				  </li> -->
+				 <div class="post-preview">
+				    <a href="/2018/12/02/notes-machine-learning/">
+				        <h2 class="post-title">
+                            ml学习笔记
+				        </h2>
+				        
+				        <h3 class="post-subtitle">
+				            machine learning notes
+				        </h3>
+				        
+				    </a>
+				    <!-- <p class="post-meta">2018-12-02</p> -->
+				</div>
+				<hr>
+				
+				  <!-- <li class="listing-item">
+				  <time datetime="2018-12-02">2018-12-02</time>
+				  <a href="/2018/12/02/notes-mysql/" title="mysql的一些常用命令记录">mysql的一些常用命令记录</a>
+				  </li> -->
+				 <div class="post-preview">
+				    <a href="/2018/12/02/notes-mysql/">
+				        <h2 class="post-title">
+                            mysql的一些常用命令记录
+				        </h2>
+				        
+				        <h3 class="post-subtitle">
+				            mysql commands
+				        </h3>
+				        
+				    </a>
+				    <!-- <p class="post-meta">2018-12-02</p> -->
+				</div>
+				<hr>
+				
+				  <!-- <li class="listing-item">
+				  <time datetime="2018-12-02">2018-12-02</time>
+				  <a href="/2018/12/02/notes-linux/" title="linux下的一些常用命令记录">linux下的一些常用命令记录</a>
+				  </li> -->
+				 <div class="post-preview">
+				    <a href="/2018/12/02/notes-linux/">
+				        <h2 class="post-title">
+                            linux下的一些常用命令记录
+				        </h2>
+				        
+				        <h3 class="post-subtitle">
+				            从ls开始
+				        </h3>
+				        
+				    </a>
+				    <!-- <p class="post-meta">2018-12-02</p> -->
+				</div>
+				<hr>
+				
+				  <!-- <li class="listing-item">
+				  <time datetime="2018-12-02">2018-12-02</time>
+				  <a href="/2018/12/02/notes-springboot/" title="springboot 学习笔记">springboot 学习笔记</a>
+				  </li> -->
+				 <div class="post-preview">
+				    <a href="/2018/12/02/notes-springboot/">
+				        <h2 class="post-title">
+                            springboot 学习笔记
+				        </h2>
+				        
+				        <h3 class="post-subtitle">
+				            springboot notes
+				        </h3>
+				        
+				    </a>
+				    <!-- <p class="post-meta">2018-12-02</p> -->
+				</div>
+				<hr>
+				
+				  <!-- <li class="listing-item">
+				  <time datetime="2018-12-02">2018-12-02</time>
+				  <a href="/2018/12/02/notes-java/" title="java的学习笔记">java的学习笔记</a>
+				  </li> -->
+				 <div class="post-preview">
+				    <a href="/2018/12/02/notes-java/">
+				        <h2 class="post-title">
+                            java的学习笔记
+				        </h2>
+				        
+				        <h3 class="post-subtitle">
+				            java notes
+				        </h3>
+				        
+				    </a>
+				    <!-- <p class="post-meta">2018-12-02</p> -->
+				</div>
+				<hr>
+				
+				  <!-- <li class="listing-item">
+				  <time datetime="2018-10-19">2018-10-19</time>
+				  <a href="/2018/10/19/deeplearning4j-iris/" title="deeplearning4j-(01)-iris">deeplearning4j-(01)-iris</a>
+				  </li> -->
+				 <div class="post-preview">
+				    <a href="/2018/10/19/deeplearning4j-iris/">
+				        <h2 class="post-title">
+                            deeplearning4j-(01)-iris
+				        </h2>
+				        
+				        <h3 class="post-subtitle">
+				            deeplearning4j分类iris数据集
+				        </h3>
+				        
+				    </a>
+				    <!-- <p class="post-meta">2018-10-19</p> -->
+				</div>
+				<hr>
+				
+				  <!-- <li class="listing-item">
+				  <time datetime="2018-10-11">2018-10-11</time>
+				  <a href="/2018/10/11/fasttext/" title="FastText">FastText</a>
+				  </li> -->
+				 <div class="post-preview">
+				    <a href="/2018/10/11/fasttext/">
+				        <h2 class="post-title">
+                            FastText
+				        </h2>
+				        
+				        <h3 class="post-subtitle">
+				            FastText学习
+				        </h3>
+				        
+				    </a>
+				    <!-- <p class="post-meta">2018-10-11</p> -->
+				</div>
+				<hr>
+				
+				  <!-- <li class="listing-item">
+				  <time datetime="2018-10-05">2018-10-05</time>
+				  <a href="/2018/10/05/Thymeleaf/" title="Thymeleaf">Thymeleaf</a>
+				  </li> -->
+				 <div class="post-preview">
+				    <a href="/2018/10/05/Thymeleaf/">
+				        <h2 class="post-title">
+                            Thymeleaf
+				        </h2>
+				        
+				        <h3 class="post-subtitle">
+				            Thymeleaf框架
+				        </h3>
+				        
+				    </a>
+				    <!-- <p class="post-meta">2018-10-05</p> -->
+				</div>
+				<hr>
+				
+				  <!-- <li class="listing-item">
+				  <time datetime="2018-09-21">2018-09-21</time>
+				  <a href="/2018/09/21/How-to-Create-an-LSTM-Recurrent-Neural-Network-Using-DL4J/" title="How to Create an LSTM Recurrent Neural Network Using DL4J">How to Create an LSTM Recurrent Neural Network Using DL4J</a>
+				  </li> -->
+				 <div class="post-preview">
+				    <a href="/2018/09/21/How-to-Create-an-LSTM-Recurrent-Neural-Network-Using-DL4J/">
+				        <h2 class="post-title">
+                            How to Create an LSTM Recurrent Neural Network Using DL4J
+				        </h2>
+				        
+				        <h3 class="post-subtitle">
+				            用deeplearning4j创建lstm生成一定风格的句子
+				        </h3>
+				        
+				    </a>
+				    <!-- <p class="post-meta">2018-09-21</p> -->
+				</div>
+				<hr>
+				
+				  <!-- <li class="listing-item">
+				  <time datetime="2018-09-20">2018-09-20</time>
+				  <a href="/2018/09/20/%E8%87%AA%E7%84%B6%E8%AF%AD%E8%A8%80%E5%A4%84%E7%90%86%E5%B7%A5%E5%85%B7%E5%8C%85/" title="NLP tools">NLP tools</a>
+				  </li> -->
+				 <div class="post-preview">
+				    <a href="/2018/09/20/%E8%87%AA%E7%84%B6%E8%AF%AD%E8%A8%80%E5%A4%84%E7%90%86%E5%B7%A5%E5%85%B7%E5%8C%85/">
+				        <h2 class="post-title">
+                            NLP tools
+				        </h2>
+				        
+				        <h3 class="post-subtitle">
+				            自然语言处理工具
+				        </h3>
+				        
+				    </a>
+				    <!-- <p class="post-meta">2018-09-20</p> -->
+				</div>
+				<hr>
+				
+				  <!-- <li class="listing-item">
+				  <time datetime="2018-09-18">2018-09-18</time>
+				  <a href="/2018/09/18/notes-python/" title="python notes">python notes</a>
+				  </li> -->
+				 <div class="post-preview">
+				    <a href="/2018/09/18/notes-python/">
+				        <h2 class="post-title">
+                            python notes
+				        </h2>
+				        
+				        <h3 class="post-subtitle">
+				            Python学习笔记
+				        </h3>
+				        
+				    </a>
+				    <!-- <p class="post-meta">2018-09-18</p> -->
+				</div>
+				<hr>
+				
+				  <!-- <li class="listing-item">
+				  <time datetime="2018-09-08">2018-09-08</time>
+				  <a href="/2018/09/08/spring-cloud/" title="Spring Cloud">Spring Cloud</a>
+				  </li> -->
+				 <div class="post-preview">
+				    <a href="/2018/09/08/spring-cloud/">
+				        <h2 class="post-title">
+                            Spring Cloud
+				        </h2>
+				        
+				        <h3 class="post-subtitle">
+				            Spring Cloud学习
+				        </h3>
+				        
+				    </a>
+				    <!-- <p class="post-meta">2018-09-08</p> -->
+				</div>
+				<hr>
+				
+				  <!-- <li class="listing-item">
+				  <time datetime="2018-08-23">2018-08-23</time>
+				  <a href="/2018/08/23/springboot%E4%B8%AD%E9%81%87%E5%88%B0%E7%9A%84%E5%9D%91/" title="springboot (1)">springboot (1)</a>
+				  </li> -->
+				 <div class="post-preview">
+				    <a href="/2018/08/23/springboot%E4%B8%AD%E9%81%87%E5%88%B0%E7%9A%84%E5%9D%91/">
+				        <h2 class="post-title">
+                            springboot (1)
+				        </h2>
+				        
+				        <h3 class="post-subtitle">
+				            填坑记录
+				        </h3>
+				        
+				    </a>
+				    <!-- <p class="post-meta">2018-08-23</p> -->
+				</div>
+				<hr>
+				
+				  <!-- <li class="listing-item">
+				  <time datetime="2018-08-23">2018-08-23</time>
+				  <a href="/2018/08/23/you-need-a-goal/" title="You need a goal">You need a goal</a>
+				  </li> -->
+				 <div class="post-preview">
+				    <a href="/2018/08/23/you-need-a-goal/">
+				        <h2 class="post-title">
+                            You need a goal
+				        </h2>
+				        
+				        <h3 class="post-subtitle">
+				            成为一个有目标的学习者
+				        </h3>
+				        
+				    </a>
+				    <!-- <p class="post-meta">2018-08-23</p> -->
+				</div>
+				<hr>
+				
+			</div>
+			
+			<div class="one-tag-list">
+			  	<span class="fa fa-tag listing-seperator" id="java">
+                    <span class="tag-text">java</span>
+                </span>
+				
+				  <!-- <li class="listing-item">
+				  <time datetime="2019-01-04">2019-01-04</time>
+				  <a href="/2019/01/04/java-notes/" title="java笔记">java笔记</a>
+				  </li> -->
+				 <div class="post-preview">
+				    <a href="/2019/01/04/java-notes/">
+				        <h2 class="post-title">
+                            java笔记
+				        </h2>
+				        
+				        <h3 class="post-subtitle">
+				            java
+				        </h3>
+				        
+				    </a>
+				    <!-- <p class="post-meta">2019-01-04</p> -->
+				</div>
+				<hr>
+				
+				  <!-- <li class="listing-item">
+				  <time datetime="2018-12-02">2018-12-02</time>
+				  <a href="/2018/12/02/notes-springboot/" title="springboot 学习笔记">springboot 学习笔记</a>
+				  </li> -->
+				 <div class="post-preview">
+				    <a href="/2018/12/02/notes-springboot/">
+				        <h2 class="post-title">
+                            springboot 学习笔记
+				        </h2>
+				        
+				        <h3 class="post-subtitle">
+				            springboot notes
+				        </h3>
+				        
+				    </a>
+				    <!-- <p class="post-meta">2018-12-02</p> -->
+				</div>
+				<hr>
+				
+				  <!-- <li class="listing-item">
+				  <time datetime="2018-12-02">2018-12-02</time>
+				  <a href="/2018/12/02/notes-java/" title="java的学习笔记">java的学习笔记</a>
+				  </li> -->
+				 <div class="post-preview">
+				    <a href="/2018/12/02/notes-java/">
+				        <h2 class="post-title">
+                            java的学习笔记
+				        </h2>
+				        
+				        <h3 class="post-subtitle">
+				            java notes
+				        </h3>
+				        
+				    </a>
+				    <!-- <p class="post-meta">2018-12-02</p> -->
+				</div>
+				<hr>
+				
+				  <!-- <li class="listing-item">
+				  <time datetime="2018-10-19">2018-10-19</time>
+				  <a href="/2018/10/19/deeplearning4j-iris/" title="deeplearning4j-(01)-iris">deeplearning4j-(01)-iris</a>
+				  </li> -->
+				 <div class="post-preview">
+				    <a href="/2018/10/19/deeplearning4j-iris/">
+				        <h2 class="post-title">
+                            deeplearning4j-(01)-iris
+				        </h2>
+				        
+				        <h3 class="post-subtitle">
+				            deeplearning4j分类iris数据集
+				        </h3>
+				        
+				    </a>
+				    <!-- <p class="post-meta">2018-10-19</p> -->
+				</div>
+				<hr>
+				
+				  <!-- <li class="listing-item">
+				  <time datetime="2018-09-21">2018-09-21</time>
+				  <a href="/2018/09/21/How-to-Create-an-LSTM-Recurrent-Neural-Network-Using-DL4J/" title="How to Create an LSTM Recurrent Neural Network Using DL4J">How to Create an LSTM Recurrent Neural Network Using DL4J</a>
+				  </li> -->
+				 <div class="post-preview">
+				    <a href="/2018/09/21/How-to-Create-an-LSTM-Recurrent-Neural-Network-Using-DL4J/">
+				        <h2 class="post-title">
+                            How to Create an LSTM Recurrent Neural Network Using DL4J
+				        </h2>
+				        
+				        <h3 class="post-subtitle">
+				            用deeplearning4j创建lstm生成一定风格的句子
+				        </h3>
+				        
+				    </a>
+				    <!-- <p class="post-meta">2018-09-21</p> -->
+				</div>
+				<hr>
+				
+				  <!-- <li class="listing-item">
+				  <time datetime="2018-09-08">2018-09-08</time>
+				  <a href="/2018/09/08/spring-cloud/" title="Spring Cloud">Spring Cloud</a>
+				  </li> -->
+				 <div class="post-preview">
+				    <a href="/2018/09/08/spring-cloud/">
+				        <h2 class="post-title">
+                            Spring Cloud
+				        </h2>
+				        
+				        <h3 class="post-subtitle">
+				            Spring Cloud学习
+				        </h3>
+				        
+				    </a>
+				    <!-- <p class="post-meta">2018-09-08</p> -->
+				</div>
+				<hr>
+				
+				  <!-- <li class="listing-item">
+				  <time datetime="2018-08-23">2018-08-23</time>
+				  <a href="/2018/08/23/springboot%E4%B8%AD%E9%81%87%E5%88%B0%E7%9A%84%E5%9D%91/" title="springboot (1)">springboot (1)</a>
+				  </li> -->
+				 <div class="post-preview">
+				    <a href="/2018/08/23/springboot%E4%B8%AD%E9%81%87%E5%88%B0%E7%9A%84%E5%9D%91/">
+				        <h2 class="post-title">
+                            springboot (1)
+				        </h2>
+				        
+				        <h3 class="post-subtitle">
+				            填坑记录
+				        </h3>
+				        
+				    </a>
+				    <!-- <p class="post-meta">2018-08-23</p> -->
+				</div>
+				<hr>
+				
+			</div>
+			
+			<div class="one-tag-list">
+			  	<span class="fa fa-tag listing-seperator" id="springboot">
+                    <span class="tag-text">springboot</span>
+                </span>
+				
+				  <!-- <li class="listing-item">
+				  <time datetime="2018-12-02">2018-12-02</time>
+				  <a href="/2018/12/02/notes-springboot/" title="springboot 学习笔记">springboot 学习笔记</a>
+				  </li> -->
+				 <div class="post-preview">
+				    <a href="/2018/12/02/notes-springboot/">
+				        <h2 class="post-title">
+                            springboot 学习笔记
+				        </h2>
+				        
+				        <h3 class="post-subtitle">
+				            springboot notes
+				        </h3>
+				        
+				    </a>
+				    <!-- <p class="post-meta">2018-12-02</p> -->
+				</div>
+				<hr>
+				
+				  <!-- <li class="listing-item">
+				  <time datetime="2018-08-23">2018-08-23</time>
+				  <a href="/2018/08/23/springboot%E4%B8%AD%E9%81%87%E5%88%B0%E7%9A%84%E5%9D%91/" title="springboot (1)">springboot (1)</a>
+				  </li> -->
+				 <div class="post-preview">
+				    <a href="/2018/08/23/springboot%E4%B8%AD%E9%81%87%E5%88%B0%E7%9A%84%E5%9D%91/">
+				        <h2 class="post-title">
+                            springboot (1)
+				        </h2>
+				        
+				        <h3 class="post-subtitle">
+				            填坑记录
+				        </h3>
+				        
+				    </a>
+				    <!-- <p class="post-meta">2018-08-23</p> -->
+				</div>
+				<hr>
+				
+			</div>
+			
+			<div class="one-tag-list">
+			  	<span class="fa fa-tag listing-seperator" id="相似度">
+                    <span class="tag-text">相似度</span>
+                </span>
+				
+				  <!-- <li class="listing-item">
+				  <time datetime="2018-09-07">2018-09-07</time>
+				  <a href="/2018/09/07/annoy-learn/" title="Annoy">Annoy</a>
+				  </li> -->
+				 <div class="post-preview">
+				    <a href="/2018/09/07/annoy-learn/">
+				        <h2 class="post-title">
+                            Annoy
+				        </h2>
+				        
+				        <h3 class="post-subtitle">
+				            Annoy(Approximate Nearest Neighbors Oh Yeah)学习
+				        </h3>
+				        
+				    </a>
+				    <!-- <p class="post-meta">2018-09-07</p> -->
+				</div>
+				<hr>
+				
+			</div>
+			
+			<div class="one-tag-list">
+			  	<span class="fa fa-tag listing-seperator" id="Annoy">
+                    <span class="tag-text">Annoy</span>
+                </span>
+				
+				  <!-- <li class="listing-item">
+				  <time datetime="2018-09-07">2018-09-07</time>
+				  <a href="/2018/09/07/annoy-learn/" title="Annoy">Annoy</a>
+				  </li> -->
+				 <div class="post-preview">
+				    <a href="/2018/09/07/annoy-learn/">
+				        <h2 class="post-title">
+                            Annoy
+				        </h2>
+				        
+				        <h3 class="post-subtitle">
+				            Annoy(Approximate Nearest Neighbors Oh Yeah)学习
+				        </h3>
+				        
+				    </a>
+				    <!-- <p class="post-meta">2018-09-07</p> -->
+				</div>
+				<hr>
+				
+			</div>
+			
+			<div class="one-tag-list">
+			  	<span class="fa fa-tag listing-seperator" id="Spring Cloud">
+                    <span class="tag-text">Spring Cloud</span>
+                </span>
+				
+				  <!-- <li class="listing-item">
+				  <time datetime="2018-09-08">2018-09-08</time>
+				  <a href="/2018/09/08/spring-cloud/" title="Spring Cloud">Spring Cloud</a>
+				  </li> -->
+				 <div class="post-preview">
+				    <a href="/2018/09/08/spring-cloud/">
+				        <h2 class="post-title">
+                            Spring Cloud
+				        </h2>
+				        
+				        <h3 class="post-subtitle">
+				            Spring Cloud学习
+				        </h3>
+				        
+				    </a>
+				    <!-- <p class="post-meta">2018-09-08</p> -->
+				</div>
+				<hr>
+				
+			</div>
+			
+			<div class="one-tag-list">
+			  	<span class="fa fa-tag listing-seperator" id="struggle">
+                    <span class="tag-text">struggle</span>
+                </span>
+				
+				  <!-- <li class="listing-item">
+				  <time datetime="2018-09-18">2018-09-18</time>
+				  <a href="/2018/09/18/struggle/" title="Become a better man!">Become a better man!</a>
+				  </li> -->
+				 <div class="post-preview">
+				    <a href="/2018/09/18/struggle/">
+				        <h2 class="post-title">
+                            Become a better man!
+				        </h2>
+				        
+				        <h3 class="post-subtitle">
+				            每天进步一点点
+				        </h3>
+				        
+				    </a>
+				    <!-- <p class="post-meta">2018-09-18</p> -->
+				</div>
+				<hr>
+				
+			</div>
+			
+			<div class="one-tag-list">
+			  	<span class="fa fa-tag listing-seperator" id="Python">
+                    <span class="tag-text">Python</span>
+                </span>
+				
+				  <!-- <li class="listing-item">
+				  <time datetime="2018-09-20">2018-09-20</time>
+				  <a href="/2018/09/20/%E8%87%AA%E7%84%B6%E8%AF%AD%E8%A8%80%E5%A4%84%E7%90%86%E5%B7%A5%E5%85%B7%E5%8C%85/" title="NLP tools">NLP tools</a>
+				  </li> -->
+				 <div class="post-preview">
+				    <a href="/2018/09/20/%E8%87%AA%E7%84%B6%E8%AF%AD%E8%A8%80%E5%A4%84%E7%90%86%E5%B7%A5%E5%85%B7%E5%8C%85/">
+				        <h2 class="post-title">
+                            NLP tools
+				        </h2>
+				        
+				        <h3 class="post-subtitle">
+				            自然语言处理工具
+				        </h3>
+				        
+				    </a>
+				    <!-- <p class="post-meta">2018-09-20</p> -->
+				</div>
+				<hr>
+				
+				  <!-- <li class="listing-item">
+				  <time datetime="2018-09-18">2018-09-18</time>
+				  <a href="/2018/09/18/notes-python/" title="python notes">python notes</a>
+				  </li> -->
+				 <div class="post-preview">
+				    <a href="/2018/09/18/notes-python/">
+				        <h2 class="post-title">
+                            python notes
+				        </h2>
+				        
+				        <h3 class="post-subtitle">
+				            Python学习笔记
+				        </h3>
+				        
+				    </a>
+				    <!-- <p class="post-meta">2018-09-18</p> -->
+				</div>
+				<hr>
+				
+			</div>
+			
+			<div class="one-tag-list">
+			  	<span class="fa fa-tag listing-seperator" id="笔记">
+                    <span class="tag-text">笔记</span>
+                </span>
+				
+				  <!-- <li class="listing-item">
+				  <time datetime="2019-01-07">2019-01-07</time>
+				  <a href="/2019/01/07/similarity-methods/" title="similarity methods 笔记">similarity methods 笔记</a>
+				  </li> -->
+				 <div class="post-preview">
+				    <a href="/2019/01/07/similarity-methods/">
+				        <h2 class="post-title">
+                            similarity methods 笔记
+				        </h2>
+				        
+				        <h3 class="post-subtitle">
+				            similariry
+				        </h3>
+				        
+				    </a>
+				    <!-- <p class="post-meta">2019-01-07</p> -->
+				</div>
+				<hr>
+				
+				  <!-- <li class="listing-item">
+				  <time datetime="2019-01-04">2019-01-04</time>
+				  <a href="/2019/01/04/java-notes/" title="java笔记">java笔记</a>
+				  </li> -->
+				 <div class="post-preview">
+				    <a href="/2019/01/04/java-notes/">
+				        <h2 class="post-title">
+                            java笔记
+				        </h2>
+				        
+				        <h3 class="post-subtitle">
+				            java
+				        </h3>
+				        
+				    </a>
+				    <!-- <p class="post-meta">2019-01-04</p> -->
+				</div>
+				<hr>
+				
+				  <!-- <li class="listing-item">
+				  <time datetime="2018-09-18">2018-09-18</time>
+				  <a href="/2018/09/18/notes-python/" title="python notes">python notes</a>
+				  </li> -->
+				 <div class="post-preview">
+				    <a href="/2018/09/18/notes-python/">
+				        <h2 class="post-title">
+                            python notes
+				        </h2>
+				        
+				        <h3 class="post-subtitle">
+				            Python学习笔记
+				        </h3>
+				        
+				    </a>
+				    <!-- <p class="post-meta">2018-09-18</p> -->
+				</div>
+				<hr>
+				
+			</div>
+			
+			<div class="one-tag-list">
+			  	<span class="fa fa-tag listing-seperator" id="LSTM">
+                    <span class="tag-text">LSTM</span>
+                </span>
+				
+				  <!-- <li class="listing-item">
+				  <time datetime="2018-09-21">2018-09-21</time>
+				  <a href="/2018/09/21/How-to-Create-an-LSTM-Recurrent-Neural-Network-Using-DL4J/" title="How to Create an LSTM Recurrent Neural Network Using DL4J">How to Create an LSTM Recurrent Neural Network Using DL4J</a>
+				  </li> -->
+				 <div class="post-preview">
+				    <a href="/2018/09/21/How-to-Create-an-LSTM-Recurrent-Neural-Network-Using-DL4J/">
+				        <h2 class="post-title">
+                            How to Create an LSTM Recurrent Neural Network Using DL4J
+				        </h2>
+				        
+				        <h3 class="post-subtitle">
+				            用deeplearning4j创建lstm生成一定风格的句子
+				        </h3>
+				        
+				    </a>
+				    <!-- <p class="post-meta">2018-09-21</p> -->
+				</div>
+				<hr>
+				
+			</div>
+			
+			<div class="one-tag-list">
+			  	<span class="fa fa-tag listing-seperator" id="deeplearning4j">
+                    <span class="tag-text">deeplearning4j</span>
+                </span>
+				
+				  <!-- <li class="listing-item">
+				  <time datetime="2018-10-19">2018-10-19</time>
+				  <a href="/2018/10/19/deeplearning4j-iris/" title="deeplearning4j-(01)-iris">deeplearning4j-(01)-iris</a>
+				  </li> -->
+				 <div class="post-preview">
+				    <a href="/2018/10/19/deeplearning4j-iris/">
+				        <h2 class="post-title">
+                            deeplearning4j-(01)-iris
+				        </h2>
+				        
+				        <h3 class="post-subtitle">
+				            deeplearning4j分类iris数据集
+				        </h3>
+				        
+				    </a>
+				    <!-- <p class="post-meta">2018-10-19</p> -->
+				</div>
+				<hr>
+				
+				  <!-- <li class="listing-item">
+				  <time datetime="2018-09-21">2018-09-21</time>
+				  <a href="/2018/09/21/How-to-Create-an-LSTM-Recurrent-Neural-Network-Using-DL4J/" title="How to Create an LSTM Recurrent Neural Network Using DL4J">How to Create an LSTM Recurrent Neural Network Using DL4J</a>
+				  </li> -->
+				 <div class="post-preview">
+				    <a href="/2018/09/21/How-to-Create-an-LSTM-Recurrent-Neural-Network-Using-DL4J/">
+				        <h2 class="post-title">
+                            How to Create an LSTM Recurrent Neural Network Using DL4J
+				        </h2>
+				        
+				        <h3 class="post-subtitle">
+				            用deeplearning4j创建lstm生成一定风格的句子
+				        </h3>
+				        
+				    </a>
+				    <!-- <p class="post-meta">2018-09-21</p> -->
+				</div>
+				<hr>
+				
+			</div>
+			
+			<div class="one-tag-list">
+			  	<span class="fa fa-tag listing-seperator" id="java web">
+                    <span class="tag-text">java web</span>
+                </span>
+				
+				  <!-- <li class="listing-item">
+				  <time datetime="2018-10-05">2018-10-05</time>
+				  <a href="/2018/10/05/Thymeleaf/" title="Thymeleaf">Thymeleaf</a>
+				  </li> -->
+				 <div class="post-preview">
+				    <a href="/2018/10/05/Thymeleaf/">
+				        <h2 class="post-title">
+                            Thymeleaf
+				        </h2>
+				        
+				        <h3 class="post-subtitle">
+				            Thymeleaf框架
+				        </h3>
+				        
+				    </a>
+				    <!-- <p class="post-meta">2018-10-05</p> -->
+				</div>
+				<hr>
+				
+			</div>
+			
+			<div class="one-tag-list">
+			  	<span class="fa fa-tag listing-seperator" id="thymeleaf">
+                    <span class="tag-text">thymeleaf</span>
+                </span>
+				
+				  <!-- <li class="listing-item">
+				  <time datetime="2018-10-05">2018-10-05</time>
+				  <a href="/2018/10/05/Thymeleaf/" title="Thymeleaf">Thymeleaf</a>
+				  </li> -->
+				 <div class="post-preview">
+				    <a href="/2018/10/05/Thymeleaf/">
+				        <h2 class="post-title">
+                            Thymeleaf
+				        </h2>
+				        
+				        <h3 class="post-subtitle">
+				            Thymeleaf框架
+				        </h3>
+				        
+				    </a>
+				    <!-- <p class="post-meta">2018-10-05</p> -->
+				</div>
+				<hr>
+				
+			</div>
+			
+			<div class="one-tag-list">
+			  	<span class="fa fa-tag listing-seperator" id="前端">
+                    <span class="tag-text">前端</span>
+                </span>
+				
+				  <!-- <li class="listing-item">
+				  <time datetime="2018-10-05">2018-10-05</time>
+				  <a href="/2018/10/05/Thymeleaf/" title="Thymeleaf">Thymeleaf</a>
+				  </li> -->
+				 <div class="post-preview">
+				    <a href="/2018/10/05/Thymeleaf/">
+				        <h2 class="post-title">
+                            Thymeleaf
+				        </h2>
+				        
+				        <h3 class="post-subtitle">
+				            Thymeleaf框架
+				        </h3>
+				        
+				    </a>
+				    <!-- <p class="post-meta">2018-10-05</p> -->
+				</div>
+				<hr>
+				
+			</div>
+			
+			<div class="one-tag-list">
+			  	<span class="fa fa-tag listing-seperator" id="python">
+                    <span class="tag-text">python</span>
+                </span>
+				
+				  <!-- <li class="listing-item">
+				  <time datetime="2018-10-11">2018-10-11</time>
+				  <a href="/2018/10/11/fasttext/" title="FastText">FastText</a>
+				  </li> -->
+				 <div class="post-preview">
+				    <a href="/2018/10/11/fasttext/">
+				        <h2 class="post-title">
+                            FastText
+				        </h2>
+				        
+				        <h3 class="post-subtitle">
+				            FastText学习
+				        </h3>
+				        
+				    </a>
+				    <!-- <p class="post-meta">2018-10-11</p> -->
+				</div>
+				<hr>
+				
+			</div>
+			
+			<div class="one-tag-list">
+			  	<span class="fa fa-tag listing-seperator" id="fastText">
+                    <span class="tag-text">fastText</span>
+                </span>
+				
+				  <!-- <li class="listing-item">
+				  <time datetime="2018-10-11">2018-10-11</time>
+				  <a href="/2018/10/11/fasttext/" title="FastText">FastText</a>
+				  </li> -->
+				 <div class="post-preview">
+				    <a href="/2018/10/11/fasttext/">
+				        <h2 class="post-title">
+                            FastText
+				        </h2>
+				        
+				        <h3 class="post-subtitle">
+				            FastText学习
+				        </h3>
+				        
+				    </a>
+				    <!-- <p class="post-meta">2018-10-11</p> -->
+				</div>
+				<hr>
+				
+			</div>
+			
+			<div class="one-tag-list">
+			  	<span class="fa fa-tag listing-seperator" id="深度学习">
+                    <span class="tag-text">深度学习</span>
+                </span>
+				
+				  <!-- <li class="listing-item">
+				  <time datetime="2018-10-19">2018-10-19</time>
+				  <a href="/2018/10/19/deeplearning4j-iris/" title="deeplearning4j-(01)-iris">deeplearning4j-(01)-iris</a>
+				  </li> -->
+				 <div class="post-preview">
+				    <a href="/2018/10/19/deeplearning4j-iris/">
+				        <h2 class="post-title">
+                            deeplearning4j-(01)-iris
+				        </h2>
+				        
+				        <h3 class="post-subtitle">
+				            deeplearning4j分类iris数据集
+				        </h3>
+				        
+				    </a>
+				    <!-- <p class="post-meta">2018-10-19</p> -->
+				</div>
+				<hr>
+				
+			</div>
+			
+			<div class="one-tag-list">
+			  	<span class="fa fa-tag listing-seperator" id="ubuntu">
+                    <span class="tag-text">ubuntu</span>
+                </span>
+				
+				  <!-- <li class="listing-item">
+				  <time datetime="2018-12-25">2018-12-25</time>
+				  <a href="/2018/12/25/notes-postgresql/" title="PostgreSQL的一些常用命令记录">PostgreSQL的一些常用命令记录</a>
+				  </li> -->
+				 <div class="post-preview">
+				    <a href="/2018/12/25/notes-postgresql/">
+				        <h2 class="post-title">
+                            PostgreSQL的一些常用命令记录
+				        </h2>
+				        
+				        <h3 class="post-subtitle">
+				            PostgreSQL commands
+				        </h3>
+				        
+				    </a>
+				    <!-- <p class="post-meta">2018-12-25</p> -->
+				</div>
+				<hr>
+				
+				  <!-- <li class="listing-item">
+				  <time datetime="2018-12-02">2018-12-02</time>
+				  <a href="/2018/12/02/notes-machine-learning/" title="ml学习笔记">ml学习笔记</a>
+				  </li> -->
+				 <div class="post-preview">
+				    <a href="/2018/12/02/notes-machine-learning/">
+				        <h2 class="post-title">
+                            ml学习笔记
+				        </h2>
+				        
+				        <h3 class="post-subtitle">
+				            machine learning notes
+				        </h3>
+				        
+				    </a>
+				    <!-- <p class="post-meta">2018-12-02</p> -->
+				</div>
+				<hr>
+				
+				  <!-- <li class="listing-item">
+				  <time datetime="2018-12-02">2018-12-02</time>
+				  <a href="/2018/12/02/notes-mysql/" title="mysql的一些常用命令记录">mysql的一些常用命令记录</a>
+				  </li> -->
+				 <div class="post-preview">
+				    <a href="/2018/12/02/notes-mysql/">
+				        <h2 class="post-title">
+                            mysql的一些常用命令记录
+				        </h2>
+				        
+				        <h3 class="post-subtitle">
+				            mysql commands
+				        </h3>
+				        
+				    </a>
+				    <!-- <p class="post-meta">2018-12-02</p> -->
+				</div>
+				<hr>
+				
+				  <!-- <li class="listing-item">
+				  <time datetime="2018-12-02">2018-12-02</time>
+				  <a href="/2018/12/02/notes-linux/" title="linux下的一些常用命令记录">linux下的一些常用命令记录</a>
+				  </li> -->
+				 <div class="post-preview">
+				    <a href="/2018/12/02/notes-linux/">
+				        <h2 class="post-title">
+                            linux下的一些常用命令记录
+				        </h2>
+				        
+				        <h3 class="post-subtitle">
+				            从ls开始
+				        </h3>
+				        
+				    </a>
+				    <!-- <p class="post-meta">2018-12-02</p> -->
+				</div>
+				<hr>
+				
+				  <!-- <li class="listing-item">
+				  <time datetime="2018-12-02">2018-12-02</time>
+				  <a href="/2018/12/02/notes-java/" title="java的学习笔记">java的学习笔记</a>
+				  </li> -->
+				 <div class="post-preview">
+				    <a href="/2018/12/02/notes-java/">
+				        <h2 class="post-title">
+                            java的学习笔记
+				        </h2>
+				        
+				        <h3 class="post-subtitle">
+				            java notes
+				        </h3>
+				        
+				    </a>
+				    <!-- <p class="post-meta">2018-12-02</p> -->
+				</div>
+				<hr>
+				
+			</div>
+			
+			<div class="one-tag-list">
+			  	<span class="fa fa-tag listing-seperator" id="linux">
+                    <span class="tag-text">linux</span>
+                </span>
+				
+				  <!-- <li class="listing-item">
+				  <time datetime="2018-12-02">2018-12-02</time>
+				  <a href="/2018/12/02/notes-linux/" title="linux下的一些常用命令记录">linux下的一些常用命令记录</a>
+				  </li> -->
+				 <div class="post-preview">
+				    <a href="/2018/12/02/notes-linux/">
+				        <h2 class="post-title">
+                            linux下的一些常用命令记录
+				        </h2>
+				        
+				        <h3 class="post-subtitle">
+				            从ls开始
+				        </h3>
+				        
+				    </a>
+				    <!-- <p class="post-meta">2018-12-02</p> -->
+				</div>
+				<hr>
+				
+			</div>
+			
+			<div class="one-tag-list">
+			  	<span class="fa fa-tag listing-seperator" id="mysql">
+                    <span class="tag-text">mysql</span>
+                </span>
+				
+				  <!-- <li class="listing-item">
+				  <time datetime="2018-12-02">2018-12-02</time>
+				  <a href="/2018/12/02/notes-mysql/" title="mysql的一些常用命令记录">mysql的一些常用命令记录</a>
+				  </li> -->
+				 <div class="post-preview">
+				    <a href="/2018/12/02/notes-mysql/">
+				        <h2 class="post-title">
+                            mysql的一些常用命令记录
+				        </h2>
+				        
+				        <h3 class="post-subtitle">
+				            mysql commands
+				        </h3>
+				        
+				    </a>
+				    <!-- <p class="post-meta">2018-12-02</p> -->
+				</div>
+				<hr>
+				
+			</div>
+			
+			<div class="one-tag-list">
+			  	<span class="fa fa-tag listing-seperator" id="machine learning">
+                    <span class="tag-text">machine learning</span>
+                </span>
+				
+				  <!-- <li class="listing-item">
+				  <time datetime="2018-12-02">2018-12-02</time>
+				  <a href="/2018/12/02/notes-machine-learning/" title="ml学习笔记">ml学习笔记</a>
+				  </li> -->
+				 <div class="post-preview">
+				    <a href="/2018/12/02/notes-machine-learning/">
+				        <h2 class="post-title">
+                            ml学习笔记
+				        </h2>
+				        
+				        <h3 class="post-subtitle">
+				            machine learning notes
+				        </h3>
+				        
+				    </a>
+				    <!-- <p class="post-meta">2018-12-02</p> -->
+				</div>
+				<hr>
+				
+			</div>
+			
+			<div class="one-tag-list">
+			  	<span class="fa fa-tag listing-seperator" id="neo4j">
+                    <span class="tag-text">neo4j</span>
+                </span>
+				
+				  <!-- <li class="listing-item">
+				  <time datetime="2018-12-11">2018-12-11</time>
+				  <a href="/2018/12/11/neo4j-notes/" title="neo4j学习笔记">neo4j学习笔记</a>
+				  </li> -->
+				 <div class="post-preview">
+				    <a href="/2018/12/11/neo4j-notes/">
+				        <h2 class="post-title">
+                            neo4j学习笔记
+				        </h2>
+				        
+				        <h3 class="post-subtitle">
+				            neo4j notes
+				        </h3>
+				        
+				    </a>
+				    <!-- <p class="post-meta">2018-12-11</p> -->
+				</div>
+				<hr>
+				
+				  <!-- <li class="listing-item">
+				  <time datetime="2018-12-03">2018-12-03</time>
+				  <a href="/2018/12/03/cypher-notes/" title="cypher学习笔记">cypher学习笔记</a>
+				  </li> -->
+				 <div class="post-preview">
+				    <a href="/2018/12/03/cypher-notes/">
+				        <h2 class="post-title">
+                            cypher学习笔记
+				        </h2>
+				        
+				        <h3 class="post-subtitle">
+				            cypher for neo4j notes
+				        </h3>
+				        
+				    </a>
+				    <!-- <p class="post-meta">2018-12-03</p> -->
+				</div>
+				<hr>
+				
+			</div>
+			
+			<div class="one-tag-list">
+			  	<span class="fa fa-tag listing-seperator" id="cypher">
+                    <span class="tag-text">cypher</span>
+                </span>
+				
+				  <!-- <li class="listing-item">
+				  <time datetime="2018-12-03">2018-12-03</time>
+				  <a href="/2018/12/03/cypher-notes/" title="cypher学习笔记">cypher学习笔记</a>
+				  </li> -->
+				 <div class="post-preview">
+				    <a href="/2018/12/03/cypher-notes/">
+				        <h2 class="post-title">
+                            cypher学习笔记
+				        </h2>
+				        
+				        <h3 class="post-subtitle">
+				            cypher for neo4j notes
+				        </h3>
+				        
+				    </a>
+				    <!-- <p class="post-meta">2018-12-03</p> -->
+				</div>
+				<hr>
+				
+			</div>
+			
+			<div class="one-tag-list">
+			  	<span class="fa fa-tag listing-seperator" id="knowledge graph">
+                    <span class="tag-text">knowledge graph</span>
+                </span>
+				
+				  <!-- <li class="listing-item">
+				  <time datetime="2018-12-03">2018-12-03</time>
+				  <a href="/2018/12/03/kb-qa/" title="kb-qa学习笔记">kb-qa学习笔记</a>
+				  </li> -->
+				 <div class="post-preview">
+				    <a href="/2018/12/03/kb-qa/">
+				        <h2 class="post-title">
+                            kb-qa学习笔记
+				        </h2>
+				        
+				        <h3 class="post-subtitle">
+				            quesiton answer system bases on knowledge graph
+				        </h3>
+				        
+				    </a>
+				    <!-- <p class="post-meta">2018-12-03</p> -->
+				</div>
+				<hr>
+				
+				  <!-- <li class="listing-item">
+				  <time datetime="2018-12-03">2018-12-03</time>
+				  <a href="/2018/12/03/kb-qa-2/" title="kb-qa学习笔记2">kb-qa学习笔记2</a>
+				  </li> -->
+				 <div class="post-preview">
+				    <a href="/2018/12/03/kb-qa-2/">
+				        <h2 class="post-title">
+                            kb-qa学习笔记2
+				        </h2>
+				        
+				        <h3 class="post-subtitle">
+				            quesiton answer system bases on knowledge graph
+				        </h3>
+				        
+				    </a>
+				    <!-- <p class="post-meta">2018-12-03</p> -->
+				</div>
+				<hr>
+				
+			</div>
+			
+			<div class="one-tag-list">
+			  	<span class="fa fa-tag listing-seperator" id="question answer system">
+                    <span class="tag-text">question answer system</span>
+                </span>
+				
+				  <!-- <li class="listing-item">
+				  <time datetime="2018-12-03">2018-12-03</time>
+				  <a href="/2018/12/03/kb-qa/" title="kb-qa学习笔记">kb-qa学习笔记</a>
+				  </li> -->
+				 <div class="post-preview">
+				    <a href="/2018/12/03/kb-qa/">
+				        <h2 class="post-title">
+                            kb-qa学习笔记
+				        </h2>
+				        
+				        <h3 class="post-subtitle">
+				            quesiton answer system bases on knowledge graph
+				        </h3>
+				        
+				    </a>
+				    <!-- <p class="post-meta">2018-12-03</p> -->
+				</div>
+				<hr>
+				
+				  <!-- <li class="listing-item">
+				  <time datetime="2018-12-03">2018-12-03</time>
+				  <a href="/2018/12/03/kb-qa-2/" title="kb-qa学习笔记2">kb-qa学习笔记2</a>
+				  </li> -->
+				 <div class="post-preview">
+				    <a href="/2018/12/03/kb-qa-2/">
+				        <h2 class="post-title">
+                            kb-qa学习笔记2
+				        </h2>
+				        
+				        <h3 class="post-subtitle">
+				            quesiton answer system bases on knowledge graph
+				        </h3>
+				        
+				    </a>
+				    <!-- <p class="post-meta">2018-12-03</p> -->
+				</div>
+				<hr>
+				
+			</div>
+			
+			<div class="one-tag-list">
+			  	<span class="fa fa-tag listing-seperator" id="fork">
+                    <span class="tag-text">fork</span>
+                </span>
+				
+				  <!-- <li class="listing-item">
+				  <time datetime="2018-12-05">2018-12-05</time>
+				  <a href="/2018/12/05/After-fork-from-github/" title="After fork from github">After fork from github</a>
+				  </li> -->
+				 <div class="post-preview">
+				    <a href="/2018/12/05/After-fork-from-github/">
+				        <h2 class="post-title">
+                            After fork from github
+				        </h2>
+				        
+				        <h3 class="post-subtitle">
+				            fork
+				        </h3>
+				        
+				    </a>
+				    <!-- <p class="post-meta">2018-12-05</p> -->
+				</div>
+				<hr>
+				
+			</div>
+			
+			<div class="one-tag-list">
+			  	<span class="fa fa-tag listing-seperator" id="github">
+                    <span class="tag-text">github</span>
+                </span>
+				
+				  <!-- <li class="listing-item">
+				  <time datetime="2018-12-07">2018-12-07</time>
+				  <a href="/2018/12/07/git-and-github/" title="Git and github notes">Git and github notes</a>
+				  </li> -->
+				 <div class="post-preview">
+				    <a href="/2018/12/07/git-and-github/">
+				        <h2 class="post-title">
+                            Git and github notes
+				        </h2>
+				        
+				        <h3 class="post-subtitle">
+				            git notes
+				        </h3>
+				        
+				    </a>
+				    <!-- <p class="post-meta">2018-12-07</p> -->
+				</div>
+				<hr>
+				
+				  <!-- <li class="listing-item">
+				  <time datetime="2018-12-05">2018-12-05</time>
+				  <a href="/2018/12/05/After-fork-from-github/" title="After fork from github">After fork from github</a>
+				  </li> -->
+				 <div class="post-preview">
+				    <a href="/2018/12/05/After-fork-from-github/">
+				        <h2 class="post-title">
+                            After fork from github
+				        </h2>
+				        
+				        <h3 class="post-subtitle">
+				            fork
+				        </h3>
+				        
+				    </a>
+				    <!-- <p class="post-meta">2018-12-05</p> -->
+				</div>
+				<hr>
+				
+			</div>
+			
+			<div class="one-tag-list">
+			  	<span class="fa fa-tag listing-seperator" id="visual studio code">
+                    <span class="tag-text">visual studio code</span>
+                </span>
+				
+				  <!-- <li class="listing-item">
+				  <time datetime="2018-12-05">2018-12-05</time>
+				  <a href="/2018/12/05/visual-studio-code%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" title="visual studio code学习笔记">visual studio code学习笔记</a>
+				  </li> -->
+				 <div class="post-preview">
+				    <a href="/2018/12/05/visual-studio-code%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">
+				        <h2 class="post-title">
+                            visual studio code学习笔记
+				        </h2>
+				        
+				        <h3 class="post-subtitle">
+				            visual studio code notes
+				        </h3>
+				        
+				    </a>
+				    <!-- <p class="post-meta">2018-12-05</p> -->
+				</div>
+				<hr>
+				
+			</div>
+			
+			<div class="one-tag-list">
+			  	<span class="fa fa-tag listing-seperator" id="计划">
+                    <span class="tag-text">计划</span>
+                </span>
+				
+				  <!-- <li class="listing-item">
+				  <time datetime="2018-12-05">2018-12-05</time>
+				  <a href="/2018/12/05/2019%E8%AE%A1%E5%88%92/" title="2019计划">2019计划</a>
+				  </li> -->
+				 <div class="post-preview">
+				    <a href="/2018/12/05/2019%E8%AE%A1%E5%88%92/">
+				        <h2 class="post-title">
+                            2019计划
+				        </h2>
+				        
+				        <h3 class="post-subtitle">
+				            2019
+				        </h3>
+				        
+				    </a>
+				    <!-- <p class="post-meta">2018-12-05</p> -->
+				</div>
+				<hr>
+				
+			</div>
+			
+			<div class="one-tag-list">
+			  	<span class="fa fa-tag listing-seperator" id="2019">
+                    <span class="tag-text">2019</span>
+                </span>
+				
+				  <!-- <li class="listing-item">
+				  <time datetime="2018-12-05">2018-12-05</time>
+				  <a href="/2018/12/05/2019%E8%AE%A1%E5%88%92/" title="2019计划">2019计划</a>
+				  </li> -->
+				 <div class="post-preview">
+				    <a href="/2018/12/05/2019%E8%AE%A1%E5%88%92/">
+				        <h2 class="post-title">
+                            2019计划
+				        </h2>
+				        
+				        <h3 class="post-subtitle">
+				            2019
+				        </h3>
+				        
+				    </a>
+				    <!-- <p class="post-meta">2018-12-05</p> -->
+				</div>
+				<hr>
+				
+			</div>
+			
+			<div class="one-tag-list">
+			  	<span class="fa fa-tag listing-seperator" id="git">
+                    <span class="tag-text">git</span>
+                </span>
+				
+				  <!-- <li class="listing-item">
+				  <time datetime="2018-12-07">2018-12-07</time>
+				  <a href="/2018/12/07/git-and-github/" title="Git and github notes">Git and github notes</a>
+				  </li> -->
+				 <div class="post-preview">
+				    <a href="/2018/12/07/git-and-github/">
+				        <h2 class="post-title">
+                            Git and github notes
+				        </h2>
+				        
+				        <h3 class="post-subtitle">
+				            git notes
+				        </h3>
+				        
+				    </a>
+				    <!-- <p class="post-meta">2018-12-07</p> -->
+				</div>
+				<hr>
+				
+			</div>
+			
+			<div class="one-tag-list">
+			  	<span class="fa fa-tag listing-seperator" id="PostgreSQL">
+                    <span class="tag-text">PostgreSQL</span>
+                </span>
+				
+				  <!-- <li class="listing-item">
+				  <time datetime="2018-12-25">2018-12-25</time>
+				  <a href="/2018/12/25/notes-postgresql/" title="PostgreSQL的一些常用命令记录">PostgreSQL的一些常用命令记录</a>
+				  </li> -->
+				 <div class="post-preview">
+				    <a href="/2018/12/25/notes-postgresql/">
+				        <h2 class="post-title">
+                            PostgreSQL的一些常用命令记录
+				        </h2>
+				        
+				        <h3 class="post-subtitle">
+				            PostgreSQL commands
+				        </h3>
+				        
+				    </a>
+				    <!-- <p class="post-meta">2018-12-25</p> -->
+				</div>
+				<hr>
+				
+			</div>
+			
+			<div class="one-tag-list">
+			  	<span class="fa fa-tag listing-seperator" id="similarity">
+                    <span class="tag-text">similarity</span>
+                </span>
+				
+				  <!-- <li class="listing-item">
+				  <time datetime="2019-01-07">2019-01-07</time>
+				  <a href="/2019/01/07/similarity-methods/" title="similarity methods 笔记">similarity methods 笔记</a>
+				  </li> -->
+				 <div class="post-preview">
+				    <a href="/2019/01/07/similarity-methods/">
+				        <h2 class="post-title">
+                            similarity methods 笔记
+				        </h2>
+				        
+				        <h3 class="post-subtitle">
+				            similariry
+				        </h3>
+				        
+				    </a>
+				    <!-- <p class="post-meta">2019-01-07</p> -->
+				</div>
+				<hr>
+				
+			</div>
+			
+
+		</div>
+	</div>
+</div>
+
+
+    <!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                    
+                    
+
+                    <!-- add Weibo, Zhihu by Hux, add target = "_blank" to <a> by Hux -->
+                    
+                    
+
+
+                    
+                    
+                    
+                </ul>
+                <p class="copyright text-muted">
+                    Copyright &copy; 慢时光的学习笔记 2019
+                    <br>
+                    Theme by <a href="http://huangxuan.me">Hux</a> |
+                    <iframe
+                        style="margin-left: 2px; margin-bottom:-5px;"
+                        frameborder="0" scrolling="0" width="100px" height="20px"
+                        src="https://ghbtns.com/github-btn.html?user=huxpro&repo=huxpro.github.io&type=star&count=true" >
+                    </iframe>
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- jQuery -->
+<script src="/js/jquery.min.js "></script>
+
+<!-- Bootstrap Core JavaScript -->
+<!-- Currently, only navbar scroll-down effect at desktop still depends on this -->
+<script src="/js/bootstrap.min.js "></script>
+
+<!-- Custom Theme JavaScript -->
+<script src="/js/hux-blog.min.js "></script>
+
+<!-- Service Worker -->
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+<!--
+     Because of the native support for backtick-style fenced code blocks
+     right within the Markdown is landed in Github Pages,
+     From V1.6, There is no need for Highlight.js,
+     so Huxblog drops it officially.
+
+     - https://github.com/blog/2100-github-pages-now-faster-and-simpler-with-jekyll-3-0
+     - https://help.github.com/articles/creating-and-highlighting-code-blocks/
+     - https://github.com/jneen/rouge/wiki/list-of-supported-languages-and-lexers
+-->
+<!--
+    <script>
+        async("http://cdn.bootcss.com/highlight.js/8.6/highlight.min.js", function(){
+            hljs.initHighlightingOnLoad();
+        })
+    </script>
+    <link href="http://cdn.bootcss.com/highlight.js/8.6/styles/github.min.css" rel="stylesheet">
+-->
+
+
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async('/js/jquery.tagcloud.js',function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+<!--fastClick.js -->
+<script>
+    async("//cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.6/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+<!-- Google Analytics -->
+
+
+
+<!-- Baidu Tongji -->
+
+
+
+<!-- Side Catalog -->
+
+
+
+<!-- Multi-Lingual -->
+
+
+
+
+<!-- Image to hack wechat -->
+<img src="/img/icon_wechat.png" width="0" height="0" />
+<!-- Migrate from head to bottom, no longer block render and still work -->
+
+</body>
+
+</html>

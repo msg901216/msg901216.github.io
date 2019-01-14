@@ -1,0 +1,744 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="keywords"  content="">
+    <meta name="theme-color" content="">
+    
+    <title>程序员问大师 - 学习笔记 | Reading Blog</title>
+
+    <!-- Web App Manifest -->
+    <link rel="manifest" href="/pwa/manifest.json">
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="http://localhost:4000/2018/07/12/Interesting/">
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/hux-blog.min.css">
+
+    <!-- Pygments Github CSS -->
+    <link rel="stylesheet" href="/css/syntax.css">
+
+    <!-- Custom Fonts -->
+    <!-- <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"> -->
+    <!-- Hux change font-awesome CDN to qiniu -->
+    <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- ga & ba script hoook -->
+    <script type="text/javascript" async
+src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML" async>
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        showProcessingMessages: false,
+        messageStyle: "none",
+        extensions: ["tex2jax.js"],
+        jax: ["input/TeX", "output/HTML-CSS"],
+        tex2jax: {
+            inlineMath:  [ ["$", "$"] ],
+            displayMath: [ ["$$","$$"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre','code','a'],
+            ignoreClass:"comment-content"
+        },
+        "HTML-CSS": {
+            availableFonts: ["STIX","TeX"],
+            showMathMenu: false
+        }
+    });
+    MathJax.Hub.Queue(["Typeset",MathJax.Hub]);
+    </script>
+    
+    <script data-no-instant>
+    InstantClick.on('change', function(isInitialLoad){
+        if (isInitialLoad === false) {
+            if (typeof MathJax !== 'undefined'){
+                MathJax.Hub.Queue(["Typeset",MathJax.Hub]);
+            }
+        }
+    });
+    InstantClick.init();
+    </script>
+</head>
+
+
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="">
+
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">慢时光的学习笔记</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+                    
+                    <li>
+                        <a href="/about/">About</a>
+                    </li>
+                    
+                    <li>
+                        <a href="/tags/">Tags</a>
+                    </li>
+                    
+                </ul>
+            </div>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    var __HuxNav__ = {
+        close: function(){
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        },
+        open: function(){
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+
+    // Bind Event
+    $toggle.addEventListener('click', function(e){
+        if ($navbar.className.indexOf('in') > 0) {
+            __HuxNav__.close()
+        }else{
+            __HuxNav__.open()
+        }
+    })
+
+    /**
+     * Since Fastclick is used to delegate 'touchstart' globally
+     * to hack 300ms delay in iOS by performing a fake 'click',
+     * Using 'e.stopPropagation' to stop 'touchstart' event from 
+     * $toggle/$collapse will break global delegation.
+     * 
+     * Instead, we use a 'e.target' filter to prevent handler
+     * added to document close HuxNav.  
+     *
+     * Also, we use 'click' instead of 'touchstart' as compromise
+     */
+    document.addEventListener('click', function(e){
+        if(e.target == $toggle) return;
+        if(e.target.className == 'icon-bar') return;
+        __HuxNav__.close();
+    })
+</script>
+
+
+    <!-- Image to hack wechat -->
+<!-- <img src="/img/icon_wechat.png" width="0" height="0"> -->
+<!-- <img src="/img/post-bg-os-metro.jpg" width="0" height="0"> -->
+
+<!-- Post Header -->
+<style type="text/css">
+    header.intro-header{
+        position: relative;
+        background-image: url('/img/post-bg-os-metro.jpg')
+    }
+
+    
+</style>
+<header class="intro-header" >
+    <div class="header-mask"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <div class="tags">
+                        
+                        <a class="tag" href="/tags/#励志" title="励志">励志</a>
+                        
+                        <a class="tag" href="/tags/#趣闻" title="趣闻">趣闻</a>
+                        
+                        <a class="tag" href="/tags/#转载" title="转载">转载</a>
+                        
+                    </div>
+                    <h1>程序员问大师</h1>
+                    
+                    
+                    <h2 class="subheading">李运华</h2>
+                    
+                    <span class="meta">Posted by msg on July 12, 2018</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+    <!-- Post Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
+
+                <!-- Multi-Lingual -->
+                
+
+				<blockquote>
+  <p>读到这篇有趣的文章，忍不住转载了下来，反正自己看了之后，感触蛮大的，也希望自己能照着这个方向去努力，去看书，多做笔记，坚持，就是胜利！</p>
+</blockquote>
+
+<p>程序员问大师……
+青年：大师，你看咪蒙的助理都月薪 5 万了，我也想月薪 5 万！</p>
+
+<p>大师：很简单，我这里有一份佛系月薪 5 万指南，我看你骨骼清奇、脑门光亮，一看就是将要大富大贵之人，这份指南可以助你快速实现小目标！</p>
+
+<p>青年：太好了，要多少钱，三年无效能退款么？</p>
+
+<p>大师：免费，只要你能够按照指南去做，包你月薪 5 万，如果还没达到，那就继续按照指南去做！</p>
+
+<p>青年：太好了，大师快告诉我，我已经迫不及待了！</p>
+
+<p>大师：很简单，你只要坚持 1 年读 50 本以上的书，不要管记不记得住就可以了！</p>
+
+<p>青年：这也太简单了吧？太平淡无奇了吧？我还以为你会传授千百年来秘不外宣的佛门绝学呢！</p>
+
+<p>大师：看起来很简单，真正做到的人很少，你去年读了多少本书？</p>
+
+<p>青年：这。。。。。。不超过 5 本，还有两本是言情小说：）</p>
+
+<p>大师：你认为读书无用？</p>
+
+<p>青年：不不不，我觉得非常有用，大学学到的东西远远不够，工作后还有很多知识和技能要学习！</p>
+
+<p>大师：看来你并不是不知道持续学习的重要性，而是做不到持续学习！</p>
+
+<p>青年：是的，作为一个钱不多话不多加班多的苦逼代码狗，每天朝九晚九，找女朋友的时间都没有，哪里还有时间学习？</p>
+
+<p>大师：你希望工作后也能像学生时一样学习？</p>
+
+<p>青年：肯定的啊，学习又不是玩，必须要保证大段时间投入，专注才行！</p>
+
+<p>大师：错，这是你的第一个误区：学习一定要大段时间！</p>
+
+<p>青年：难道不是吗？上学的时候都是这么学的啊！</p>
+
+<p>大师：上学和工作完全是两种不同的环境，上学的时候我们的主要任务是学习，学习的目的是学习知识和通过考试；工作后我们的主要任务是工作，学习的目的是提升技能；工作后还期望能够和上学时一样有那么多时间学习，当然不可能！</p>
+
+<p>青年：我也知道不可能啊，但不这样学习能学到东西么？</p>
+
+<p>大师：学习不一定要一大段时间， 学生时代我们的学习是以考试为目标，关键在于短时间内掌握大量的知识来应对考试；工作后的学习并没有考试这个约束，更多的是为了针对工作中需要的技能来进行学习，关键在于不断的积累。形象的说，学生时代的学习目标是半年内拿到 90 分，而工作后的学习目标可以是半年从 0 分提升到 40 分，再过半年从 40 分提升到 60 分，再过半年从 60 分提升到 80 分，再花 1 年时间从 80 分提升到 90 分，那么从此以后你就具备了一个 90 分的技能。</p>
+
+<p>青年：原来是这样，我有点懂了，工作后的学习以积累为主要目标。</p>
+
+<p>大师：是的，你不需要短时间内花费大量时间来掌握大量知识或者技能，关键在于不断的积累和提升。</p>
+
+<p>青年：道理我懂了，但是还是没有时间啊！</p>
+
+<p>大师：这里教你佛系学习第一法：挤时间！ 时间就像海绵里的水，挤挤总会有的；时间就像美女的胸，挤挤都会有的！</p>
+
+<p>青年：大师也调皮啊，你是说我要凿壁借光、头悬梁锥刺股，牺牲自己的休息时间来学习？</p>
+
+<p>大师：不需要，这样做你就很难坚持！我们需要既不影响我们生活节奏，又能挤出时间！</p>
+
+<p>青年：愿闻其详！</p>
+
+<p>大师：很简单，从大段时间里面挤出小段时间，比如说：你打游戏么？</p>
+
+<p>青年：玩啊，玩游戏是我放松的方式，要是没有游戏放松，我估计早就扛不住了，我一般都会玩到晚上 12 点才睡，我的《王者荣耀》都到钻石了！</p>
+
+<p>大师：没问题，你可以继续玩游戏，但每天只玩到晚上 11：30，这样就挤出 30 分钟了，这样你的游戏还是可以玩，只是少玩 30 分钟，对你游戏影响不大，但多出来的 30 分钟用于你学习，长期积累下去，受益非常大！</p>
+
+<p>青年：大师点醒了我，这样做确实可以多出 30 分钟，反正王者荣耀多玩一把基本上也是被坑的！</p>
+
+<p>大师：这只是一个举例，只要你留心去观察，很多场景都可以挤出时间来，例如：</p>
+
+<p>你习惯了早上 8 点起床，不需要改为早上 6 点起床，只需要改为 7：30 起床就可以了，这样又不影响睡眠，又挤出了 30 分钟；</p>
+
+<p>你习惯了打游戏到 0 点，不需要戒掉打游戏，只需要改为打游戏到 23：30，这样游戏也可以玩，又挤出了 30 分钟；</p>
+
+<p>地铁上 1 个小时，可以听听英语或者有声书，相当于多了 1 个小时；</p>
+
+<p>带小孩出去玩，不需要安排一整天的活动，可以挤出 1~2 个小时；</p>
+
+<p>每周都要去电影院看电影，改为每两周去一次，每周又多了 4 个小时。</p>
+
+<p>青年：我懂了，关键在于自己要有意识的去挤出时间！</p>
+
+<p>大师：是的，如果你认为睡觉的时间也不能少，打游戏的时间也不能少，看电影的时间更不能少，但却天天抱怨没有时间学习和提升，那不管什么方法都无能为力，因为再好的方法都需要时间去落实到具体行动上去！</p>
+
+<p>青年：怎么挤时间我懂了，但是挤出来的时间都是 10 分钟、20 分钟、最多 30 分钟，这么短的时间怎么学习呢？我觉得基本上就只够刷刷知乎或者朋友圈文章了。</p>
+
+<p>大师：错，这是你的第二个误区：碎片时间碎片学习！</p>
+
+<p>青年：这有什么问题吗？知乎、朋友圈、头条很多文章我看起来都很有道理啊，而且学的很快！</p>
+
+<p>大师：标题党、震惊党、鸡汤文、养生文、我有一个朋友文。。。。。。这些我就不多说了，考虑到你是一个程序员，相信你不会傻到被忽悠！</p>
+
+<p>青年：多谢大师夸奖，我一般只看技术相关的，比如说今天看看微服务的文章，明天看看机器学习的文章，后天看看比特币的文章！</p>
+
+<p>大师：即使你学的是专业技能，碎片化的学习效果也不好，其主要问题在于不够“系统化”，例如：要想完整的掌握微服务，微服务的背景、发展历史、优势劣势、适用场景、相关技术等全面掌握才算真正掌握，否则这个月看一个服务注册、下个月看个微服务和 SOA 对比，明年看一下阿里的微服务实践，貌似知道了一堆微服务名词，但真正要你去实施一个项目的微服务改造，你就会发现无从下手！青年：原来如此，难怪设计评审的时候，虽然我看过微服务的很多文章，但在设计的时候就是不知道怎么做！</p>
+
+<p>大师：这里教你佛系学习第二法：碎片化时间系统化学习！</p>
+
+<p>青年：愿闻其详！</p>
+
+<p>大师：将碎片化的时间用来系统的学习某项知识或者技术，例如如果你想真正掌握微服务，就需要系统的学习，最方便的方式就是买几本微服务的书去啃！</p>
+
+<p>青年：但是每次啃 10 分钟会有用么？</p>
+
+<p>大师：非常有用，这就是佛系学习的精华所在，你只管去啃，不用担心是否有用，10 分钟能看 10 页看 10 页，看不了 10 页就看 5 页，这样下去，一本书再慢，一天 10 分钟一个月也能啃完！</p>
+
+<p>青年：但这样 1 年就只能读 12 本，读不了 50 本了！</p>
+
+<p>大师：实际上你一天可以挤出 1 个小时，而且绝大部分知识和技术，都是随着你读的越来越多，速度会越来越快！只要你坚持，1 周 1 本书是没有问题的。</p>
+
+<p>青年：书越读越快是什么意思？我看书总是看完就忘记了，所以我觉得还不如不看！</p>
+
+<p>大师：错，这是你的第三个误区：看书就是要背住！</p>
+
+<p>青年：难道不是吗？ 看书如果记不住有什么用呢？</p>
+
+<p>大师：你看过《神奇女侠》么？</p>
+
+<p>青年：看过，很好看的电影，神奇女侠身材很好，很性感！</p>
+
+<p>大师：你能给我讲讲每分钟的情节和演员的动作、台词么？</p>
+
+<p>青年：这怎么可能？我只记得神奇女侠挡子弹和神奇女侠大战战神的情节了。</p>
+
+<p>大师：但是让你重新看一遍，你是不是觉得每个地方都看过？</p>
+
+<p>青年：那肯定，只要是看过的电影，看第二遍肯定知道。</p>
+
+<p>大师：看书也是这样的，书中一些精彩的内容你会清晰的记得，就像神奇女侠挡子弹的镜头一样；但还有很多内容你无法清晰的记住，但会潜移默化的影响你的隐性记忆，所以当你重新看同一本书、或者看另外一本类似的书，如果看到一些关键内容，你会有一种似曾相识的感觉！</p>
+
+<p>青年：原来如此，我当年看《UNIX 网络编程》，看完就忘记了，但当我看到代码中的 epoll 这些用法的时候，看起来就轻松很多，原来是已经隐性记忆已经有了相关技能储备了。</p>
+
+<p>大师：这就是佛系学习第三法：不管记不记得住，坚持看！ 对于一项新知识或者新技能，一般情况下你坚持看 3~5 本相关的书，就会发现整个知识或者技能体系已经基本涵盖完毕，同样的内容会反复的在不同的书中出现，越看到后面，看书的速度越快。</p>
+
+<p>青年：多谢大师！我这就回去开始看，前年双十一买的 Kindle 都吃了好多灰了，正好用来看书。</p>
+
+<p>大师：且慢，佛系学习还有最后一法：好书需要读三遍，要读只读纸质书！</p>
+
+<p>青年：此话怎讲，电子书可是科技进步的结晶哦？</p>
+
+<p>大师：要想真正掌握一本书的核心内容，需要读三遍。第一遍：细读，目的在于完整阅读全书，并且划出重点，写上读书笔记；一个月后读第二遍：扫读，主要快速翻阅第一遍阅读时做的笔记和划的重点，目的在于加深记忆；半年后第三遍：忆读，读的时候只看目录，然后去回想内容，如果回想不起来，再去进行扫读。这样三遍下来，基本上一本书的核心内容就能够很好的吸收。</p>
+
+<p>青年：醍醐灌顶，原来读书还有这种讲究，以前我都是读完一本书就扔到床底了！</p>
+
+<p>大师：所以，不要用 Kindle 之类的阅读器来看书，第一是做笔记不方便；第二是翻阅不方便；第三是不像纸质书那样可以随时提醒你！</p>
+
+<p>青年：但是纸质书买多了好重，搬家很麻烦啊！</p>
+
+<p>大师：当锻炼身体也可以，请个人搬也可以，总之不要为了芝麻丢了西瓜！再说了，月薪 5 万后你就不用搬了！</p>
+
+<p>青年：我感觉仿佛已经学到了九阳真经了，我已经要迫不及待的要回去开始实现月薪 5 万的小目标了，大师，还有吗？没有我就要赶快回去了！</p>
+
+<p>大师：最后提醒几点，第一：不要看闲书，不要修仙、不要穿越、不要盗墓！</p>
+
+<p>青年：我的眼里只有技术！</p>
+
+<p>大师：第二：少打游戏多锻炼身体！</p>
+
+<p>青年：大师所言极是，身体是革命的本钱！</p>
+
+<p>大师：第三：少看片！</p>
+
+<p>青年：。。。。。。</p>
+
+<p>青年：多谢大师，我对大师的的感激之情犹如滔滔江水，连绵不绝，又如黄河泛滥，一发而不可收拾，听大师一言，胜读十年寒窗！</p>
+
+
+                <hr style="visibility: hidden;">
+
+                <ul class="pager">
+                    
+                    <li class="previous">
+                        <a href="/2018/07/10/The-Beauty-of-Math/" data-toggle="tooltip" data-placement="top" title="The Beauty of Math(11-15)">
+                        Previous<br>
+                        <span>The Beauty of Math(11-15)</span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li class="next">
+                        <a href="/2018/07/12/The-Beauty-of-Math/" data-toggle="tooltip" data-placement="top" title="The Beauty of Math(16)">
+                        Next<br>
+                        <span>The Beauty of Math(16)</span>
+                        </a>
+                    </li>
+                    
+                </ul>
+
+
+                
+
+                
+            </div>  
+
+    <!-- Side Catalog Container -->
+        
+
+    <!-- Sidebar Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+                <section>
+                    <hr class="hidden-sm hidden-xs">
+                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
+                    <div class="tags">
+        				
+                            
+        				
+                            
+        				
+                            
+                				<a href="/tags/#NLP" title="NLP" rel="9">
+                                    NLP
+                                </a>
+                            
+        				
+                            
+        				
+                            
+        				
+                            
+                				<a href="/tags/#数学" title="数学" rel="6">
+                                    数学
+                                </a>
+                            
+        				
+                            
+                				<a href="/tags/#自然语言处理" title="自然语言处理" rel="10">
+                                    自然语言处理
+                                </a>
+                            
+        				
+                            
+                				<a href="/tags/#励志" title="励志" rel="5">
+                                    励志
+                                </a>
+                            
+        				
+                            
+        				
+                            
+                				<a href="/tags/#转载" title="转载" rel="23">
+                                    转载
+                                </a>
+                            
+        				
+                            
+        				
+                            
+                				<a href="/tags/#学习" title="学习" rel="25">
+                                    学习
+                                </a>
+                            
+        				
+                            
+                				<a href="/tags/#java" title="java" rel="7">
+                                    java
+                                </a>
+                            
+        				
+                            
+        				
+                            
+        				
+                            
+        				
+                            
+        				
+                            
+        				
+                            
+        				
+                            
+                				<a href="/tags/#笔记" title="笔记" rel="3">
+                                    笔记
+                                </a>
+                            
+        				
+                            
+        				
+                            
+        				
+                            
+        				
+                            
+        				
+                            
+        				
+                            
+        				
+                            
+        				
+                            
+        				
+                            
+                				<a href="/tags/#ubuntu" title="ubuntu" rel="5">
+                                    ubuntu
+                                </a>
+                            
+        				
+                            
+        				
+                            
+        				
+                            
+        				
+                            
+        				
+                            
+        				
+                            
+        				
+                            
+        				
+                            
+        				
+                            
+        				
+                            
+        				
+                            
+        				
+                            
+        				
+                            
+        				
+                            
+        				
+                            
+        				
+        			</div>
+                </section>
+                
+
+                <!-- Friends Blog -->
+                
+            </div>
+        </div>
+    </div>
+</article>
+
+
+
+
+
+
+
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+<!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
+<script>
+    async("//cdnjs.cloudflare.com/ajax/libs/anchor-js/1.1.1/anchor.min.js",function(){
+        anchors.options = {
+          visible: 'always',
+          placement: 'right',
+          icon: '#'
+        };
+        anchors.add().remove('.intro-header h1').remove('.subheading').remove('.sidebar-container h5');
+    })
+</script>
+<style>
+    /* place left on bigger screen */
+    @media all and (min-width: 800px) {
+        .anchorjs-link{
+            position: absolute;
+            left: -0.75em;
+            font-size: 1.1em;
+            margin-top : -0.1em;
+        }
+    }
+</style>
+
+
+
+    <!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                    
+                    
+
+                    <!-- add Weibo, Zhihu by Hux, add target = "_blank" to <a> by Hux -->
+                    
+                    
+
+
+                    
+                    
+                    
+                </ul>
+                <p class="copyright text-muted">
+                    Copyright &copy; 慢时光的学习笔记 2019
+                    <br>
+                    Theme by <a href="http://huangxuan.me">Hux</a> |
+                    <iframe
+                        style="margin-left: 2px; margin-bottom:-5px;"
+                        frameborder="0" scrolling="0" width="100px" height="20px"
+                        src="https://ghbtns.com/github-btn.html?user=huxpro&repo=huxpro.github.io&type=star&count=true" >
+                    </iframe>
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- jQuery -->
+<script src="/js/jquery.min.js "></script>
+
+<!-- Bootstrap Core JavaScript -->
+<!-- Currently, only navbar scroll-down effect at desktop still depends on this -->
+<script src="/js/bootstrap.min.js "></script>
+
+<!-- Custom Theme JavaScript -->
+<script src="/js/hux-blog.min.js "></script>
+
+<!-- Service Worker -->
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+<!--
+     Because of the native support for backtick-style fenced code blocks
+     right within the Markdown is landed in Github Pages,
+     From V1.6, There is no need for Highlight.js,
+     so Huxblog drops it officially.
+
+     - https://github.com/blog/2100-github-pages-now-faster-and-simpler-with-jekyll-3-0
+     - https://help.github.com/articles/creating-and-highlighting-code-blocks/
+     - https://github.com/jneen/rouge/wiki/list-of-supported-languages-and-lexers
+-->
+<!--
+    <script>
+        async("http://cdn.bootcss.com/highlight.js/8.6/highlight.min.js", function(){
+            hljs.initHighlightingOnLoad();
+        })
+    </script>
+    <link href="http://cdn.bootcss.com/highlight.js/8.6/styles/github.min.css" rel="stylesheet">
+-->
+
+
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async('/js/jquery.tagcloud.js',function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+<!--fastClick.js -->
+<script>
+    async("//cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.6/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+<!-- Google Analytics -->
+
+
+
+<!-- Baidu Tongji -->
+
+
+
+<!-- Side Catalog -->
+
+
+
+<!-- Multi-Lingual -->
+
+
+
+
+<!-- Image to hack wechat -->
+<img src="/img/icon_wechat.png" width="0" height="0" />
+<!-- Migrate from head to bottom, no longer block render and still work -->
+
+</body>
+
+</html>

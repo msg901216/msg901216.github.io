@@ -1,0 +1,1809 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>慢时光的学习笔记</title>
+    <description></description>
+    <link>http://localhost:4000/</link>
+    <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml" />
+    <pubDate>Mon, 14 Jan 2019 20:50:17 +0800</pubDate>
+    <lastBuildDate>Mon, 14 Jan 2019 20:50:17 +0800</lastBuildDate>
+    <generator>Jekyll v3.8.3</generator>
+    
+      <item>
+        <title>similarity methods 笔记</title>
+        <description>&lt;h3 id=&quot;jaccard相似性系数jaccard-similarity-coefficient&quot;&gt;Jaccard相似性系数（Jaccard similarity coefficient）&lt;/h3&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;通过计算两个集合交集的大小除以并集的大小来评估他们的相似度&lt;/p&gt;
+&lt;/blockquote&gt;
+
+</description>
+        <pubDate>Mon, 07 Jan 2019 00:00:00 +0800</pubDate>
+        <link>http://localhost:4000/2019/01/07/similarity-methods/</link>
+        <guid isPermaLink="true">http://localhost:4000/2019/01/07/similarity-methods/</guid>
+        
+        <category>similarity</category>
+        
+        <category>笔记</category>
+        
+        <category>学习</category>
+        
+        
+      </item>
+    
+      <item>
+        <title>java笔记</title>
+        <description>&lt;h3 id=&quot;统一错误处理&quot;&gt;统一错误处理&lt;/h3&gt;
+&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nd&quot;&gt;@RestController&lt;/span&gt;
+&lt;span class=&quot;nd&quot;&gt;@RequestMapping&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;${server.error.path:${error.path:/error}}&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;MyErrorController&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;extends&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;AbstractErrorController&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+
+    &lt;span class=&quot;nd&quot;&gt;@Autowired&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;MyErrorController&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ErrorAttributes&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;errorAttributes&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;kd&quot;&gt;super&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;errorAttributes&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+    &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;MyErrorController&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ErrorAttributes&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;errorAttributes&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;List&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ErrorViewResolver&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;errorViewResolvers&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;kd&quot;&gt;super&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;errorAttributes&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;errorViewResolvers&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+    &lt;span class=&quot;nd&quot;&gt;@Override&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;getErrorPath&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;/error&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+    &lt;span class=&quot;nd&quot;&gt;@RequestMapping&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ResultBean&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;doHandleError&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;HttpServletRequest&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;request&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;Map&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;String&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Object&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;body&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;getErrorAttributes&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;request&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;kc&quot;&gt;false&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;ResultBean&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;resultBean&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ResultBean&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ResultBean&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;ResultCode&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;OTHER_ERROR&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;resultBean&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;setMsg&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;((&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;String&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;body&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;get&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;message&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;));&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;resultBean&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;elasticsearch-data返回score&quot;&gt;elasticsearch-data返回score&lt;/h3&gt;
+
+&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;template&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;query&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;query&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;response&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;List&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;BotSentenceWithScore&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;botSentences&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ArrayList&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&amp;gt;();&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;SearchHit&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[]&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;hits&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;response&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;getHits&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;().&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;getHits&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;SearchHit&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;hit&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;hits&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;try&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+                &lt;span class=&quot;n&quot;&gt;BotSentenceWithScore&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;botSentence&lt;/span&gt;  &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;entityMapper&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;mapToObject&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;hit&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;getSourceAsString&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(),&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;BotSentenceWithScore&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;class&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+                &lt;span class=&quot;kt&quot;&gt;float&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;documentScore&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;hit&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;getScore&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
+                &lt;span class=&quot;n&quot;&gt;botSentence&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;setScore&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;documentScore&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+                &lt;span class=&quot;n&quot;&gt;botSentences&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;add&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;botSentence&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+            &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;catch&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;IOException&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;e&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+                &lt;span class=&quot;n&quot;&gt;e&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;printStackTrace&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
+            &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+        &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;botSentences&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;});&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;entitymapper&quot;&gt;entitymapper&lt;/h3&gt;
+
+&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nd&quot;&gt;@Configuration&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;EntityMapperConfig&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;nd&quot;&gt;@Bean&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;EntityMapper&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;entityMapper&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(){&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;DefaultEntityMapper&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;idea打包可执行jar包&quot;&gt;idea打包可执行jar包&lt;/h3&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;选中Java项目工程名称，在菜单中选择 File-&amp;gt;project structure… (快捷键Ctrl+Alt+Shift+S)。&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;在弹出的窗口中左侧选中”Artifacts”，点击”+”选择jar，然后选择”from modules with dependencies”。&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;在配置窗口中配置”Main Class”。&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;配置“Directory for META-INF/MAINFEST.MF”，此项配置的缺省值是：..\src\main\java，需要改成项目根目录。选择“extract to the target JAR”，这样所有依赖的jar包都会放在生成的jar包中。&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;完成后，点击OK，Apply等按钮，回到IDEA的主菜单，选择“Build - Build Artifacts”下的“Build”或者“Rebuild”即可生成最终的可运行的jar。&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+</description>
+        <pubDate>Fri, 04 Jan 2019 00:00:00 +0800</pubDate>
+        <link>http://localhost:4000/2019/01/04/java-notes/</link>
+        <guid isPermaLink="true">http://localhost:4000/2019/01/04/java-notes/</guid>
+        
+        <category>java</category>
+        
+        <category>笔记</category>
+        
+        <category>学习</category>
+        
+        
+      </item>
+    
+      <item>
+        <title>PostgreSQL的一些常用命令记录</title>
+        <description>&lt;blockquote&gt;
+  &lt;p&gt;&lt;a href=&quot;http://www.ruanyifeng.com/blog/2013/12/getting_started_with_postgresql.html&quot;&gt;PostgreSQL的安装和基本用法&lt;/a&gt;。&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&quot;一安装&quot;&gt;一、安装&lt;/h3&gt;
+
+&lt;p&gt;首先，安装PostgreSQL客户端。&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;apt-get &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;postgresql-client
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;然后，安装PostgreSQL服务器。&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;apt-get &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;postgresql
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;正常情况下，安装完成后，PostgreSQL服务器会自动在本机的5432端口开启。&lt;/p&gt;
+
+&lt;p&gt;如果还想安装图形管理界面，可以运行下面命令。&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;apt-get &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;pgadmin4
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;二添加新用户和新数据库&quot;&gt;二、添加新用户和新数据库&lt;/h3&gt;
+
+&lt;p&gt;初次安装后，默认生成一个名为postgres的数据库和一个名为postgres的数据库用户。这里需要注意的是，同时还生成了一个名为postgres的Linux系统用户。&lt;/p&gt;
+
+&lt;p&gt;下面，我们使用postgres用户，来生成其他用户和新数据库。好几种方法可以达到这个目的，这里介绍两种。&lt;/p&gt;
+
+&lt;h4 id=&quot;第一种方法使用postgresql控制台&quot;&gt;第一种方法，使用PostgreSQL控制台。&lt;/h4&gt;
+
+&lt;p&gt;首先，新建一个Linux新用户，可以取你想要的名字，这里为dbuser。&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;adduser dbuser
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;然后，切换到postgres用户。&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;sudo su - postgres
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;下一步，使用psql命令登录PostgreSQL控制台。&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;psql
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;这时相当于系统用户postgres以同名数据库用户的身份，登录数据库，这是不用输入密码的。如果一切正常，系统提示符会变为”postgres=#”，表示这时已经进入了数据库控制台。以下的命令都在控制台内完成。&lt;/p&gt;
+
+&lt;p&gt;第一件事是使用\password命令，为postgres用户设置一个密码。&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;\password postgres
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;第二件事是创建数据库用户dbuser（刚才创建的是Linux系统用户），并设置密码。&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;CREATE USER dbuser WITH PASSWORD 'password';
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;第三件事是创建用户数据库，这里为exampledb，并指定所有者为dbuser。&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;CREATE DATABASE exampledb OWNER dbuser;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;第四件事是将exampledb数据库的所有权限都赋予dbuser，否则dbuser只能登录控制台，没有任何数据库操作权限。&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;GRANT ALL PRIVILEGES ON DATABASE exampledb to dbuser;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;最后，使用\q命令退出控制台（也可以直接按ctrl+D）。&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;\q
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h4 id=&quot;第二种方法使用shell命令行&quot;&gt;第二种方法，使用shell命令行。&lt;/h4&gt;
+
+&lt;p&gt;添加新用户和新数据库，除了在PostgreSQL控制台内，还可以在shell命令行下完成。这是因为PostgreSQL提供了命令行程序createuser和createdb。还是以新建用户dbuser和数据库exampledb为例。&lt;/p&gt;
+
+&lt;p&gt;首先，创建数据库用户dbuser，并指定其为超级用户。&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;sudo -u postgres createuser --superuser dbuser
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;然后，登录数据库控制台，设置dbuser用户的密码，完成后退出控制台。&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;sudo -u postgres psql
+\password dbuser
+\q
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;接着，在shell命令行下，创建数据库exampledb，并指定所有者为dbuser。&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;sudo -u postgres createdb -O dbuser exampledb
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;三登录数据库&quot;&gt;三、登录数据库&lt;/h3&gt;
+
+&lt;p&gt;添加新用户和新数据库以后，就要以新用户的名义登录数据库，这时使用的是psql命令。&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;psql -U dbuser -d exampledb -h 127.0.0.1 -p 5432
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;上面命令的参数含义如下：-U指定用户，-d指定数据库，-h指定服务器，-p指定端口。&lt;/p&gt;
+
+&lt;p&gt;输入上面命令以后，系统会提示输入dbuser用户的密码。输入正确，就可以登录控制台了。&lt;/p&gt;
+
+&lt;p&gt;psql命令存在简写形式。如果当前Linux系统用户，同时也是PostgreSQL用户，则可以省略用户名（-U参数的部分）。举例来说，我的Linux系统用户名为ruanyf，且PostgreSQL数据库存在同名用户，则我以ruanyf身份登录Linux系统后，可以直接使用下面的命令登录数据库，且不需要密码。&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;psql exampledb
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;此时，如果PostgreSQL内部还存在与当前系统用户同名的数据库，则连数据库名都可以省略。比如，假定存在一个叫做ruanyf的数据库，则直接键入psql就可以登录该数据库。&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;psql
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;另外，如果要恢复外部数据，可以使用下面的命令。&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;psql exampledb &amp;lt; exampledb.sql
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;四控制台命令&quot;&gt;四、控制台命令&lt;/h3&gt;
+
+&lt;p&gt;除了前面已经用到的\password命令（设置密码）和\q命令（退出）以外，控制台还提供一系列其他命令。&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;se&quot;&gt;\h&lt;/span&gt;：查看SQL命令的解释，比如&lt;span class=&quot;se&quot;&gt;\h&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;select&lt;/span&gt;。
+&lt;span class=&quot;se&quot;&gt;\?&lt;/span&gt;：查看psql命令列表。
+&lt;span class=&quot;se&quot;&gt;\l&lt;/span&gt;：列出所有数据库。
+&lt;span class=&quot;se&quot;&gt;\c&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;database_name]：连接其他数据库。
+&lt;span class=&quot;se&quot;&gt;\d&lt;/span&gt;：列出当前数据库的所有表格。
+&lt;span class=&quot;se&quot;&gt;\d&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;table_name]：列出某一张表格的结构。
+&lt;span class=&quot;se&quot;&gt;\d&lt;/span&gt;u：列出所有用户。
+&lt;span class=&quot;se&quot;&gt;\e&lt;/span&gt;：打开文本编辑器。
+&lt;span class=&quot;se&quot;&gt;\c&lt;/span&gt;onninfo：列出当前数据库和连接的信息。
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;五数据库操作&quot;&gt;五、数据库操作&lt;/h3&gt;
+
+&lt;p&gt;基本的数据库操作，就是使用一般的SQL语言。&lt;/p&gt;
+
+&lt;div class=&quot;language-sql highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;o&quot;&gt;#&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;创建新表&lt;/span&gt; 
+&lt;span class=&quot;k&quot;&gt;CREATE&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;TABLE&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;user_tbl&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;name&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;VARCHAR&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;20&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;signup_date&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;DATE&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+
+&lt;span class=&quot;err&quot;&gt;\&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;#&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;插入数据&lt;/span&gt; 
+&lt;span class=&quot;k&quot;&gt;INSERT&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;INTO&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;user_tbl&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;signup_date&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;VALUES&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'张三'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'2013-12-22'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+
+&lt;span class=&quot;err&quot;&gt;\&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;#&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;选择记录&lt;/span&gt; 
+&lt;span class=&quot;k&quot;&gt;SELECT&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;FROM&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;user_tbl&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+&lt;span class=&quot;err&quot;&gt;\&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;#&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;更新数据&lt;/span&gt; 
+&lt;span class=&quot;k&quot;&gt;UPDATE&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;user_tbl&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;set&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;name&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'李四'&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;WHERE&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;name&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'张三'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+&lt;span class=&quot;err&quot;&gt;\&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;#&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;删除记录&lt;/span&gt; 
+&lt;span class=&quot;k&quot;&gt;DELETE&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;FROM&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;user_tbl&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;WHERE&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;name&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'李四'&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+&lt;span class=&quot;err&quot;&gt;\&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;#&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;添加栏位&lt;/span&gt; 
+&lt;span class=&quot;k&quot;&gt;ALTER&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;TABLE&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;user_tbl&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;ADD&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;email&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;VARCHAR&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;40&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+
+&lt;span class=&quot;err&quot;&gt;\&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;#&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;更新结构&lt;/span&gt; 
+&lt;span class=&quot;k&quot;&gt;ALTER&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;TABLE&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;user_tbl&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;ALTER&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;COLUMN&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;signup_date&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;SET&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;NOT&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;NULL&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+&lt;span class=&quot;err&quot;&gt;\&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;#&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;更名栏位&lt;/span&gt; 
+&lt;span class=&quot;k&quot;&gt;ALTER&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;TABLE&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;user_tbl&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;RENAME&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;COLUMN&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;signup_date&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;TO&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;signup&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+&lt;span class=&quot;err&quot;&gt;\&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;#&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;删除栏位&lt;/span&gt; 
+&lt;span class=&quot;k&quot;&gt;ALTER&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;TABLE&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;user_tbl&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;DROP&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;COLUMN&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;email&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+&lt;span class=&quot;err&quot;&gt;\&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;#&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;表格更名&lt;/span&gt; 
+&lt;span class=&quot;k&quot;&gt;ALTER&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;TABLE&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;user_tbl&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;RENAME&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;TO&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;backup_tbl&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+&lt;span class=&quot;err&quot;&gt;\&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;#&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;删除表格&lt;/span&gt; 
+&lt;span class=&quot;k&quot;&gt;DROP&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;TABLE&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;IF&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;EXISTS&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;backup_tbl&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+</description>
+        <pubDate>Tue, 25 Dec 2018 00:00:00 +0800</pubDate>
+        <link>http://localhost:4000/2018/12/25/notes-postgresql/</link>
+        <guid isPermaLink="true">http://localhost:4000/2018/12/25/notes-postgresql/</guid>
+        
+        <category>PostgreSQL</category>
+        
+        <category>ubuntu</category>
+        
+        <category>学习</category>
+        
+        <category>转载</category>
+        
+        
+      </item>
+    
+      <item>
+        <title>neo4j学习笔记</title>
+        <description>&lt;blockquote&gt;
+  &lt;p&gt;使用neo4j过程中遇到的一些问题&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&quot;一-neo4j设置远程访问&quot;&gt;一 neo4j设置远程访问&lt;/h3&gt;
+
+&lt;h4 id=&quot;1设置confneo4jconf&quot;&gt;1、设置conf/neo4j.conf&lt;/h4&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;dbms.connectors.default_listen_address&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;0.0.0.0
+dbms.connector.bolt.listen_address&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;:7687
+dbms.connector.http.listen_address&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;:7474
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h4 id=&quot;2设置防火墙&quot;&gt;2、设置防火墙&lt;/h4&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;firewall-cmd &lt;span class=&quot;nt&quot;&gt;--zone&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;public &lt;span class=&quot;nt&quot;&gt;--permanent&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;--add-port&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;7474/tcp
+firewall-cmd &lt;span class=&quot;nt&quot;&gt;--zone&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;public &lt;span class=&quot;nt&quot;&gt;--permanent&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;--add-port&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;7684/tcp
+firewall-cmd &lt;span class=&quot;nt&quot;&gt;--reload&lt;/span&gt; &lt;span class=&quot;c&quot;&gt;#一定不要忘记这句话&lt;/span&gt;
+firewall-cmd &lt;span class=&quot;nt&quot;&gt;--list-ports&lt;/span&gt; &lt;span class=&quot;c&quot;&gt;# 查看端口是否打开成功&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;接下来，就可以在远程用浏览器访问&lt;a href=&quot;http://server_address:7474/browser&quot;&gt;http://server_address:7474/browser&lt;/a&gt;了。&lt;/p&gt;
+</description>
+        <pubDate>Tue, 11 Dec 2018 00:00:00 +0800</pubDate>
+        <link>http://localhost:4000/2018/12/11/neo4j-notes/</link>
+        <guid isPermaLink="true">http://localhost:4000/2018/12/11/neo4j-notes/</guid>
+        
+        <category>neo4j</category>
+        
+        <category>学习</category>
+        
+        <category>转载</category>
+        
+        
+      </item>
+    
+      <item>
+        <title>Git and github notes</title>
+        <description>&lt;blockquote&gt;
+  &lt;p&gt;学习自&lt;a href=&quot;https://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000&quot;&gt;廖雪峰Git教程&lt;/a&gt;、&lt;a href=&quot;https://git-scm.com/doc&quot;&gt;git官网&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&quot;1在linux上安装gitubuntu为例&quot;&gt;1、在Linux上安装Git(ubuntu为例)&lt;/h3&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;apt-get &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;git
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;但是这样下载的可能是比较老的版本，如果需要下载更新最新版本的git，需要如下操作：&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;add-apt-repository ppa:git-core/ppa
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;apt-get update
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;apt-get upgrade
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;2创建版本库&quot;&gt;2、创建版本库&lt;/h3&gt;
+
+&lt;p&gt;首先，选择一个合适的地方，创建一个空目录：&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;mkdir &lt;/span&gt;learngit
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;cd &lt;/span&gt;learngit
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;pwd&lt;/span&gt;
+/home/msg/learngit
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;第二步，通过&lt;code class=&quot;highlighter-rouge&quot;&gt;git init&lt;/code&gt;命令把这个目录变成Git可以管理的仓库：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ git init
+Initialized empty Git repository in /home/msg/learngit/.git/
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;3把文件添加到版本库&quot;&gt;3、把文件添加到版本库&lt;/h3&gt;
+
+&lt;p&gt;第一步，用命令&lt;code class=&quot;highlighter-rouge&quot;&gt;git add&lt;/code&gt;告诉Git，把文件添加到仓库：&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;git add readme.txt
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;第二步，用命令&lt;code class=&quot;highlighter-rouge&quot;&gt;git commit&lt;/code&gt;告诉Git，把文件提交到仓库：&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;git commit &lt;span class=&quot;nt&quot;&gt;-m&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;wrote a readme file&quot;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;4修改文件&quot;&gt;4、修改文件&lt;/h3&gt;
+
+&lt;p&gt;修改&lt;code class=&quot;highlighter-rouge&quot;&gt;readme.txt&lt;/code&gt;文件之后，用&lt;code class=&quot;highlighter-rouge&quot;&gt;git diff&lt;/code&gt;命令看看修改的内容：&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;git diff readme.txt 
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;再次用&lt;code class=&quot;highlighter-rouge&quot;&gt;git commit&lt;/code&gt;提交：&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;git commit &lt;span class=&quot;nt&quot;&gt;-m&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;add distributed&quot;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h4 id=&quot;5版本回退&quot;&gt;5、版本回退&lt;/h4&gt;
+
+&lt;p&gt;在Git中，我们用&lt;code class=&quot;highlighter-rouge&quot;&gt;git log&lt;/code&gt;命令查看：&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;git log
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;git log&lt;/code&gt;命令显示从最近到最远的提交日志&lt;/p&gt;
+
+&lt;p&gt;如果嫌输出信息太多，看得眼花缭乱的，可以试试加上&lt;code class=&quot;highlighter-rouge&quot;&gt;--pretty=oneline&lt;/code&gt;参数：&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;git log &lt;span class=&quot;nt&quot;&gt;--pretty&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;oneline
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;要把当前版本回退到上一个版本&lt;code class=&quot;highlighter-rouge&quot;&gt;add distributed&lt;/code&gt;，就可以使用&lt;code class=&quot;highlighter-rouge&quot;&gt;git reset&lt;/code&gt;命令：&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;git reset &lt;span class=&quot;nt&quot;&gt;--hard&lt;/span&gt; HEAD^
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;最新的版本已经看不到了，想再回去，只要上面的命令行窗口还没有被关掉，就可以找到那个版本的&lt;code class=&quot;highlighter-rouge&quot;&gt;commit id&lt;/code&gt;是&lt;code class=&quot;highlighter-rouge&quot;&gt;1094adb...&lt;/code&gt;，于是就可以指定回到未来的某个版本：&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;git reset &lt;span class=&quot;nt&quot;&gt;--hard&lt;/span&gt; 1094a
+HEAD is now at 83b0afe append GPL
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;当用&lt;code class=&quot;highlighter-rouge&quot;&gt;$ git reset --hard HEAD^&lt;/code&gt;回退到上一版本并关闭了&lt;code class=&quot;highlighter-rouge&quot;&gt;terminal&lt;/code&gt;时，再想恢复，就必须找到&lt;code class=&quot;highlighter-rouge&quot;&gt;commit id&lt;/code&gt;。Git提供了一个命令&lt;code class=&quot;highlighter-rouge&quot;&gt;git reflog&lt;/code&gt;用来记录你的每一次命令：&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;git reflog
+e475afc HEAD@&lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;1&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;: reset: moving to HEAD^
+1094adb &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;HEAD -&amp;gt; master&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; HEAD@&lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;2&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;: commit: append GPL
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;可知，&lt;code class=&quot;highlighter-rouge&quot;&gt;上一个版本&lt;/code&gt;的commit id是&lt;code class=&quot;highlighter-rouge&quot;&gt;1094adb&lt;/code&gt;。&lt;/p&gt;
+
+&lt;h3 id=&quot;6工作区和暂存区&quot;&gt;6、工作区和暂存区&lt;/h3&gt;
+
+&lt;h4 id=&quot;工作区working-directory&quot;&gt;工作区（Working Directory）&lt;/h4&gt;
+
+&lt;p&gt;就是电脑里能看到的目录，比如&lt;code class=&quot;highlighter-rouge&quot;&gt;learngit&lt;/code&gt;文件夹&lt;/p&gt;
+
+&lt;h4 id=&quot;版本库repository&quot;&gt;版本库（Repository）&lt;/h4&gt;
+
+&lt;p&gt;工作区有一个隐藏目录&lt;code class=&quot;highlighter-rouge&quot;&gt;.git&lt;/code&gt;，这个不算工作区，而是Git的版本库。&lt;/p&gt;
+
+&lt;p&gt;Git的版本库里存了很多东西，其中最重要的就是称为stage（或者叫index）的暂存区，还有Git为我们自动创建的第一个分支&lt;code class=&quot;highlighter-rouge&quot;&gt;master&lt;/code&gt;，以及指向&lt;code class=&quot;highlighter-rouge&quot;&gt;master&lt;/code&gt;的一个指针叫&lt;code class=&quot;highlighter-rouge&quot;&gt;HEAD&lt;/code&gt;。&lt;/p&gt;
+
+&lt;p&gt;创建Git版本库时，Git自动为我们创建了唯一一个&lt;code class=&quot;highlighter-rouge&quot;&gt;master&lt;/code&gt;分支，所以，现在，&lt;code class=&quot;highlighter-rouge&quot;&gt;git commit&lt;/code&gt;就是往&lt;code class=&quot;highlighter-rouge&quot;&gt;master&lt;/code&gt;分支上提交更改。&lt;/p&gt;
+
+&lt;h3 id=&quot;7撤销修改&quot;&gt;7、撤销修改&lt;/h3&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;git checkout -- file&lt;/code&gt;可以丢弃工作区的修改：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ git checkout -- readme.txt
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;命令&lt;code class=&quot;highlighter-rouge&quot;&gt;git checkout -- readme.txt&lt;/code&gt;意思就是，把&lt;code class=&quot;highlighter-rouge&quot;&gt;readme.txt&lt;/code&gt;文件在工作区的修改全部撤销，这里有两种情况：&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;readme.txt&lt;/code&gt;自修改后还没有被放到暂存区，撤销修改就回到和版本库一模一样的状态；&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;readme.txt&lt;/code&gt;已经添加到暂存区后，又作了修改，撤销修改就回到添加到暂存区后的状态。&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;总之，就是让这个文件回到最近一次&lt;code class=&quot;highlighter-rouge&quot;&gt;git commit&lt;/code&gt;或&lt;code class=&quot;highlighter-rouge&quot;&gt;git add&lt;/code&gt;时的状态。&lt;/p&gt;
+
+&lt;p&gt;命令&lt;code class=&quot;highlighter-rouge&quot;&gt;git reset HEAD &amp;lt;file&amp;gt;&lt;/code&gt;可以把暂存区的修改撤销掉（unstage），重新放回工作区：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ git reset HEAD readme.txt
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;8删除文件&quot;&gt;8、删除文件&lt;/h3&gt;
+
+&lt;p&gt;直接在文件管理器中把没用的文件删了，或者用&lt;code class=&quot;highlighter-rouge&quot;&gt;rm&lt;/code&gt;命令删了：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ rm test.txt
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Git知道你删除了文件，工作区和版本库就不一致了，&lt;code class=&quot;highlighter-rouge&quot;&gt;git status&lt;/code&gt;命令会立刻告诉你哪些文件被删除了：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ git status
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;用命令&lt;code class=&quot;highlighter-rouge&quot;&gt;git rm&lt;/code&gt;删掉，并且&lt;code class=&quot;highlighter-rouge&quot;&gt;git commit&lt;/code&gt;：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ git rm test.txt
+$ git commit -m &quot;remove test.txt&quot;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;删错了，版本库里还有，可以很轻松地把误删的文件恢复到最新版本：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ git checkout -- test.txt
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;git checkout&lt;/code&gt;其实是用版本库里的版本替换工作区的版本，无论工作区是修改还是删除，都可以“一键还原”。&lt;/p&gt;
+
+&lt;h3 id=&quot;9添加远程库&quot;&gt;9、添加远程库&lt;/h3&gt;
+
+&lt;p&gt;首先，登陆GitHub，然后，在右上角找到“Create a new repo”按钮，创建一个新的仓库&lt;/p&gt;
+
+&lt;p&gt;在Repository name填入&lt;code class=&quot;highlighter-rouge&quot;&gt;learngit&lt;/code&gt;，其他保持默认设置，点击“Create repository”按钮，就成功地创建了一个新的Git仓库&lt;/p&gt;
+
+&lt;p&gt;根据GitHub的提示，在本地的&lt;code class=&quot;highlighter-rouge&quot;&gt;learngit&lt;/code&gt;仓库下运行命令：&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;git remote add origin git@github.com:XXX/learngit.git
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;下一步，就可以把本地库的所有内容推送到远程库上：&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;git push &lt;span class=&quot;nt&quot;&gt;-u&lt;/span&gt; origin master
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;把本地库的内容推送到远程，用&lt;code class=&quot;highlighter-rouge&quot;&gt;git push&lt;/code&gt;命令，实际上是把当前分支&lt;code class=&quot;highlighter-rouge&quot;&gt;master&lt;/code&gt;推送到远程。&lt;/p&gt;
+
+&lt;p&gt;由于远程库是空的，第一次推送&lt;code class=&quot;highlighter-rouge&quot;&gt;master&lt;/code&gt;分支时，加上了&lt;code class=&quot;highlighter-rouge&quot;&gt;-u&lt;/code&gt;参数，Git不但会把本地的&lt;code class=&quot;highlighter-rouge&quot;&gt;master&lt;/code&gt;分支内容推送到远程新的&lt;code class=&quot;highlighter-rouge&quot;&gt;master&lt;/code&gt;分支，还会把本地的&lt;code class=&quot;highlighter-rouge&quot;&gt;master&lt;/code&gt;分支和远程的&lt;code class=&quot;highlighter-rouge&quot;&gt;master&lt;/code&gt;分支关联起来，在以后的推送或者拉取时就可以简化命令。&lt;/p&gt;
+
+&lt;p&gt;从现在起，只要本地作了提交，就可以通过命令：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ git push origin master
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h4 id=&quot;ssh警告&quot;&gt;SSH警告&lt;/h4&gt;
+
+&lt;p&gt;当你第一次使用Git的&lt;code class=&quot;highlighter-rouge&quot;&gt;clone&lt;/code&gt;或者&lt;code class=&quot;highlighter-rouge&quot;&gt;push&lt;/code&gt;命令连接GitHub时，会得到一个警告：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;The authenticity of host 'github.com (xx.xx.xx.xx)' can't be established.
+RSA key fingerprint is xx.xx.xx.xx.xx.
+Are you sure you want to continue connecting (yes/no)?
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;这是因为Git使用SSH连接，而SSH连接在第一次验证GitHub服务器的Key时，需要你确认GitHub的Key的指纹信息是否真的来自GitHub的服务器，输入&lt;code class=&quot;highlighter-rouge&quot;&gt;yes&lt;/code&gt;回车即可。&lt;/p&gt;
+
+&lt;p&gt;Git会输出一个警告，告诉你已经把GitHub的Key添加到本机的一个信任列表里了：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Warning: Permanently added 'github.com' (RSA) to the list of known hosts.
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;这个警告只会出现一次，后面的操作就不会有任何警告了。&lt;/p&gt;
+
+&lt;h3 id=&quot;10从远程库克隆&quot;&gt;10、从远程库克隆&lt;/h3&gt;
+
+&lt;p&gt;用命令&lt;code class=&quot;highlighter-rouge&quot;&gt;git clone&lt;/code&gt;克隆一个本地库：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ git clone git@github.com:XXX/gitskills.git
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;https&lt;/code&gt;除了速度慢以外，还有个最大的麻烦是每次推送都必须输入口令，但是在某些只开放http端口的公司内部就无法使用&lt;code class=&quot;highlighter-rouge&quot;&gt;ssh&lt;/code&gt;协议而只能用&lt;code class=&quot;highlighter-rouge&quot;&gt;https&lt;/code&gt;。&lt;/p&gt;
+
+&lt;h3 id=&quot;11创建与合并分支&quot;&gt;11、创建与合并分支&lt;/h3&gt;
+
+&lt;p&gt;Git把每次提交串成一条时间线，这条时间线就是一个分支。一开始只有一条时间线，在Git里，这个分支叫主分支，即&lt;code class=&quot;highlighter-rouge&quot;&gt;master&lt;/code&gt;分支。&lt;code class=&quot;highlighter-rouge&quot;&gt;HEAD&lt;/code&gt;严格来说不是指向提交，而是指向&lt;code class=&quot;highlighter-rouge&quot;&gt;master&lt;/code&gt;，&lt;code class=&quot;highlighter-rouge&quot;&gt;master&lt;/code&gt;才是指向提交的，所以，&lt;code class=&quot;highlighter-rouge&quot;&gt;HEAD&lt;/code&gt;指向的就是当前分支。&lt;/p&gt;
+
+&lt;p&gt;一开始的时候，&lt;code class=&quot;highlighter-rouge&quot;&gt;master&lt;/code&gt;分支是一条线，Git用&lt;code class=&quot;highlighter-rouge&quot;&gt;master&lt;/code&gt;指向最新的提交，再用&lt;code class=&quot;highlighter-rouge&quot;&gt;HEAD&lt;/code&gt;指向&lt;code class=&quot;highlighter-rouge&quot;&gt;master&lt;/code&gt;，就能确定当前分支，以及当前分支的提交点。&lt;/p&gt;
+
+&lt;p&gt;如果创建新的分支，例如&lt;code class=&quot;highlighter-rouge&quot;&gt;dev&lt;/code&gt;，Git新建了一个指针叫&lt;code class=&quot;highlighter-rouge&quot;&gt;dev&lt;/code&gt;，指向&lt;code class=&quot;highlighter-rouge&quot;&gt;master&lt;/code&gt;相同的提交，再把&lt;code class=&quot;highlighter-rouge&quot;&gt;HEAD&lt;/code&gt;指向&lt;code class=&quot;highlighter-rouge&quot;&gt;dev&lt;/code&gt;，就表示当前分支在&lt;code class=&quot;highlighter-rouge&quot;&gt;dev&lt;/code&gt;上：&lt;/p&gt;
+
+&lt;p&gt;从现在开始，对工作区的修改和提交就是针对&lt;code class=&quot;highlighter-rouge&quot;&gt;dev&lt;/code&gt;分支了，比如新提交一次后，&lt;code class=&quot;highlighter-rouge&quot;&gt;dev&lt;/code&gt;指针往前移动一步，而&lt;code class=&quot;highlighter-rouge&quot;&gt;master&lt;/code&gt;指针不变。&lt;/p&gt;
+
+&lt;p&gt;假如我们在&lt;code class=&quot;highlighter-rouge&quot;&gt;dev&lt;/code&gt;上的工作完成了，就可以把&lt;code class=&quot;highlighter-rouge&quot;&gt;dev&lt;/code&gt;合并到&lt;code class=&quot;highlighter-rouge&quot;&gt;master&lt;/code&gt;上。Git怎么合并呢？最简单的方法，就是直接把&lt;code class=&quot;highlighter-rouge&quot;&gt;master&lt;/code&gt;指向&lt;code class=&quot;highlighter-rouge&quot;&gt;dev&lt;/code&gt;的当前提交，就完成了合并。&lt;/p&gt;
+
+&lt;p&gt;合并完分支后，甚至可以删除&lt;code class=&quot;highlighter-rouge&quot;&gt;dev&lt;/code&gt;分支。删除&lt;code class=&quot;highlighter-rouge&quot;&gt;dev&lt;/code&gt;分支就是把&lt;code class=&quot;highlighter-rouge&quot;&gt;dev&lt;/code&gt;指针给删掉，删掉后，我们就剩下了一条&lt;code class=&quot;highlighter-rouge&quot;&gt;master&lt;/code&gt;分支。&lt;/p&gt;
+
+&lt;h4 id=&quot;实战&quot;&gt;实战&lt;/h4&gt;
+
+&lt;p&gt;首先创建&lt;code class=&quot;highlighter-rouge&quot;&gt;dev&lt;/code&gt;分支，然后切换到&lt;code class=&quot;highlighter-rouge&quot;&gt;dev&lt;/code&gt;分支：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ git checkout -b dev
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;git checkout&lt;/code&gt;命令加上&lt;code class=&quot;highlighter-rouge&quot;&gt;-b&lt;/code&gt;参数表示创建并切换，相当于以下两条命令：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ git branch dev
+$ git checkout dev
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;然后，用&lt;code class=&quot;highlighter-rouge&quot;&gt;git branch&lt;/code&gt;命令查看当前分支：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ git branch
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;git branch&lt;/code&gt;命令会列出所有分支，当前分支前面会标一个&lt;code class=&quot;highlighter-rouge&quot;&gt;*&lt;/code&gt;号。&lt;/p&gt;
+
+&lt;p&gt;然后，可以在&lt;code class=&quot;highlighter-rouge&quot;&gt;dev&lt;/code&gt;分支上正常提交，比如对readme.txt做个修改，加上一行：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Creating a new branch is quick.
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;然后提交：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ git add readme.txt 
+$ git commit -m &quot;branch test&quot;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;现在，&lt;code class=&quot;highlighter-rouge&quot;&gt;dev&lt;/code&gt;分支的工作完成，我们就可以切换回&lt;code class=&quot;highlighter-rouge&quot;&gt;master&lt;/code&gt;分支：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ git checkout master
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;现在，我们把&lt;code class=&quot;highlighter-rouge&quot;&gt;dev&lt;/code&gt;分支的工作成果合并到&lt;code class=&quot;highlighter-rouge&quot;&gt;master&lt;/code&gt;分支上：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ git merge dev
+Updating d46f35e..b17d20e
+Fast-forward
+ readme.txt | 1 +
+ 1 file changed, 1 insertion(+)
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;git merge&lt;/code&gt;命令用于合并指定分支到当前分支。&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;Fast-forward&lt;/code&gt;就是直接把&lt;code class=&quot;highlighter-rouge&quot;&gt;master&lt;/code&gt;指向&lt;code class=&quot;highlighter-rouge&quot;&gt;dev&lt;/code&gt;的当前提交，所以合并速度非常快。&lt;/p&gt;
+
+&lt;p&gt;合并完成后，就可以放心地删除&lt;code class=&quot;highlighter-rouge&quot;&gt;dev&lt;/code&gt;分支了：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ git branch -d dev
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;删除后，查看&lt;code class=&quot;highlighter-rouge&quot;&gt;branch&lt;/code&gt;，就只剩下&lt;code class=&quot;highlighter-rouge&quot;&gt;master&lt;/code&gt;分支了：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ git branch
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;删除远程分支&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;git push origin &lt;span class=&quot;nt&quot;&gt;--delete&lt;/span&gt; dev
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;12解决冲突&quot;&gt;12、解决冲突&lt;/h3&gt;
+
+&lt;p&gt;准备新的&lt;code class=&quot;highlighter-rouge&quot;&gt;feature1&lt;/code&gt;分支，继续新分支开发：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ git checkout -b feature1
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;修改&lt;code class=&quot;highlighter-rouge&quot;&gt;readme.txt&lt;/code&gt;最后一行，改为：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Creating a new branch is quick AND simple.
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;在&lt;code class=&quot;highlighter-rouge&quot;&gt;feature1&lt;/code&gt;分支上提交：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ git add readme.txt
+$ git commit -m &quot;AND simple&quot;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;切换到&lt;code class=&quot;highlighter-rouge&quot;&gt;master&lt;/code&gt;分支：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ git checkout master
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Git还会自动提示我们当前&lt;code class=&quot;highlighter-rouge&quot;&gt;master&lt;/code&gt;分支比远程的&lt;code class=&quot;highlighter-rouge&quot;&gt;master&lt;/code&gt;分支要超前1个提交。&lt;/p&gt;
+
+&lt;p&gt;在&lt;code class=&quot;highlighter-rouge&quot;&gt;master&lt;/code&gt;分支上把&lt;code class=&quot;highlighter-rouge&quot;&gt;readme.txt&lt;/code&gt;文件的最后一行改为：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Creating a new branch is quick &amp;amp; simple.
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;提交：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ git add readme.txt 
+$ git commit -m &quot;&amp;amp; simple&quot;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;现在，&lt;code class=&quot;highlighter-rouge&quot;&gt;master&lt;/code&gt;分支和&lt;code class=&quot;highlighter-rouge&quot;&gt;feature1&lt;/code&gt;分支各自都分别有新的提交。&lt;/p&gt;
+
+&lt;p&gt;这种情况下，Git无法执行“快速合并”，只能试图把各自的修改合并起来，但这种合并就可能会有冲突：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ git merge feature1
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;readme.txt&lt;/code&gt;文件存在冲突，必须手动解决冲突后再提交。&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ git status
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;直接查看readme.txt的内容：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Git is a distributed version control system.
+Git is free software distributed under the GPL.
+Git has a mutable index called stage.
+Git tracks changes of files.
+&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt; HEAD
+Creating a new branch is quick &amp;amp; simple.
+=======
+Creating a new branch is quick AND simple.
+&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt; feature1
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Git用&lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&lt;/code&gt;，&lt;code class=&quot;highlighter-rouge&quot;&gt;=======&lt;/code&gt;，&lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&lt;/code&gt;标记出不同分支的内容，我们修改如下后保存：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Creating a new branch is quick and simple.
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;再提交：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ git add readme.txt 
+$ git commit -m &quot;conflict fixed&quot;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;用带参数的&lt;code class=&quot;highlighter-rouge&quot;&gt;git log&lt;/code&gt;也可以看到分支的合并情况：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ git log --graph --pretty=oneline --abbrev-commit
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;最后，删除&lt;code class=&quot;highlighter-rouge&quot;&gt;feature1&lt;/code&gt;分支：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ git branch -d feature1
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;工作完成。&lt;/p&gt;
+
+&lt;h3 id=&quot;13分支管理策略&quot;&gt;13、分支管理策略&lt;/h3&gt;
+
+&lt;p&gt;通常，合并分支时，如果可能，Git会用&lt;code class=&quot;highlighter-rouge&quot;&gt;Fast forward&lt;/code&gt;模式，但这种模式下，删除分支后，会丢掉分支信息。&lt;/p&gt;
+
+&lt;p&gt;如果要强制禁用&lt;code class=&quot;highlighter-rouge&quot;&gt;Fast forward&lt;/code&gt;模式，Git就会在merge时生成一个新的commit，这样，从分支历史上就可以看出分支信息。&lt;/p&gt;
+
+&lt;p&gt;下面我们实战一下&lt;code class=&quot;highlighter-rouge&quot;&gt;--no-ff&lt;/code&gt;方式的&lt;code class=&quot;highlighter-rouge&quot;&gt;git merge&lt;/code&gt;：&lt;/p&gt;
+
+&lt;p&gt;首先，仍然创建并切换&lt;code class=&quot;highlighter-rouge&quot;&gt;dev&lt;/code&gt;分支：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ git checkout -b dev
+Switched to a new branch 'dev'
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;修改readme.txt文件，并提交一个新的commit：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ git add readme.txt 
+$ git commit -m &quot;add merge&quot;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;切换回&lt;code class=&quot;highlighter-rouge&quot;&gt;master&lt;/code&gt;：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ git checkout master
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;准备合并&lt;code class=&quot;highlighter-rouge&quot;&gt;dev&lt;/code&gt;分支，请注意&lt;code class=&quot;highlighter-rouge&quot;&gt;--no-ff&lt;/code&gt;参数，表示禁用&lt;code class=&quot;highlighter-rouge&quot;&gt;Fast forward&lt;/code&gt;：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ git merge --no-ff -m &quot;merge with no-ff&quot; dev
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;本次合并要创建一个新的commit，所以加上&lt;code class=&quot;highlighter-rouge&quot;&gt;-m&lt;/code&gt;参数，把commit描述写进去。&lt;/p&gt;
+
+&lt;p&gt;合并后，我们用&lt;code class=&quot;highlighter-rouge&quot;&gt;git log&lt;/code&gt;看看分支历史：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ git log --graph --pretty=oneline --abbrev-commit
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;14bug分支&quot;&gt;14、Bug分支&lt;/h3&gt;
+
+&lt;p&gt;Git还提供了一个&lt;code class=&quot;highlighter-rouge&quot;&gt;stash&lt;/code&gt;功能，可以把当前工作现场“储藏”起来，等以后恢复现场后继续工作：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ git stash
+Saved working directory and index state WIP on dev: f52c633 add merge
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;现在，用&lt;code class=&quot;highlighter-rouge&quot;&gt;git status&lt;/code&gt;查看工作区，就是干净的（除非有没有被Git管理的文件），因此可以放心地创建分支来修复bug。&lt;/p&gt;
+
+&lt;p&gt;首先确定要在哪个分支上修复bug，假定需要在&lt;code class=&quot;highlighter-rouge&quot;&gt;master&lt;/code&gt;分支上修复，就从&lt;code class=&quot;highlighter-rouge&quot;&gt;master&lt;/code&gt;创建临时分支：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ git checkout master
+$ git checkout -b issue-101
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;现在修复bug，然后提交。&lt;/p&gt;
+
+&lt;p&gt;修复完成后，切换到&lt;code class=&quot;highlighter-rouge&quot;&gt;master&lt;/code&gt;分支，并完成合并，最后删除&lt;code class=&quot;highlighter-rouge&quot;&gt;issue-101&lt;/code&gt;分支：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ git checkout master
+$ git merge --no-ff -m &quot;merged bug fix 101&quot; issue-101
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;接着回到&lt;code class=&quot;highlighter-rouge&quot;&gt;dev&lt;/code&gt;分支:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ git checkout dev
+$ git status
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;工作区是干净的，刚才的工作现场存到哪去了？用&lt;code class=&quot;highlighter-rouge&quot;&gt;git stash list&lt;/code&gt;命令看看：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ git stash list
+stash@{0}: WIP on dev: f52c633 add merge
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;工作现场还在，Git把stash内容存在某个地方了，但是需要恢复一下，有两个办法：&lt;/p&gt;
+
+&lt;p&gt;一是用&lt;code class=&quot;highlighter-rouge&quot;&gt;git stash apply&lt;/code&gt;恢复，但是恢复后，stash内容并不删除，你需要用&lt;code class=&quot;highlighter-rouge&quot;&gt;git stash drop&lt;/code&gt;来删除；&lt;/p&gt;
+
+&lt;p&gt;另一种方式是用&lt;code class=&quot;highlighter-rouge&quot;&gt;git stash pop&lt;/code&gt;，恢复的同时把stash内容也删了：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ git stash pop
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;再用&lt;code class=&quot;highlighter-rouge&quot;&gt;git stash list&lt;/code&gt;查看，就看不到任何stash内容了：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ git stash list
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;你可以多次stash，恢复的时候，先用&lt;code class=&quot;highlighter-rouge&quot;&gt;git stash list&lt;/code&gt;查看，然后恢复指定的stash，用命令：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ git stash apply stash@{0}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;15feature分支&quot;&gt;15、Feature分支&lt;/h3&gt;
+
+&lt;p&gt;每添加一个新功能，最好新建一个feature分支，在上面开发，完成后，合并，最后，删除该feature分支。&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;git checkout &lt;span class=&quot;nt&quot;&gt;-b&lt;/span&gt; feature-vulcan
+Switched to a new branch &lt;span class=&quot;s1&quot;&gt;'feature-vulcan'&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;5分钟后，开发完毕：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ git add vulcan.py
+$ git status
+$ git commit -m &quot;add feature vulcan&quot;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;切回&lt;code class=&quot;highlighter-rouge&quot;&gt;dev&lt;/code&gt;，准备合并：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ git checkout dev
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;就在此时，接到上级命令，因经费不足，新功能必须取消！&lt;/p&gt;
+
+&lt;p&gt;虽然白干了，但是这个包含机密资料的分支还是必须就地销毁：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ git branch -d feature-vulcan
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;销毁失败。Git友情提醒，&lt;code class=&quot;highlighter-rouge&quot;&gt;feature-vulcan&lt;/code&gt;分支还没有被合并，如果删除，将丢失掉修改，如果要强行删除，需要使用大写的&lt;code class=&quot;highlighter-rouge&quot;&gt;-D&lt;/code&gt;参数。。&lt;/p&gt;
+
+&lt;p&gt;现在我们强行删除：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ git branch -D feature-vulcan
+Deleted branch feature-vulcan (was 287773e).
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;终于删除成功！&lt;/p&gt;
+
+&lt;h3 id=&quot;16多人协作&quot;&gt;16、多人协作&lt;/h3&gt;
+
+&lt;p&gt;当从远程仓库克隆时，实际上Git自动把本地的&lt;code class=&quot;highlighter-rouge&quot;&gt;master&lt;/code&gt;分支和远程的&lt;code class=&quot;highlighter-rouge&quot;&gt;master&lt;/code&gt;分支对应起来了，并且，远程仓库的默认名称是&lt;code class=&quot;highlighter-rouge&quot;&gt;origin&lt;/code&gt;。&lt;/p&gt;
+
+&lt;p&gt;要查看远程库的信息，用&lt;code class=&quot;highlighter-rouge&quot;&gt;git remote&lt;/code&gt;：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ git remote
+origin
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;或者，用&lt;code class=&quot;highlighter-rouge&quot;&gt;git remote -v&lt;/code&gt;显示更详细的信息：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ git remote -v
+origin  git@github.com:michaelliao/learngit.git (fetch)
+origin  git@github.com:michaelliao/learngit.git (push)
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;上面显示了可以抓取和推送的&lt;code class=&quot;highlighter-rouge&quot;&gt;origin&lt;/code&gt;的地址。如果没有推送权限，就看不到push的地址。&lt;/p&gt;
+
+&lt;h4 id=&quot;推送分支&quot;&gt;推送分支&lt;/h4&gt;
+
+&lt;p&gt;推送分支，就是把该分支上的所有本地提交推送到远程库。推送时，要指定本地分支，这样，Git就会把该分支推送到远程库对应的远程分支上：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ git push origin master
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;如果要推送其他分支，比如&lt;code class=&quot;highlighter-rouge&quot;&gt;dev&lt;/code&gt;，就改成：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ git push origin dev
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;但是，并不是一定要把本地分支往远程推送，那么，哪些分支需要推送，哪些不需要呢？&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;master&lt;/code&gt;分支是主分支，因此要时刻与远程同步；&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;dev&lt;/code&gt;分支是开发分支，团队所有成员都需要在上面工作，所以也需要与远程同步；&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;bug&lt;/code&gt;分支只用于在本地修复bug，就没必要推到远程了，除非老板要看看你每周到底修复了几个bug；&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;feature&lt;/code&gt;分支是否推到远程，取决于你是否和你的小伙伴合作在上面开发。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&quot;抓取分支&quot;&gt;抓取分支&lt;/h4&gt;
+
+&lt;p&gt;多人协作时，大家都会往&lt;code class=&quot;highlighter-rouge&quot;&gt;master&lt;/code&gt;和&lt;code class=&quot;highlighter-rouge&quot;&gt;dev&lt;/code&gt;分支上推送各自的修改。&lt;/p&gt;
+
+&lt;p&gt;现在，模拟一个你的小伙伴，可以在另一台电脑（注意要把SSH Key添加到GitHub）或者同一台电脑的另一个目录下克隆：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ git clone git@github.com:XXX/learngit.git
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;当你的小伙伴从远程库clone时，默认情况下，你的小伙伴只能看到本地的&lt;code class=&quot;highlighter-rouge&quot;&gt;master&lt;/code&gt;分支。不信可以用&lt;code class=&quot;highlighter-rouge&quot;&gt;git branch&lt;/code&gt;命令看看：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ git branch
+* master
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;现在，你的小伙伴要在&lt;code class=&quot;highlighter-rouge&quot;&gt;dev&lt;/code&gt;分支上开发，就必须创建远程&lt;code class=&quot;highlighter-rouge&quot;&gt;origin&lt;/code&gt;的&lt;code class=&quot;highlighter-rouge&quot;&gt;dev&lt;/code&gt;分支到本地，于是他用这个命令创建本地&lt;code class=&quot;highlighter-rouge&quot;&gt;dev&lt;/code&gt;分支：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ git checkout -b dev origin/dev
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;现在，他就可以在&lt;code class=&quot;highlighter-rouge&quot;&gt;dev&lt;/code&gt;上继续修改，然后，时不时地把&lt;code class=&quot;highlighter-rouge&quot;&gt;dev&lt;/code&gt;分支&lt;code class=&quot;highlighter-rouge&quot;&gt;push&lt;/code&gt;到远程：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ git add env.txt
+$ git commit -m &quot;add env&quot;
+$ git push origin dev
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;你的小伙伴已经向&lt;code class=&quot;highlighter-rouge&quot;&gt;origin/dev&lt;/code&gt;分支推送了他的提交，而碰巧你也对同样的文件作了修改，并试图推送：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ cat env.txt
+$ git add env.txt
+$ git commit -m &quot;add new env&quot;
+$ git push origin dev
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;推送失败，因为你的小伙伴的最新提交和你试图推送的提交有冲突，解决办法也很简单，Git已经提示我们，先用&lt;code class=&quot;highlighter-rouge&quot;&gt;git pull&lt;/code&gt;把最新的提交从&lt;code class=&quot;highlighter-rouge&quot;&gt;origin/dev&lt;/code&gt;抓下来，然后，在本地合并，解决冲突，再推送：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ git pull
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;git pull&lt;/code&gt;也失败了，原因是没有指定本地&lt;code class=&quot;highlighter-rouge&quot;&gt;dev&lt;/code&gt;分支与远程&lt;code class=&quot;highlighter-rouge&quot;&gt;origin/dev&lt;/code&gt;分支的链接，根据提示，设置&lt;code class=&quot;highlighter-rouge&quot;&gt;dev&lt;/code&gt;和&lt;code class=&quot;highlighter-rouge&quot;&gt;origin/dev&lt;/code&gt;的链接：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ git branch --set-upstream-to=origin/dev dev
+Branch 'dev' set up to track remote branch 'dev' from 'origin'.
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;再pull：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ git pull
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;这回&lt;code class=&quot;highlighter-rouge&quot;&gt;git pull&lt;/code&gt;成功，但是合并有冲突，需要手动解决，解决的方法和分支管理中的&lt;a href=&quot;http://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000/001375840202368c74be33fbd884e71b570f2cc3c0d1dcf000&quot;&gt;解决冲突&lt;/a&gt;完全一样。解决后，提交，再push：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ git commit -m &quot;fix env conflict&quot;
+$ git push origin dev
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;因此，多人协作的工作模式通常是这样：&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;首先，可以试图用&lt;code class=&quot;highlighter-rouge&quot;&gt;git push origin &amp;lt;branch-name&amp;gt;&lt;/code&gt;推送自己的修改；&lt;/li&gt;
+  &lt;li&gt;如果推送失败，则因为远程分支比你的本地更新，需要先用&lt;code class=&quot;highlighter-rouge&quot;&gt;git pull&lt;/code&gt;试图合并；&lt;/li&gt;
+  &lt;li&gt;如果合并有冲突，则解决冲突，并在本地提交；&lt;/li&gt;
+  &lt;li&gt;没有冲突或者解决掉冲突后，再用&lt;code class=&quot;highlighter-rouge&quot;&gt;git push origin &amp;lt;branch-name&amp;gt;&lt;/code&gt;推送就能成功！&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;如果&lt;code class=&quot;highlighter-rouge&quot;&gt;git pull&lt;/code&gt;提示&lt;code class=&quot;highlighter-rouge&quot;&gt;no tracking information&lt;/code&gt;，则说明本地分支和远程分支的链接关系没有创建，用命令&lt;code class=&quot;highlighter-rouge&quot;&gt;git branch --set-upstream-to &amp;lt;branch-name&amp;gt; origin/&amp;lt;branch-name&amp;gt;&lt;/code&gt;。&lt;/p&gt;
+
+&lt;p&gt;这就是多人协作的工作模式，一旦熟悉了，就非常简单。&lt;/p&gt;
+
+&lt;h3 id=&quot;17rebase&quot;&gt;17、Rebase&lt;/h3&gt;
+
+&lt;p&gt;rebase操作可以把本地未push的分叉提交历史整理成直线；&lt;/p&gt;
+
+&lt;p&gt;rebase的目的是使得我们在查看历史提交的变化时更容易，因为分叉的提交需要三方对比。&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;git rebase
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;git log
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;18创建标签&quot;&gt;18、创建标签&lt;/h3&gt;
+
+&lt;p&gt;在Git中打标签非常简单，首先，切换到需要打标签的分支上：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ git branch
+* dev
+  master
+$ git checkout master
+Switched to branch 'master'
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;然后，敲命令&lt;code class=&quot;highlighter-rouge&quot;&gt;git tag &amp;lt;name&amp;gt;&lt;/code&gt;就可以打一个新标签：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ git tag v1.0
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;可以用命令&lt;code class=&quot;highlighter-rouge&quot;&gt;git tag&lt;/code&gt;查看所有标签：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ git tag
+v1.0
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;忘了打标签，找到历史提交的commit id，然后打上就可以了：&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;git log &lt;span class=&quot;nt&quot;&gt;--pretty&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;oneline &lt;span class=&quot;nt&quot;&gt;--abbrev-commit&lt;/span&gt;
+12a631b &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;HEAD -&amp;gt; master, tag: v1.0, origin/master&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; merged bug fix 101
+4c805e2 fix bug 101
+e1e9c68 merge with no-ff
+f52c633 add merge
+...
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;比方说要对&lt;code class=&quot;highlighter-rouge&quot;&gt;add merge&lt;/code&gt;这次提交打标签，它对应的commit id是&lt;code class=&quot;highlighter-rouge&quot;&gt;f52c633&lt;/code&gt;，敲入命令：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ git tag v0.9 f52c633
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;再用命令&lt;code class=&quot;highlighter-rouge&quot;&gt;git tag&lt;/code&gt;查看标签：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ git tag
+v0.9
+v1.0
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;注意，标签不是按时间顺序列出，而是按字母排序的。可以用&lt;code class=&quot;highlighter-rouge&quot;&gt;git show &amp;lt;tagname&amp;gt;&lt;/code&gt;查看标签信息：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ git show v0.9
+commit f52c63349bc3c1593499807e5c8e972b82c8f286 (tag: v0.9)
+Author: Michael Liao &amp;lt;askxuefeng@gmail.com&amp;gt;
+Date:   Fri May 18 21:56:54 2018 +0800
+
+    add merge
+
+diff --git a/readme.txt b/readme.txt
+...
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;可以看到，&lt;code class=&quot;highlighter-rouge&quot;&gt;v0.9&lt;/code&gt;确实打在&lt;code class=&quot;highlighter-rouge&quot;&gt;add merge&lt;/code&gt;这次提交上。&lt;/p&gt;
+
+&lt;p&gt;还可以创建带有说明的标签，用&lt;code class=&quot;highlighter-rouge&quot;&gt;-a&lt;/code&gt;指定标签名，&lt;code class=&quot;highlighter-rouge&quot;&gt;-m&lt;/code&gt;指定说明文字：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ git tag -a v0.1 -m &quot;version 0.1 released&quot; 1094adb
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;用命令&lt;code class=&quot;highlighter-rouge&quot;&gt;git show &amp;lt;tagname&amp;gt;&lt;/code&gt;可以看到说明文字：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ git show v0.1
+tag v0.1
+Tagger: Michael Liao &amp;lt;askxuefeng@gmail.com&amp;gt;
+Date:   Fri May 18 22:48:43 2018 +0800
+...
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;19操作标签&quot;&gt;19、操作标签&lt;/h3&gt;
+
+&lt;p&gt;如果标签打错了，也可以删除：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ git tag -d v0.1
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;因为创建的标签都只存储在本地，不会自动推送到远程。所以，打错的标签可以在本地安全删除。&lt;/p&gt;
+
+&lt;p&gt;如果要推送某个标签到远程，使用命令&lt;code class=&quot;highlighter-rouge&quot;&gt;git push origin &amp;lt;tagname&amp;gt;&lt;/code&gt;：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ git push origin v1.0
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;或者，一次性推送全部尚未推送到远程的本地标签：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ git push origin --tags
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;如果标签已经推送到远程，要删除远程标签就麻烦一点，先从本地删除：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ git tag -d v0.9
+Deleted tag 'v0.9' (was f52c633)
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;然后，从远程删除。删除命令也是push，但是格式如下：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ git push origin :refs/tags/v0.9
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;要看看是否真的从远程库删除了标签，可以登陆GitHub查看。&lt;/p&gt;
+
+&lt;h3 id=&quot;20github&quot;&gt;20、github&lt;/h3&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ git remote -v
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;删除已有的GitHub远程库：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ git remote rm origin
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;21配置别名&quot;&gt;21、配置别名&lt;/h3&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;git config &lt;span class=&quot;nt&quot;&gt;--global&lt;/span&gt; alias.co checkout
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;git config &lt;span class=&quot;nt&quot;&gt;--global&lt;/span&gt; alias.ci commit
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;git config &lt;span class=&quot;nt&quot;&gt;--global&lt;/span&gt; alias.br branch
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;git config &lt;span class=&quot;nt&quot;&gt;--global&lt;/span&gt; alias.st status
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;git config &lt;span class=&quot;nt&quot;&gt;--global&lt;/span&gt; alias.lg &lt;span class=&quot;s2&quot;&gt;&quot;log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)&amp;lt;%an&amp;gt;%Creset' --abbrev-commit&quot;&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;git config &lt;span class=&quot;nt&quot;&gt;--global&lt;/span&gt; alias.last &lt;span class=&quot;s1&quot;&gt;'log -1'&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;git config &lt;span class=&quot;nt&quot;&gt;--global&lt;/span&gt; alias.unstage &lt;span class=&quot;s1&quot;&gt;'reset HEAD'&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;22删除过大的文件记录&quot;&gt;22、删除过大的文件记录&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Step 1 查看哪些历史提交过文件占用空间较大&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;使用以下命令可以查看占用空间最多的五个文件：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;git rev-list --objects --all | grep &quot;$(git verify-pack -v .git/objects/pack/*.idx | sort -k 3 -n | tail -5 | awk '{print$1}')&quot;
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;rev-list命令用来列出Git仓库中的提交，我们用它来列出所有提交中涉及的文件名及其ID。 该命令可以指定只显示某个引用（或分支）的上下游的提交。&lt;/p&gt;
+
+&lt;p&gt;–objects：列出该提交涉及的所有文件ID。&lt;/p&gt;
+
+&lt;p&gt;–all：所有分支的提交，相当于指定了位于/refs下的所有引用。&lt;/p&gt;
+
+&lt;p&gt;verify-pack命令用于显示已打包的内容。&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;step 2. 重写commit，删除大文件&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;使用以下命令，删除历史提交过的大文件：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;git filter-branch --force --index-filter 'git rm -rf --cached --ignore-unmatch big-file.jar' --prune-empty --tag-name-filter cat -- --all
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;上面脚本中的big-file.jar请换成你第一步查出的大文件名，或者这里直接写一个目录。&lt;/p&gt;
+
+&lt;p&gt;filter-branch命令可以用来重写Git仓库中的提交&lt;/p&gt;
+
+&lt;p&gt;–index-filter参数用来指定一条Bash命令，然后Git会检出（checkout）所有的提交， 执行该命令，然后重新提交。&lt;/p&gt;
+
+&lt;p&gt;–all参数表示我们需要重写所有分支（或引用）。&lt;/p&gt;
+
+&lt;p&gt;在重写提交的过程中，会有以下日志输出:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Rewrite 6cdbb293d453ced07e6a07e0aa6e580e6a5538f4 (266/266)
+# Ref 'refs/heads/master' was rewritten
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;如果显示 xxxxx unchanged, 说明repo里没有找到该文件, 请检查路径和文件名是否正确，重复上面的脚本，把所有你想删除的文件都删掉。&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;step 3. 推送修改后的repo&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;以强制覆盖的方式推送你的repo, 命令如下:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;git push origin master --force
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;step 4. 清理和回收空间&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;虽然上面我们已经删除了文件, 但是我们的repo里面仍然保留了这些objects, 等待垃圾回收(GC), 所以我们要用命令彻底清除它, 并收回空间，命令如下:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;rm -rf .git/refs/original/
+
+git reflog expire --expire=now --all
+
+git gc --prune=now
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;至此，我们已经彻底的删除了我们不想要的文件。&lt;/p&gt;
+
+</description>
+        <pubDate>Fri, 07 Dec 2018 00:00:00 +0800</pubDate>
+        <link>http://localhost:4000/2018/12/07/git-and-github/</link>
+        <guid isPermaLink="true">http://localhost:4000/2018/12/07/git-and-github/</guid>
+        
+        <category>git</category>
+        
+        <category>github</category>
+        
+        <category>学习</category>
+        
+        <category>转载</category>
+        
+        
+      </item>
+    
+      <item>
+        <title>2019计划</title>
+        <description>&lt;blockquote&gt;
+  &lt;p&gt;时光荏苒，2018已经已经接近尾声，随着年龄增大，身体已经越来越不如从前。&lt;/p&gt;
+
+  &lt;p&gt;2019马上到来，我希望，我已经做好了准备。&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h4 id=&quot;读书&quot;&gt;读书&lt;/h4&gt;
+
+&lt;p&gt;读书，应该是一辈子的事，18年读书很少，而且都是杂书，希望19年可以多读些书，多读一些经典书。&lt;/p&gt;
+
+&lt;p&gt;书单如下（慢慢补充）：&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;大秦帝国&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&quot;健身&quot;&gt;健身&lt;/h4&gt;
+
+&lt;p&gt;马上三十岁了，需要保持充沛的体力。&lt;/p&gt;
+
+&lt;h4 id=&quot;写作&quot;&gt;写作&lt;/h4&gt;
+
+&lt;p&gt;我希望自己能够有空多写博客，把自己的所学，自己的所长，都记录下来。&lt;/p&gt;
+
+&lt;h4 id=&quot;旅游&quot;&gt;旅游&lt;/h4&gt;
+
+&lt;h4 id=&quot;理财&quot;&gt;理财&lt;/h4&gt;
+
+&lt;h4 id=&quot;工作&quot;&gt;工作&lt;/h4&gt;
+
+&lt;h4 id=&quot;娱乐&quot;&gt;娱乐&lt;/h4&gt;
+</description>
+        <pubDate>Wed, 05 Dec 2018 00:00:00 +0800</pubDate>
+        <link>http://localhost:4000/2018/12/05/2019%E8%AE%A1%E5%88%92/</link>
+        <guid isPermaLink="true">http://localhost:4000/2018/12/05/2019%E8%AE%A1%E5%88%92/</guid>
+        
+        <category>计划</category>
+        
+        <category>2019</category>
+        
+        
+      </item>
+    
+      <item>
+        <title>visual studio code学习笔记</title>
+        <description>&lt;blockquote&gt;
+  &lt;p&gt;学习自&lt;a href=&quot;https://m.w3cschool.cn/visualstudiocode/visualstudiocode-iy3422zb.html&quot;&gt;Visual Studio Code 使用教程&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&quot;主命令框&quot;&gt;主命令框&lt;/h3&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;F1&lt;/code&gt; 或 &lt;code class=&quot;highlighter-rouge&quot;&gt;Ctrl+Shift+P&lt;/code&gt;: 打开命令面板。在打开的输入框内，可以输入任何命令，例如：&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;按一下 &lt;code class=&quot;highlighter-rouge&quot;&gt;Backspace&lt;/code&gt; 会进入到 &lt;code class=&quot;highlighter-rouge&quot;&gt;Ctrl+P&lt;/code&gt; 模式&lt;/li&gt;
+  &lt;li&gt;在 &lt;code class=&quot;highlighter-rouge&quot;&gt;Ctrl+P&lt;/code&gt; 下输入 &lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;gt;&lt;/code&gt; 可以进入 &lt;code class=&quot;highlighter-rouge&quot;&gt;Ctrl+Shift+P&lt;/code&gt; 模式&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;在 &lt;code class=&quot;highlighter-rouge&quot;&gt;Ctrl+P&lt;/code&gt; 窗口下还可以:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;直接输入文件名，跳转到文件&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;?&lt;/code&gt; 列出当前可执行的动作&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;!&lt;/code&gt; 显示 &lt;code class=&quot;highlighter-rouge&quot;&gt;Errors&lt;/code&gt;或 &lt;code class=&quot;highlighter-rouge&quot;&gt;Warnings&lt;/code&gt;，也可以 &lt;code class=&quot;highlighter-rouge&quot;&gt;Ctrl+Shift+M&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;:&lt;/code&gt; 跳转到行数，也可以 &lt;code class=&quot;highlighter-rouge&quot;&gt;Ctrl+G&lt;/code&gt; 直接进入&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;@&lt;/code&gt; 跳转到 &lt;code class=&quot;highlighter-rouge&quot;&gt;symbol&lt;/code&gt;（搜索变量或者函数），也可以 &lt;code class=&quot;highlighter-rouge&quot;&gt;Ctrl+Shift+O&lt;/code&gt; 直接进入&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;@&lt;/code&gt; 根据分类跳转 &lt;code class=&quot;highlighter-rouge&quot;&gt;symbol&lt;/code&gt;，查找属性或函数，也可以 &lt;code class=&quot;highlighter-rouge&quot;&gt;Ctrl+Shift+O&lt;/code&gt; 后输入:进入&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;#&lt;/code&gt; 根据名字查找 &lt;code class=&quot;highlighter-rouge&quot;&gt;symbol&lt;/code&gt;，也可以 &lt;code class=&quot;highlighter-rouge&quot;&gt;Ctrl+T&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;常用快捷键&quot;&gt;常用快捷键&lt;/h3&gt;
+
+&lt;h4 id=&quot;编辑器与窗口管理&quot;&gt;编辑器与窗口管理&lt;/h4&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;打开一个新窗口： &lt;code class=&quot;highlighter-rouge&quot;&gt;Ctrl+Shift+N&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;关闭窗口： &lt;code class=&quot;highlighter-rouge&quot;&gt;Ctrl+Shift+W&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;同时打开多个编辑器（查看多个文件）&lt;/li&gt;
+  &lt;li&gt;新建文件 &lt;code class=&quot;highlighter-rouge&quot;&gt;Ctrl+N&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;文件之间切换 &lt;code class=&quot;highlighter-rouge&quot;&gt;Ctrl+Tab&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;切出一个新的编辑器（最多 &lt;code class=&quot;highlighter-rouge&quot;&gt;3&lt;/code&gt; 个） &lt;code class=&quot;highlighter-rouge&quot;&gt;Ctrl+\&lt;/code&gt;，也可以按住 &lt;code class=&quot;highlighter-rouge&quot;&gt;Ctrl&lt;/code&gt; 鼠标点击 &lt;code class=&quot;highlighter-rouge&quot;&gt;Explorer&lt;/code&gt; 里的文件名&lt;/li&gt;
+  &lt;li&gt;左中右 &lt;code class=&quot;highlighter-rouge&quot;&gt;3&lt;/code&gt; 个编辑器的快捷键 &lt;code class=&quot;highlighter-rouge&quot;&gt;Ctrl+1&lt;/code&gt; &lt;code class=&quot;highlighter-rouge&quot;&gt;Ctrl+2&lt;/code&gt; &lt;code class=&quot;highlighter-rouge&quot;&gt;Ctrl+3&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;3&lt;/code&gt; 个编辑器之间循环切换 &lt;code class=&quot;highlighter-rouge&quot;&gt;Ctrl+&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;编辑器换位置， &lt;code class=&quot;highlighter-rouge&quot;&gt;Ctrl+k&lt;/code&gt;然后按 &lt;code class=&quot;highlighter-rouge&quot;&gt;Left&lt;/code&gt;或 &lt;code class=&quot;highlighter-rouge&quot;&gt;Right&lt;/code&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h4 id=&quot;格式调整&quot;&gt;格式调整&lt;/h4&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;代码行缩进 &lt;code class=&quot;highlighter-rouge&quot;&gt;Ctrl+[&lt;/code&gt; 、 &lt;code class=&quot;highlighter-rouge&quot;&gt;Ctrl+]&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;Ctrl+C&lt;/code&gt; 、 &lt;code class=&quot;highlighter-rouge&quot;&gt;Ctrl+V&lt;/code&gt; 复制或剪切当前行/当前选中内容&lt;/li&gt;
+  &lt;li&gt;代码格式化： &lt;code class=&quot;highlighter-rouge&quot;&gt;Shift+Alt+F&lt;/code&gt;，或 &lt;code class=&quot;highlighter-rouge&quot;&gt;Ctrl+Shift+P&lt;/code&gt; 后输入 &lt;code class=&quot;highlighter-rouge&quot;&gt;format code&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;上下移动一行： &lt;code class=&quot;highlighter-rouge&quot;&gt;Alt+Up&lt;/code&gt; 或 &lt;code class=&quot;highlighter-rouge&quot;&gt;Alt+Down&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;向上向下复制一行： &lt;code class=&quot;highlighter-rouge&quot;&gt;Shift+Alt+Up&lt;/code&gt; 或 &lt;code class=&quot;highlighter-rouge&quot;&gt;Shift+Alt+Down&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;在当前行下边插入一行 &lt;code class=&quot;highlighter-rouge&quot;&gt;Ctrl+Enter&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;在当前行上方插入一行 &lt;code class=&quot;highlighter-rouge&quot;&gt;Ctrl+Shift+Enter&lt;/code&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h4 id=&quot;光标相关&quot;&gt;光标相关&lt;/h4&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;移动到行首： &lt;code class=&quot;highlighter-rouge&quot;&gt;Home&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;移动到行尾： &lt;code class=&quot;highlighter-rouge&quot;&gt;End&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;移动到文件结尾： &lt;code class=&quot;highlighter-rouge&quot;&gt;Ctrl+End&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;移动到文件开头： &lt;code class=&quot;highlighter-rouge&quot;&gt;Ctrl+Home&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;移动到定义处： &lt;code class=&quot;highlighter-rouge&quot;&gt;F12&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;定义处缩略图：只看一眼而不跳转过去 &lt;code class=&quot;highlighter-rouge&quot;&gt;Alt+F12&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;移动到后半个括号： &lt;code class=&quot;highlighter-rouge&quot;&gt;Ctrl+Shift+]&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;选择从光标到行尾： &lt;code class=&quot;highlighter-rouge&quot;&gt;Shift+End&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;选择从行首到光标处： &lt;code class=&quot;highlighter-rouge&quot;&gt;Shift+Home&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;删除光标右侧的所有字： &lt;code class=&quot;highlighter-rouge&quot;&gt;Ctrl+Delete&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;扩展/缩小选取范围： &lt;code class=&quot;highlighter-rouge&quot;&gt;Shift+Alt+Left&lt;/code&gt; 和 &lt;code class=&quot;highlighter-rouge&quot;&gt;Shift+Alt+Right&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;多行编辑(列编辑)：&lt;code class=&quot;highlighter-rouge&quot;&gt;Alt+Shift+鼠标左键&lt;/code&gt;，&lt;code class=&quot;highlighter-rouge&quot;&gt;Ctrl+Alt+Down/Up&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;同时选中所有匹配： &lt;code class=&quot;highlighter-rouge&quot;&gt;Ctrl+Shift+L&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;Ctrl+D&lt;/code&gt; 下一个匹配的也被选中 (在 sublime 中是删除当前行，后面自定义快键键中，设置与 &lt;code class=&quot;highlighter-rouge&quot;&gt;Ctrl+Shift+K&lt;/code&gt; 互换了)&lt;/li&gt;
+  &lt;li&gt;回退上一个光标操作： &lt;code class=&quot;highlighter-rouge&quot;&gt;Ctrl+U&lt;/code&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h4 id=&quot;重构代码&quot;&gt;重构代码&lt;/h4&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;找到所有的引用： &lt;code class=&quot;highlighter-rouge&quot;&gt;Shift+F12&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;同时修改本文件中所有匹配的： &lt;code class=&quot;highlighter-rouge&quot;&gt;Ctrl+F12&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;重命名：比如要修改一个方法名，可以选中后按 &lt;code class=&quot;highlighter-rouge&quot;&gt;F2&lt;/code&gt;，输入新的名字，回车，会发现所有的文件都修改了&lt;/li&gt;
+  &lt;li&gt;跳转到下一个 &lt;code class=&quot;highlighter-rouge&quot;&gt;Error&lt;/code&gt; 或 &lt;code class=&quot;highlighter-rouge&quot;&gt;Warning&lt;/code&gt;：当有多个错误时可以按 &lt;code class=&quot;highlighter-rouge&quot;&gt;F8&lt;/code&gt; 逐个跳转&lt;/li&gt;
+  &lt;li&gt;查看 &lt;code class=&quot;highlighter-rouge&quot;&gt;diff&lt;/code&gt;： 在 &lt;code class=&quot;highlighter-rouge&quot;&gt;explorer&lt;/code&gt; 里选择文件右键 &lt;code class=&quot;highlighter-rouge&quot;&gt;Set file to compare&lt;/code&gt;，然后需要对比的文件上右键选择 &lt;code class=&quot;highlighter-rouge&quot;&gt;Compare with file_name_you_chose&lt;/code&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h4 id=&quot;查找替换&quot;&gt;查找替换&lt;/h4&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;查找 &lt;code class=&quot;highlighter-rouge&quot;&gt;Ctrl+F&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;查找替换 &lt;code class=&quot;highlighter-rouge&quot;&gt;Ctrl+H&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;整个文件夹中查找 &lt;code class=&quot;highlighter-rouge&quot;&gt;Ctrl+Shift+F&lt;/code&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h4 id=&quot;显示相关&quot;&gt;显示相关&lt;/h4&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;全屏：&lt;code class=&quot;highlighter-rouge&quot;&gt;F11&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;zoomIn/zoomOut：&lt;code class=&quot;highlighter-rouge&quot;&gt;Ctrl +/-&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;侧边栏显/隐：&lt;code class=&quot;highlighter-rouge&quot;&gt;Ctrl+B&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;显示资源管理器 &lt;code class=&quot;highlighter-rouge&quot;&gt;Ctrl+Shift+E&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;显示搜索 &lt;code class=&quot;highlighter-rouge&quot;&gt;Ctrl+Shift+F&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;显示 Git &lt;code class=&quot;highlighter-rouge&quot;&gt;Ctrl+Shift+G&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;显示 Debug &lt;code class=&quot;highlighter-rouge&quot;&gt;Ctrl+Shift+D&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;显示 Output &lt;code class=&quot;highlighter-rouge&quot;&gt;Ctrl+Shift+U&lt;/code&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h4 id=&quot;其他&quot;&gt;其他&lt;/h4&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;自动保存：&lt;code class=&quot;highlighter-rouge&quot;&gt;File -&amp;gt; AutoSave&lt;/code&gt; ，或者 &lt;code class=&quot;highlighter-rouge&quot;&gt;Ctrl+Shift+P&lt;/code&gt;，输入 &lt;code class=&quot;highlighter-rouge&quot;&gt;auto&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;修改默认快捷键&quot;&gt;修改默认快捷键&lt;/h3&gt;
+
+&lt;p&gt;打开默认键盘快捷方式设置：
+&lt;code class=&quot;highlighter-rouge&quot;&gt;File -&amp;gt; Preferences -&amp;gt; Keyboard Shortcuts&lt;/code&gt;，或者：&lt;code class=&quot;highlighter-rouge&quot;&gt;Alt+F -&amp;gt; p -&amp;gt; k&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;修改 &lt;code class=&quot;highlighter-rouge&quot;&gt;keybindings.json&lt;/code&gt;：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;// Place your key bindings in this file to overwrite the defaults
+[
+    // ctrl+space 被切换输入法快捷键占用
+    {
+        &quot;key&quot;: &quot;ctrl+alt+space&quot;,
+        &quot;command&quot;: &quot;editor.action.triggerSuggest&quot;,
+        &quot;when&quot;: &quot;editorTextFocus&quot;
+    },
+    // ctrl+d 删除一行
+    {
+        &quot;key&quot;: &quot;ctrl+d&quot;,
+        &quot;command&quot;: &quot;editor.action.deleteLines&quot;,
+        &quot;when&quot;: &quot;editorTextFocus&quot;
+    },
+    // 与删除一行的快捷键互换
+    {
+        &quot;key&quot;: &quot;ctrl+shift+k&quot;,
+        &quot;command&quot;: &quot;editor.action.addSelectionToNextFindMatch&quot;,
+        &quot;when&quot;: &quot;editorFocus&quot;
+    },
+    // ctrl+shift+/多行注释
+    {
+        &quot;key&quot;:&quot;ctrl+shift+/&quot;,
+        &quot;command&quot;: &quot;editor.action.blockComment&quot;,
+        &quot;when&quot;: &quot;editorTextFocus&quot;
+    },
+    // 定制与 sublime 相同的大小写转换快捷键，需安装 TextTransform 插件
+    {
+        &quot;key&quot;: &quot;ctrl+k ctrl+u&quot;,
+        &quot;command&quot;: &quot;uppercase&quot;,
+        &quot;when&quot;: &quot;editorTextFocus&quot;
+    },
+    {
+        &quot;key&quot;: &quot;ctrl+k ctrl+l&quot;,
+        &quot;command&quot;: &quot;lowercase&quot;,
+        &quot;when&quot;: &quot;editorTextFocus&quot;
+    }
+]
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;前端开发必备插件&quot;&gt;前端开发必备插件&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;PostCSS Sorting&lt;/li&gt;
+  &lt;li&gt;stylelint&lt;/li&gt;
+  &lt;li&gt;stylefmt&lt;/li&gt;
+  &lt;li&gt;ESLint&lt;/li&gt;
+  &lt;li&gt;javascript standard format&lt;/li&gt;
+  &lt;li&gt;beautify&lt;/li&gt;
+  &lt;li&gt;Babel ES6/ES7&lt;/li&gt;
+  &lt;li&gt;Debugger for Chrome&lt;/li&gt;
+  &lt;li&gt;Add jsdoc comments&lt;/li&gt;
+  &lt;li&gt;javascript(ES6) code snippets&lt;/li&gt;
+  &lt;li&gt;vue&lt;/li&gt;
+  &lt;li&gt;weex&lt;/li&gt;
+  &lt;li&gt;Reactjs code snippets&lt;/li&gt;
+  &lt;li&gt;React Native Tools&lt;/li&gt;
+  &lt;li&gt;Npm Intellisense&lt;/li&gt;
+  &lt;li&gt;Instant Markdown&lt;/li&gt;
+  &lt;li&gt;Markdown Shortcuts&lt;/li&gt;
+  &lt;li&gt;TextTransform&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;自定义设置参考&quot;&gt;自定义设置参考&lt;/h2&gt;
+
+&lt;p&gt;vscode 自定义配置参考：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;{
+    &quot;editor.fontSize&quot;: 18,
+    &quot;files.associations&quot;: {
+        &quot;*.es&quot;: &quot;javascript&quot;,
+        &quot;*.es6&quot;: &quot;javascript&quot;
+    },
+    // 控制编辑器是否应呈现空白字符
+    &quot;editor.renderWhitespace&quot;: true,
+    // 启用后，将在保存文件时剪裁尾随空格。
+    &quot;files.trimTrailingWhitespace&quot;: true,
+    // File extensions that can be beautified as javascript or JSON.
+    &quot;beautify.JSfiles&quot;: [
+        &quot;&quot;,
+        &quot;es&quot;,
+        &quot;es6&quot;,
+        &quot;js&quot;,
+        &quot;json&quot;,
+        &quot;jsbeautifyrc&quot;,
+        &quot;jshintrc&quot;
+    ]
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+</description>
+        <pubDate>Wed, 05 Dec 2018 00:00:00 +0800</pubDate>
+        <link>http://localhost:4000/2018/12/05/visual-studio-code%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</link>
+        <guid isPermaLink="true">http://localhost:4000/2018/12/05/visual-studio-code%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</guid>
+        
+        <category>visual studio code</category>
+        
+        <category>学习</category>
+        
+        <category>转载</category>
+        
+        
+      </item>
+    
+      <item>
+        <title>After fork from github</title>
+        <description>&lt;blockquote&gt;
+  &lt;p&gt;来自&lt;a href=&quot;https://github.com/staticblog/wiki/wiki/%E4%BF%9D%E6%8C%81fork%E4%B9%8B%E5%90%8E%E7%9A%84%E9%A1%B9%E7%9B%AE%E5%92%8C%E4%B8%8A%E6%B8%B8%E5%90%8C%E6%AD%A5&quot;&gt;保持fork之后的项目和上游同步&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;保持自己fork之后的仓库与上游仓库同步（github为例）。&lt;/p&gt;
+
+&lt;p&gt;点击 fork 到自己帐号下，比如&lt;a href=&quot;https://github.com/hankcs/HanLP&quot;&gt;HanLP&lt;/a&gt;这个仓库:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/posts/tools/Selection_033.png&quot; alt=&quot;Selection_033&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;然后就可以在自己的帐号下 clone 相应的仓库&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;git clone https://github.com/algteam/HanLP.git&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;使用 &lt;code class=&quot;highlighter-rouge&quot;&gt;git remote -v&lt;/code&gt; 查看当前的远程仓库地址，输出如下：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;origin	https://github.com/algteam/HanLP.git (fetch)
+origin	https://github.com/algteam/HanLP.git (push)
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;可以看到从自己帐号 clone 下来的仓库，远程仓库地址是与自己的远程仓库绑定的&lt;/p&gt;
+
+&lt;p&gt;接下来运行 &lt;code class=&quot;highlighter-rouge&quot;&gt;git remote add upstream https://github.com/hankcs/HanLP.git&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;这条命令就算添加一个别名为 upstream（上游）的地址，指向之前 fork 的原仓库地址。&lt;code class=&quot;highlighter-rouge&quot;&gt;git remote -v&lt;/code&gt; 输出如下：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;origin	https://github.com/algteam/HanLP.git (fetch)
+origin	https://github.com/algteam/HanLP.git (push)
+upstream	https://github.com/hankcs/HanLP.git (fetch)
+upstream	https://github.com/hankcs/HanLP.git (push)
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;之后运行下面几条命令，就可以保持本地仓库和上游仓库同步了&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;git fetch upstream
+git checkout master
+git merge upstream/master
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;接着就是熟悉的推送本地仓库到远程仓库&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;git push origin master
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+</description>
+        <pubDate>Wed, 05 Dec 2018 00:00:00 +0800</pubDate>
+        <link>http://localhost:4000/2018/12/05/After-fork-from-github/</link>
+        <guid isPermaLink="true">http://localhost:4000/2018/12/05/After-fork-from-github/</guid>
+        
+        <category>fork</category>
+        
+        <category>github</category>
+        
+        <category>学习</category>
+        
+        <category>转载</category>
+        
+        
+      </item>
+    
+      <item>
+        <title>kb-qa学习笔记</title>
+        <description>&lt;blockquote&gt;
+  &lt;p&gt;学习自&lt;a href=&quot;https://zhuanlan.zhihu.com/p/25735572&quot;&gt;揭开知识库问答KB-QA的面纱&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&quot;extracted-kbs&quot;&gt;Extracted KBs&lt;/h3&gt;
+
+&lt;p&gt;知识库涉及到的两大关键技术是&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;&lt;strong&gt;实体链指(Entity linking)&lt;/strong&gt; ，即将文档中的实体名字链接到知识库中特定的实体上。它主要涉及自然语言处理领域的两个经典问题&lt;strong&gt;实体识别&lt;/strong&gt; (Entity Recognition) 与&lt;strong&gt;实体消歧&lt;/strong&gt; (Entity Disambiguation)，简单地来说，就是要从文档中识别出人名、地名、机构名、电影等命名实体。并且，在不同环境下同一实体名称可能存在歧义，如苹果，我们需要根据上下文环境进行消歧。&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;关系抽取 (Relation extraction)&lt;/strong&gt;，即将文档中的实体关系抽取出来，主要涉及到的技术有词性标注 (Part-of-Speech tagging, POS)，语法分析，依存关系树 (dependency tree) 以及构建SVM、最大熵模型等分类器进行关系分类等。&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&quot;什么是知识库问答&quot;&gt;&lt;strong&gt;什么是知识库问答&lt;/strong&gt;&lt;/h3&gt;
+
+&lt;p&gt;知识库问答（knowledge base question answering,KB-QA）即给定&lt;strong&gt;自然语言&lt;/strong&gt;问题，通过对问题进行语义理解和解析，进而利用知识库进行查询、推理得出答案。如下图所示&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/posts/kb/kb-qa.png&quot; alt=&quot;kb-qa&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;（注：该图片来自中科院刘康老师在&lt;em&gt;知识图谱与问答系统前沿技术研讨会&lt;/em&gt;中的报告）&lt;/p&gt;
+
+&lt;p&gt;与对话系统、对话机器人的交互式对话不同，KB-QA具有以下特点：&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;&lt;strong&gt;答案：&lt;/strong&gt;回答的答案是知识库中的&lt;strong&gt;实体或实体关系&lt;/strong&gt;，或者no-answer（即该问题在KB中找不到答案），当然这里答案不一定唯一，比如 &lt;em&gt;中国的城市有哪些 。&lt;/em&gt;而对话系统则回复的是自然语言句子，有时甚至需要考虑上下文语境。&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;评价标准：&lt;/strong&gt;回召率 (Recall)，精确率 (Precision) ，F1-Score。而对话系统的评价标准以人工评价为主，以及BLEU和Perplexity。&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&quot;知识库问答的数据集-webquestion&quot;&gt;&lt;strong&gt;知识库问答的数据集-WebQuestion&lt;/strong&gt;&lt;/h3&gt;
+
+&lt;p&gt;该数据集由Berant J, Chou A, Frostig R, et al.在13年的论文&lt;a href=&quot;https://nlp.stanford.edu/pubs/semparseEMNLP13.pdf&quot;&gt;Semantic Parsing on Freebase from Question-Answer Pairs&lt;/a&gt;中公开。&lt;/p&gt;
+
+&lt;p&gt;作者首先使用Google Suggest API获取以wh-word（what，who，why，where，whose…）为开头且只包含一个&lt;strong&gt;&lt;em&gt;实体&lt;/em&gt;&lt;/strong&gt;的问题，以&lt;strong&gt;&lt;em&gt;“where was Barack Obama born?”&lt;/em&gt;&lt;/strong&gt;作为问题图谱的起始节点，以Google Suggest API给出的建议作为新的问题，通过宽度优先搜索获取问题。&lt;/p&gt;
+
+&lt;p&gt;具体来讲，对于每一个队列中的问题，通过对它删去实体，删去实体之前的短语，删去实体之后的短语形成3个新的query，将这三个新query放到google suggest中，每个query将生成5个候选问题，加入搜索队列，直到1M个问题被访问完。如下图所示&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/posts/kb/qa.png&quot; alt=&quot;qa&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;获取完问题后，随机选取100K个问题交给Amazon Mechanical Turk (AMT)的工人，让工人回答答案。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;注意&lt;/em&gt;&lt;/strong&gt;:这里对答案进行了&lt;strong&gt;限制&lt;/strong&gt;，让AMT的工人只能把答案设置为Freebase上的实体（entity），实体列表，值（value）或者no-answer。&lt;/p&gt;
+
+&lt;p&gt;最终，得到了5,810组问题答案对，其词汇表包含了4,525个词。并且，WebQuestion还提供了每个答案对应知识库的主题节点（topic node）。&lt;/p&gt;
+
+&lt;p&gt;可以看出WebQuestion的问题与freebase是不相关的，更加偏向自然语言，也更多样化。这里给出一些例子&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;“What is James Madison most famous for?”&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;“What movies does Taylor Lautner play in?”&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;“What music did Beethoven compose?”&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;“What kind of system of government does the United States have?”&lt;/em&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;信息抽取information-extraction&quot;&gt;&lt;strong&gt;信息抽取（Information Extraction）&lt;/strong&gt;&lt;/h3&gt;
+
+&lt;p&gt;该方法来自约翰·霍普金斯大学Yao X, Van Durme B.的&lt;a href=&quot;http://link.zhihu.com/?target=http%3A//citeseerx.ist.psu.edu/viewdoc/download%3Fdoi%3D10.1.1.650.469%26rep%3Drep1%26type%3Dpdf&quot;&gt; Information Extraction over Structured Data: Question Answering with Freebase&lt;/a&gt;（文章发表于2014年的ACL会议）。&lt;/p&gt;
+
+&lt;p&gt;该类方法通过提取问题中的&lt;strong&gt;&lt;em&gt;实体&lt;/em&gt;&lt;/strong&gt;，通过在知识库中查询该实体可以得到以该实体节点为中心的&lt;strong&gt;&lt;em&gt;知识库子图&lt;/em&gt;&lt;/strong&gt;，子图中的每一个节点或边都可以作为候选答案。通过观察问题，依据某些规则或模板进行&lt;strong&gt;信息抽取&lt;/strong&gt;，得到表征问题和候选答案特征的&lt;strong&gt;特征向量&lt;/strong&gt;，建立&lt;strong&gt;分类器&lt;/strong&gt;，通过输入特征向量对候选答案进行筛选，从而得出最终答案。&lt;/p&gt;
+
+&lt;h3 id=&quot;你是如何回答问题的&quot;&gt;&lt;strong&gt;你是如何回答问题的&lt;/strong&gt;&lt;/h3&gt;
+
+&lt;p&gt;想一想，如果有人问你 &lt;em&gt;“what is the name of Justin Bieber brother?”&lt;/em&gt; ，并且给你一个知识库，你会怎么去找答案？显然，这个问题的&lt;strong&gt;主题&lt;/strong&gt;（Topic）词就是&lt;em&gt;Justin Bieber&lt;/em&gt;，因此我们会去知识库搜索&lt;em&gt;Justin Bieber&lt;/em&gt;这个实体，寻找与该实体相关的知识（此时相当于我们确定了答案的范围，得到了一些&lt;strong&gt;候选答案&lt;/strong&gt;）。接下来，我们去寻找和实体关系brother相关的实体（事实上freebase里没有brother这个实体关系，而是sibling，我们需要进行一个简单的推理），最后得到答案。&lt;/p&gt;
+
+&lt;p&gt;而信息抽取的方法，其灵感就是来自于刚才我们的这种思考方式。&lt;/p&gt;
+</description>
+        <pubDate>Mon, 03 Dec 2018 00:00:00 +0800</pubDate>
+        <link>http://localhost:4000/2018/12/03/kb-qa/</link>
+        <guid isPermaLink="true">http://localhost:4000/2018/12/03/kb-qa/</guid>
+        
+        <category>knowledge graph</category>
+        
+        <category>question answer system</category>
+        
+        <category>学习</category>
+        
+        <category>转载</category>
+        
+        
+      </item>
+    
+      <item>
+        <title>kb-qa学习笔记2</title>
+        <description>&lt;blockquote&gt;
+  &lt;p&gt;学习自&lt;a href=&quot;https://www.jianshu.com/p/ed36c3576d54&quot;&gt;知识图谱应用篇（二）-问答系统&lt;/a&gt;、&lt;a href=&quot;https://www.jianshu.com/p/583ae40e93cd&quot;&gt;QA问句解析的七种方法及优化思路&lt;/a&gt;、&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&quot;人机交互&quot;&gt;人机交互&lt;/h3&gt;
+
+&lt;p&gt;目前人机交互的常见场景有如下三种：闲聊型（Chatbot）、问答型（QA）、任务型（VPA）。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;闲聊型&lt;/strong&gt;：典型的应用案例是微软小冰，你可以和小冰进行闲聊&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;问答型&lt;/strong&gt;：典型的应用案例是度秘、小蚂答，基于问答的方式与用户进行交互&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;任务型&lt;/strong&gt;：cortana和siri应该可以算这个类型的。&lt;/p&gt;
+
+&lt;p&gt;目前问答系统，特别是封闭式的问答系统中，商业化公司一般会偏向两类方案：&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;基于模板匹配的方案&lt;/li&gt;
+  &lt;li&gt;基于知识图谱的方案&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;&lt;strong&gt;模板匹配方案&lt;/strong&gt;项目容易启动，并且能够快速解决基础核心问题，但不能很好的理解上下文。规则库后期成本越来越高，而且冲突会越来越多。目前采用这种方案的bot：网易七鱼，中国电信客服机器人。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;知识图谱方案&lt;/strong&gt;能够更好的理解语言中的抽象部分，更好的去对语言中模糊的部分通过交互来确认信息。在推荐上能够锁定较少，较为精确的推荐结果。目前采用这种方案的bot：度秘、阿里小蜜、小蚂答。&lt;/p&gt;
+
+&lt;p&gt;知识图谱的问答是以知识为中心，通过将用户的问题匹配到对应知识上，然后通过召回知识返回给用户，匹配算法一般使用的是 KB-QA，中间会涉及到图查询，命名实体识别（NER），属性识别，推理引擎等技术。&lt;/p&gt;
+
+&lt;h3 id=&quot;qa问句解析的七种方法&quot;&gt;QA问句解析的七种方法&lt;/h3&gt;
+
+&lt;h4 id=&quot;0基于规则的方法&quot;&gt;0、基于规则的方法&lt;/h4&gt;
+
+&lt;p&gt;基于规则的解析系统通常由两部分构成：一个是&lt;strong&gt;规则库&lt;/strong&gt;，解析规则通常为 CFG 上下文无关文法；另一个是&lt;strong&gt;同义词库&lt;/strong&gt;，记录了一些标准词的常见同义词。&lt;/p&gt;
+
+&lt;p&gt;整个解析就是一个上下文无关文法归约的过程。首先进行自动分词，接着将用户问句中的词依照同义词库归约为标准词，然后再将词归约后的问句与规则库中的解析规则比对，一旦比对成功，即该条用户问句被成功归约到该条解析规则所对应的标准问句上。&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;有一条用户问句是这样的&lt;strong&gt;我账号怎么登陆不上去了&lt;/strong&gt;。首先假定分词正确，分词结果为**我&lt;/td&gt;
+      &lt;td&gt;账号&lt;/td&gt;
+      &lt;td&gt;怎么&lt;/td&gt;
+      &lt;td&gt;登陆&lt;/td&gt;
+      &lt;td&gt;不上去&lt;/td&gt;
+      &lt;td&gt;了&lt;strong&gt;；之后进行词归约，归约结果为&lt;/strong&gt;我账号怎么登录失败了&lt;strong&gt;；接着与规则&lt;/strong&gt;账号登录失败：账号&lt;/td&gt;
+      &lt;td&gt;登录&lt;/td&gt;
+      &lt;td&gt;失败&lt;strong&gt;比对，发现比对成功。该条用户问句被成功归约为标准问句&lt;/strong&gt;账号登录失败&lt;strong&gt;，我们将系统中&lt;/strong&gt;账号登录失败**所对应的标准答案提供给用户，完成交互流程。&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;首先&lt;strong&gt;规则库&lt;/strong&gt;与&lt;strong&gt;同义词库&lt;/strong&gt;需要人工构建，这需要巨大且长期的人力资源投入。其次，编写规则库需要丰富的经验，对于人员素质的要求极高。&lt;/p&gt;
+
+&lt;h4 id=&quot;1基于检索模型的方法&quot;&gt;1、基于检索模型的方法&lt;/h4&gt;
+
+&lt;p&gt;利用 BM25 模型可以有三种思路，分别把标准问句、标准问句及标准答案、历史中曾经正确匹配过该标准问句的用户问句集作为 Document，利用公式计算其与用户问句的相似度，然后利用相似度进行排序，取出评分最高的标准问句作为解析结果。&lt;/p&gt;
+
+&lt;p&gt;检索模型只能处理 Query 与 Document 有重合词的情况，传统检索模型无法处理词语的语义相关性。&lt;/p&gt;
+
+&lt;h4 id=&quot;2基于检索模型ldasmt的方法&quot;&gt;2、基于检索模型+LDA/SMT的方法&lt;/h4&gt;
+
+&lt;p&gt;利用 LDA/SMT 等方法通过语料挖掘词之间的同义关系，为每个词自动构建一个同义度高于阈值且大小合适的同义词表。在代入检索模型公式进行计算的过程中，若文档中发现所查找关键词的同义词，可以依据同义程度乘以一定权重后纳入到关键词的词频计算之中。&lt;/p&gt;
+
+&lt;h4 id=&quot;3基于word-embeddingdnn的方法&quot;&gt;3、基于word embedding+DNN的方法&lt;/h4&gt;
+
+&lt;p&gt;使用一批&lt;strong&gt;用户问句-标准问句对&lt;/strong&gt;的正例和反例作为训练语料，同时将正例和反例进行 word embedding 后送入 DNN 中，并采用 Pairwise ranking loss 的方式来建模正例和反例之间的语义差别。&lt;/p&gt;
+
+&lt;h4 id=&quot;4基于word-embeddingcnn的方法&quot;&gt;4、基于word embedding+CNN的方法&lt;/h4&gt;
+
+&lt;p&gt;ARC-1：将问句中的每个词，都做 word embedding，得到每个词所对应的固定长度的词向量。将问句表示成一个二维矩阵，每一行代表问句中相应词所对应的词向量。将这个二维矩阵进行多次卷积池化（卷积核的宽度与词向量维数相同，高度多为 2-5），最后得到一个一维特征向量，用 CNN 同时处理用户问句和标准问句，得到用户问句和库中标准问句所对应的特征向量。之后将这两个向量拼接起来送入多层感知机，由它来计算两个问句之间的匹配程度。&lt;/p&gt;
+
+&lt;p&gt;有人指出，直接将两个特征向量拼接起来送入 MLP 会丢失边界信息，所以同时将特征向量 a、特征向量 b 和 aTb 送入 MLP 来计算相似度。&lt;/p&gt;
+
+&lt;h4 id=&quot;5基于word-embeddingcnnarc-2的方法&quot;&gt;5、基于word embedding+CNN（ARC-2）的方法&lt;/h4&gt;
+
+&lt;p&gt;ARC-2 相较于 ARC-1 的改进在于，ARC-2 尝试让两个句子在得到像 ARC-1 结果那样的高层抽象表示之前就进行相互作用，不再先分别通过 CNN 结构得到各自高层抽象表示。&lt;/p&gt;
+
+&lt;h4 id=&quot;6基于lstmcnnarc-2的方法&quot;&gt;6、基于LSTM+CNN（ARC-2）的方法&lt;/h4&gt;
+
+&lt;p&gt;有人提出，在 ARC-2 结构中，直接采用传统的 word embedding 方法得到的词向量组成句子作为输入并不是最佳方案，最佳方案是采用已经过了 LSTM 的 hidden state。&lt;/p&gt;
+
+&lt;h3 id=&quot;中文分词&quot;&gt;中文分词&lt;/h3&gt;
+
+&lt;p&gt;CRF 方法的思想非常直接，就是将分词问题看作一个序列标注问题，为句子中的每个字标注词位：&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;词首，常用B表示&lt;/li&gt;
+  &lt;li&gt;词中，常用M表示&lt;/li&gt;
+  &lt;li&gt;词尾，常用E表示&lt;/li&gt;
+  &lt;li&gt;单字词，常用S表示&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;CRF 分词的过程就是对词位标注后，将 B 和 E 之间的字，以及 S 单字构成分词。网上有很多公开的基于 CRF 的分词工具。&lt;/p&gt;
+
+&lt;h3 id=&quot;解析优化&quot;&gt;解析优化&lt;/h3&gt;
+
+&lt;p&gt;在已有模型的基础上进一步提高解析质量的方法包括：问句归一化、用户状态、强化学习、多轮对话等。&lt;/p&gt;
+
+&lt;h4 id=&quot;问句归一化&quot;&gt;问句归一化&lt;/h4&gt;
+
+&lt;p&gt;是对用户的输入具有较好的容错性。&lt;/p&gt;
+
+&lt;p&gt;简单的一些比如：简繁体归一化、全角半角归一化、标点符号处理和大小写归一化。复杂一些的比如汉语错别字的纠正。&lt;/p&gt;
+
+&lt;p&gt;错别字纠正通常的做法是&lt;strong&gt;训练噪声信道模型&lt;/strong&gt;。&lt;/p&gt;
+
+&lt;h4 id=&quot;用户状态&quot;&gt;用户状态&lt;/h4&gt;
+
+&lt;p&gt;可以对用户状态提取特征，在训练和解析时将其作为附加信息一并作为神经网络的输入。&lt;/p&gt;
+
+&lt;p&gt;可以被考虑的用户状态至少包含：&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;用户的过往使用记录：比如账号注册时长、历史付费金额&lt;/li&gt;
+  &lt;li&gt;用户的过往问答记录：用户过去询问过的问题和这次的问题可能会具有一定的相关性&lt;/li&gt;
+  &lt;li&gt;用户的进入路径：可能隐含着用户问题的触发源页面&lt;/li&gt;
+  &lt;li&gt;用户的当前问答记录：同一个 Session 中用户询问的问题通常具有一定的相关性&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&quot;强化学习&quot;&gt;强化学习&lt;/h4&gt;
+
+&lt;p&gt;强化学习存在两个明显的优点：一个是强化学习策略更新所需要的数据主要来源于与环境的交互/采样，而不是昂贵的人工标记数据；另一个是强化学习所产生的策略是根据奖赏机制自主迭代更新的，会有一些创新的做法，而不仅仅是模仿人类提供的『标准』做法。&lt;/p&gt;
+
+&lt;p&gt;应用强化学习方法的核心问题之一就是&lt;strong&gt;奖赏机制&lt;/strong&gt;的设计，在 QA 的场景下设计奖赏机制，至少可以考虑以下几个角度：&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;退出 QA 页面时可以要求用户对本次 QA 做出反馈（已被蚂蚁金服小蚂答和京东智能客服采用），负面反馈可以被进一步区分为『解析错误』和『答案错误』，只有属于『解析错误』的负面反馈才被用于优化解析系统&lt;/li&gt;
+  &lt;li&gt;系统是否连续多次提供给用户相同的回答（以系统回答而不是用户问句为标准）&lt;/li&gt;
+  &lt;li&gt;用户是否最终选择接入人工（如果人工接入不是自动的）&lt;/li&gt;
+  &lt;li&gt;通过文本情感分析识别用户的情绪变化&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&quot;多轮对话&quot;&gt;多轮对话&lt;/h4&gt;
+
+&lt;p&gt;将多轮对话划分为&lt;strong&gt;封闭域&lt;/strong&gt;和&lt;strong&gt;开放域&lt;/strong&gt;两个场景，不同场景的实现思路也应该不同。&lt;/p&gt;
+
+&lt;p&gt;封闭域场景多轮对话的特点是：系统能解决的问题是一个有限集，多轮对话的目的是将用户引导到我们可以解决的问题上。&lt;/p&gt;
+
+&lt;p&gt;而开放域场景多轮对话的特点是：系统需要解决的问题是一个无限集，多轮对话的目的是依照上下文更准确的理解用户的需求。&lt;/p&gt;
+
+&lt;p&gt;在这样的指导思想下，封闭域多轮对话的核心思路应该是&lt;strong&gt;填槽&lt;/strong&gt;，而开放域多轮对话的核心思路是&lt;strong&gt;上下文替换&lt;/strong&gt;和&lt;strong&gt;主体补全&lt;/strong&gt;。&lt;/p&gt;
+
+&lt;h3 id=&quot;人工接入&quot;&gt;人工接入&lt;/h3&gt;
+
+&lt;p&gt;选择合适的人工接入时机同样是提高 QA 系统整体表现的方法之一，其核心问题在于平衡用户体验与投入成本。人工接入的越早，用户体验越好，但成本也越高。&lt;/p&gt;
+
+&lt;p&gt;蚂蚁金服小蚂答的做法：若系统连续提供给用户三次相同的回答，显示人工接入按钮；若用户连续询问两次客服类问题（比如『我要人工』、『你们客服电话多少』），显示人工接入按钮。&lt;/p&gt;
+
+&lt;h3 id=&quot;答案优化&quot;&gt;答案优化&lt;/h3&gt;
+
+&lt;p&gt;QA 系统的另一个重要组成部分是答案库。&lt;/p&gt;
+
+&lt;h4 id=&quot;答案录入&quot;&gt;答案录入&lt;/h4&gt;
+
+&lt;p&gt;答案录入的优化至少可以从三个角度来思考：&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;答案形式的多样性&lt;/li&gt;
+  &lt;li&gt;答案的个性化程度&lt;/li&gt;
+  &lt;li&gt;答案对用户的帮助&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;答案形式的多样性非常容易理解，比如小蚂答就支持包括&lt;strong&gt;文本、链接、图片、视频&lt;/strong&gt;在内的多种答案形式。&lt;/p&gt;
+
+&lt;p&gt;个性化问题在上文解析优化中已有涉及（考虑用户状态的解析优化），上文的分析思路同样可以应用于答案录入，&lt;strong&gt;&lt;em&gt;可以对不同注册时长、付费金额不同、进入路径不同等等的用户提供不同的个性化答案&lt;/em&gt;&lt;/strong&gt;。&lt;/p&gt;
+
+&lt;p&gt;答案对用户的帮助看起来比较抽象，但也很容易理解。以『地图级』、『导航级』、『专车级』来为 QA 系统的答案进行分级：&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;『地图级』答案告诉你在什么地方可以做什么事情，你自己去找，找到了再做。&lt;/li&gt;
+  &lt;li&gt;『导航级』答案帮你跳转到完成任务所需的页面，不必找，直接做。&lt;/li&gt;
+  &lt;li&gt;『专车级』答案直接为你解决问题，不必找，不必亲自做。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;依照文章最初的人机对话系统场景分类，提供『专车级』答案的 QA 系统，可以被称为 VPA 了。&lt;/p&gt;
+
+&lt;h4 id=&quot;答案更新&quot;&gt;答案更新&lt;/h4&gt;
+
+&lt;p&gt;对于答案库的优化，在答案完备录入（答案形式足够丰富、针对不同用户提供个性化的回答）的前提下，至少存在两个优化点：&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;发现答案库中标准答案的错误&lt;/li&gt;
+  &lt;li&gt;发现答案库中缺失的标准答案&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;强化学习方法奖赏机制的设计思路也可以被用来发现答案库中存在的问题，因为大多数时候还很难明确的区分用户的负面反馈是针对解析系统还是答案本身。&lt;/p&gt;
+
+&lt;p&gt;第一点，最大的可能性来源于答案的时效性。可以在录入答案时特别添加&lt;strong&gt;临时&lt;/strong&gt;标签，以标明该答案具有较强的时效性，需要及时更新，或者采取问题过期机制，对问题进行过期失效处理（网易七鱼云客服的做法）。&lt;/p&gt;
+
+&lt;p&gt;第二点，最大的可能性来源于突发事件以及业务的变动。比如&lt;strong&gt;系统服务宕机、系统上了新版本或者组织了一些运营活动&lt;/strong&gt;，应该针对这些可能引发用户疑惑的变动，&lt;strong&gt;提前准备一些 FAQ&lt;/strong&gt; 并录入到答案库之中。&lt;/p&gt;
+
+&lt;p&gt;此外，当录入新问题及其标准答案的时候，需要注意新录入问题与原解析系统的适配性。可采用的方法比如在录入新问题的同时，主动录入一些不同的问法作为初始训练语料（网易七鱼云客服的做法）。&lt;/p&gt;
+
+</description>
+        <pubDate>Mon, 03 Dec 2018 00:00:00 +0800</pubDate>
+        <link>http://localhost:4000/2018/12/03/kb-qa-2/</link>
+        <guid isPermaLink="true">http://localhost:4000/2018/12/03/kb-qa-2/</guid>
+        
+        <category>knowledge graph</category>
+        
+        <category>question answer system</category>
+        
+        <category>学习</category>
+        
+        <category>转载</category>
+        
+        
+      </item>
+    
+  </channel>
+</rss>
