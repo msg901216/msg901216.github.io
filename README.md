@@ -12,4 +12,4 @@ jekyll serve --watch
 
 [图解当前最强语言模型BERT](https://www.jiqizhixin.com/articles/121304)
 
-
+> 语境化词嵌入能根据词在句子语境中的含义给予其不同的嵌入。
