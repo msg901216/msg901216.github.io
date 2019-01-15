@@ -10,4 +10,6 @@ jekyll serve --watch
 
 ## 优质的文章
 
-[图解当前最强语言模型BERT](https://www.jiqizhixin.com/articles/121304)、
+[图解当前最强语言模型BERT](https://www.jiqizhixin.com/articles/121304)
+
+
