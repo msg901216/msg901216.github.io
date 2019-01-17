@@ -89,6 +89,25 @@ public class EntityMapperConfig {
 
 5. 完成后，点击OK，Apply等按钮，回到IDEA的主菜单，选择“Build - Build Artifacts”下的“Build”或者“Rebuild”即可生成最终的可运行的jar。
 
+### aop处理身份验证token
 
+```java
+    private Boolean handleToken(ProceedingJoinPoint pjp){
+        Object[] objects = pjp.getArgs();
+        if(null != objects && objects.length > 0) {
+            Object object = objects[0];
+
+            Map<String,Object> map = (Map<String, Object>) object;
+
+            String token = (String) map.get("token");
+
+            if(null != token){
+                return token.equals("123456");
+            }
+        }
+
+        return false;
+    }
+```
 
 
