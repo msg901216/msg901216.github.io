@@ -253,9 +253,9 @@ Git把每次提交串成一条时间线，这条时间线就是一个分支。�
 
 合并完分支后，甚至可以删除`dev`分支。删除`dev`分支就是把`dev`指针给删掉，删掉后，我们就剩下了一条`master`分支。
 
-#### 实战
+### 实战
 
-首先创建`dev`分支，然后切换到`dev`分支：
+#### 创建`dev`分支，然后切换到`dev`分支：
 
 ```
 $ git checkout -b dev
@@ -268,7 +268,7 @@ $ git branch dev
 $ git checkout dev
 ```
 
-然后，用`git branch`命令查看当前分支：
+#### 用`git branch`命令查看当前分支：
 
 ```
 $ git branch
@@ -289,13 +289,13 @@ $ git add readme.txt
 $ git commit -m "branch test"
 ```
 
-现在，`dev`分支的工作完成，我们就可以切换回`master`分支：
+#### `dev`分支的工作完成，我们就可以切换回`master`分支：
 
 ```
 $ git checkout master
 ```
 
-现在，我们把`dev`分支的工作成果合并到`master`分支上：
+#### 把`dev`分支的工作成果合并到`master`分支上：
 
 ```
 $ git merge dev
@@ -305,23 +305,23 @@ Fast-forward
  1 file changed, 1 insertion(+)
 ```
 
-`git merge`命令用于合并指定分支到当前分支。
+#### `git merge`命令用于合并指定分支到当前分支。
 
 `Fast-forward`就是直接把`master`指向`dev`的当前提交，所以合并速度非常快。
 
-合并完成后，就可以放心地删除`dev`分支了：
+#### 合并完成后，就可以放心地删除`dev`分支了：
 
 ```
 $ git branch -d dev
 ```
 
-删除后，查看`branch`，就只剩下`master`分支了：
+#### 删除后，查看`branch`，就只剩下`master`分支了：
 
 ```
 $ git branch
 ```
 
-删除远程分支
+#### 删除远程分支
 
 ```bash
 git push origin --delete dev
