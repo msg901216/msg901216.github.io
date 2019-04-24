@@ -29,3 +29,42 @@ route -n
 ```bash
 sudo ifconfig 网卡名 down
 ```
+
+### 使用curl发送请求
+
+**使用curl发送GET请求**
+
+```bash
+curl protocol://address:port/url?args
+```
+
+例如：
+
+```bash
+curl http://127.0.0.1:8080/login?admin&passwd=12345678
+```
+
+**使用curl发送POST请求**
+
+```bash
+curl -d "args" protocol://address:port/url
+```
+
+例如：
+
+```bash
+curl -d "user=admin&passwd=12345678" http://127.0.0.1:8080/login
+```
+
+这种方法是参数直接在header里面的，如需将输出指定到文件可以通过重定向进行操作
+
+```bash
+curl -H "Content-Type:application/json" -X POST -d 'json data' URL
+```
+
+例如：
+
+```bash
+curl -H "Content-Type:application/json" -X POST -d '{"user": "admin", "passwd":"12345678"}' http://127.0.0.1:8000/login
+```
+
