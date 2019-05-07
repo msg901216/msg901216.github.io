@@ -34,9 +34,6 @@ tags:
 
 MyModel.meta文件保存的是图结构，meta文件是pb（protocol buffer）格式文件，包含变量、op、集合等。
 
-1.1 meta文件
-MyModel.meta文件保存的是图结构，meta文件是pb（protocol buffer）格式文件，包含变量、op、集合等。
-
 #### 1.2 ckpt文件
 
 ckpt文件是二进制文件，保存了所有的weights、biases、gradients等变量。在tensorflow 0.11之前，保存在.ckpt文件中。0.11后，通过两个文件保存,如：
@@ -50,9 +47,6 @@ MyModel.index
 
 checkpoint文件是个文本文件，里面记录了保存的最新的checkpoint文件以及其它checkpoint文件列表。在inference时，可以通过修改这个文件，指定使用哪个model
 
-1.3 checkpoint文件
-我们还可以看，checkpoint_dir目录下还有checkpoint文件，该文件是个文本文件，里面记录了保存的最新的checkpoint文件以及其它checkpoint文件列表。在inference时，可以通过修改这个文件，指定使用哪个model
-
 ### 2 保存Tensorflow模型
 
 tensorflow 提供了tf.train.Saver类来保存模型，在tensorflow中，变量是存在于Session环境中，因此，保存模型时需要传入session：
@@ -61,7 +55,6 @@ tensorflow 提供了tf.train.Saver类来保存模型，在tensorflow中，变量
 saver = tf.train.Saver()
 saver.save(sess,"./checkpoint_dir/MyModel")
 ```
-
 
 一个简单例子：
 
@@ -76,7 +69,6 @@ sess.run(tf.global_variables_initializer())
 saver.save(sess, './checkpoint_dir/MyModel')
 ```
 
-
 执行后，在checkpoint_dir目录下创建模型文件如下：
 
 ```
@@ -85,7 +77,6 @@ MyModel.data-00000-of-00001
 MyModel.index
 MyModel.meta
 ```
-
 
 另外，如果想要在1000次迭代后，再保存模型，只需设置global_step参数即可：
 
@@ -102,13 +93,11 @@ MyModel-1000.index
 MyModel-1000.meta
 ```
 
-
 在实际训练中，可能会在每1000次迭代中保存一次模型数据，但是由于图是不变的，没必要每次都去保存，可以通过如下方式指定不保存图：
 
-```PYTHON
+```python
 saver.save(sess, './checkpoint_dir/MyModel',global_step=step,write_meta_graph=False)
 ```
-
 
 如果希望每2小时保存一次模型，并且只保存最近的5个模型文件：
 
@@ -142,7 +131,6 @@ saver.save(sess, './checkpoint_dir/MyModel',global_step=1000)
 saver=tf.train.import_meta_graph('./checkpoint_dir/MyModel-1000.meta')
 ```
 
-
 上面一行代码，就把图加载进来了
 
 #### 3.2 加载参数
@@ -156,7 +144,6 @@ with tf.Session() as sess:
   new_saver.restore(sess, tf.train.latest_checkpoint('./checkpoint_dir'))
 ```
 
-
 此时，W1和W2加载进了图，并且可以被访问：
 
 ```python
@@ -165,9 +152,7 @@ with tf.Session() as sess:
     saver = tf.train.import_meta_graph('./checkpoint_dir/MyModel-1000.meta')
     saver.restore(sess,tf.train.latest_checkpoint('./checkpoint_dir'))
     print(sess.run('w1:0'))
-##Model has been restored. Above statement will print the saved value
 ```
-
 
 执行后，打印如下：
 
@@ -191,12 +176,12 @@ w3 = tf.add(w1,w2)
 w4 = tf.multiply(w3,b1,name="op_to_restore")
 sess = tf.Session()
 sess.run(tf.global_variables_initializer())
-#创建一个Saver对象，用于保存所有变量
+# 创建一个Saver对象，用于保存所有变量
 saver = tf.train.Saver()
-#通过传入数据，执行op
+# 通过传入数据，执行op
 print(sess.run(w4,feed_dict ={w1:4,w2:8}))
-#打印 24.0 ==>(w1+w2)*b1
-#现在保存模型
+# 打印 24.0 ==>(w1+w2)*b1
+# 现在保存模型
 saver.save(sess, './checkpoint_dir/MyModel',global_step=1000)
 
 ```
@@ -247,17 +232,19 @@ print (sess.run(add_on_op, feed_dict))
 #打印120.0==>(13+17)*2*2
 ```
 
+如果只想恢复图的一部分，并且再加入其它的op用于fine-tuning。
+只需通过graph.get_tensor_by_name()方法获取需要的op，并且在此基础上建立图。
 
-如果只想恢复图的一部分，并且再加入其它的op用于fine-tuning。只需通过graph.get_tensor_by_name()方法获取需要的op，并且在此基础上建立图，看一个简单例子，假设需要在训练好的VGG网络使用图，并且修改最后一层，将输出改为2，用于fine-tuning新数据：
+看一个简单例子，假设需要在训练好的VGG网络使用图，并且修改最后一层，将输出改为2，用于fine-tuning新数据：
 
 ```python
 saver = tf.train.import_meta_graph('vgg.meta')
-#访问图
+# 访问图
 graph = tf.get_default_graph() 
-#访问用于fine-tuning的output
+# 访问用于fine-tuning的output
 fc7= graph.get_tensor_by_name('fc7:0')
-#如果你想修改最后一层梯度，需要如下
-fc7 = tf.stop_gradient(fc7) # It's an identity function
+# 如果你想修改最后一层梯度，需要如下
+fc7 = tf.stop_gradient(fc7)
 fc7_shape= fc7.get_shape().as_list()
 new_outputs=2
 weights = tf.Variable(tf.truncated_normal([fc7_shape[3], num_outputs], stddev=0.05))
