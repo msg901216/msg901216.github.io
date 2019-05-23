@@ -910,5 +910,8 @@ git gc --prune=now
 至此，我们已经彻底的删除了我们不想要的文件。
 
 
+### 23. github 修改remote url
 
-
+```
+git remote set-url origin git@github.com:msgi/xxx.git
+```
