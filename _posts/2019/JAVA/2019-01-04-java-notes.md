@@ -110,4 +110,14 @@ public class EntityMapperConfig {
     }
 ```
 
+### es分页返回数据
 
+```java
+    List<BotSentence> botSentenceList = new ArrayList<>();
+            ScrolledPage<BotSentence> botSentenceScrolledPage = (ScrolledPage<BotSentence>) template.startScroll(TimeValue.timeValueMinutes(1).millis(), searchQuery, BotSentence.class);
+            while (botSentenceScrolledPage.hasContent()) {
+                botSentenceList.addAll(botSentenceScrolledPage.getContent());
+                botSentenceScrolledPage = (ScrolledPage<BotSentence>) template.continueScroll(botSentenceScrolledPage.getScrollId(), TimeValue.timeValueMinutes(1).millis(), BotSentence.class);
+            }
+    template.clearScroll(botSentenceScrolledPage.getScrollId());
+```
