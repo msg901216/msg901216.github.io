@@ -14,6 +14,10 @@ jekyll serve --watch
 
 > 语境化词嵌入能根据词在句子语境中的含义给予其不同的嵌入。
 
+[为什么现在的人工智能助理都像人工智障？](https://mp.weixin.qq.com/s/EhRk_bCNefyYh8HuulpknA)
+
+> 
+
 [人工智障 2 : 你看到的AI与智能无关](https://www.jiqizhixin.com/articles/2019-01-21-2)
 
 > Geoffrey Hinton的怀疑：“我的观点是都扔掉重来吧”\
