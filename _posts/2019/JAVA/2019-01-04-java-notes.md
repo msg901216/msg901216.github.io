@@ -121,3 +121,22 @@ public class EntityMapperConfig {
             }
     template.clearScroll(botSentenceScrolledPage.getScrollId());
 ```
+
+### springboot连接elasticsearch连接不上
+
+```java
+@Component
+public class ElasticSearchConfiguration implements InitializingBean {
+
+    static {
+        System.setProperty("es.set.netty.runtime.available.processors", "false");
+    }
+
+    @Override
+    public void afterPropertiesSet() {
+        log.info("*****************es_config*************************");
+        log.info("es.set.netty.runtime.available.processors:{}", System.getProperty("es.set.netty.runtime.available.processors"));
+        log.info("***************************************************");
+    }
+}
+```
