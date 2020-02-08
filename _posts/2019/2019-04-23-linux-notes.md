@@ -15,8 +15,8 @@ tags:
 
 ---
 
-### linux 基础操作
-```cat /etc/os-release # 查看操作系统信息 ``` 
+### 1、查看操作系统信息
+```cat /etc/os-release  ``` 
 
 **突然各种No route to host的原因**
 
@@ -30,7 +30,7 @@ route -n
 sudo ifconfig 网卡名 down
 ```
 
-### ubuntu切换gcc和g++版本
+### 2、ubuntu切换gcc和g++版本
 
 首先，看看有没有安装gcc-6
 
@@ -82,7 +82,7 @@ sudo update-alternatives --remove gcc /usr/bin/gcc-6
 
 再用`gcc -v `来看一下版本是否改变了。
 
-### 使用curl发送请求
+### 3、使用curl发送请求
 
 **使用curl发送GET请求**
 
