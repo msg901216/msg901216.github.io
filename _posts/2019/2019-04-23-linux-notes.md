@@ -18,7 +18,7 @@ tags:
 ### 1、查看操作系统信息
 ```cat /etc/os-release  ``` 
 
-### 2、突然各种No route to host的原因**
+### 2、突然各种No route to host的原因
 
 ```bash
 ip a
