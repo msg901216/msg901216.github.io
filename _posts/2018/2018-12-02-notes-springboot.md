@@ -1,6 +1,6 @@
 ---
 layout:     post
-title:      "springboot 学习笔记"
+title:      "2018-12-02 springboot 学习笔记"
 subtitle:   "springboot notes"
 date:       2018-12-02
 author:     "msg"

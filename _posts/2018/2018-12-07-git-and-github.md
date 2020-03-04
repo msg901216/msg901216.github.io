@@ -1,6 +1,6 @@
 ---
 layout:     post
-title:      "Git and github notes"
+title:      "2018-12-07 Git and github notes"
 subtitle:   "git notes"
 date:       2018-12-07
 author:     "msg"
@@ -914,4 +914,48 @@ git gc --prune=now
 
 ```
 git remote set-url origin git@github.com:msgi/xxx.git
+```
+
+### 24、保持自己fork之后的仓库与上游仓库同步（github为例）。
+
+点击 fork 到自己帐号下，比如[HanLP](https://github.com/hankcs/HanLP)这个仓库:
+
+![Selection_033](/img/posts/tools/Selection_033.png)
+
+然后就可以在自己的帐号下 clone 相应的仓库
+
+`git clone https://github.com/algteam/HanLP.git`
+
+使用 `git remote -v` 查看当前的远程仓库地址，输出如下：
+
+```
+origin	https://github.com/algteam/HanLP.git (fetch)
+origin	https://github.com/algteam/HanLP.git (push)
+```
+
+可以看到从自己帐号 clone 下来的仓库，远程仓库地址是与自己的远程仓库绑定的
+
+接下来运行 `git remote add upstream https://github.com/hankcs/HanLP.git`
+
+这条命令就算添加一个别名为 upstream（上游）的地址，指向之前 fork 的原仓库地址。`git remote -v` 输出如下：
+
+```
+origin	https://github.com/algteam/HanLP.git (fetch)
+origin	https://github.com/algteam/HanLP.git (push)
+upstream	https://github.com/hankcs/HanLP.git (fetch)
+upstream	https://github.com/hankcs/HanLP.git (push)
+```
+
+之后运行下面几条命令，就可以保持本地仓库和上游仓库同步了
+
+```
+git fetch upstream
+git checkout master
+git merge upstream/master
+```
+
+接着就是熟悉的推送本地仓库到远程仓库
+
+```
+git push origin master
 ```

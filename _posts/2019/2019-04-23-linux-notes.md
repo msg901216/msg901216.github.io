@@ -1,6 +1,6 @@
 ---
 layout:     post
-title:      "linux 笔记"
+title:      "2019-04-23 linux 笔记"
 subtitle:   "linux"
 date:       2019-04-23
 author:     "msg"

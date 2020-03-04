@@ -1,8 +1,8 @@
 ---
 layout:     post
-title:      "python notes"
+title:      "2018-12-02 python notes"
 subtitle:   "Python学习笔记"
-date:       2018-09-18
+date:       2018-12-02
 author:     "msg"
 header-img: "img/posts/03.jpg"
 header-mask: 0.3

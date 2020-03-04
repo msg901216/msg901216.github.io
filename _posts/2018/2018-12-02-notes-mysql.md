@@ -1,6 +1,6 @@
 ---
 layout:     post
-title:      "mysql的一些常用命令记录"
+title:      "2018-12-02 mysql的一些常用命令记录"
 subtitle:   "mysql commands"
 date:       2018-12-02
 author:     "msg"

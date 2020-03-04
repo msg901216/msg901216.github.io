@@ -1,7 +1,7 @@
 ---
 layout:     post
 title:      "数学笔记"
-subtitle:   "math notes"
+subtitle:   "2019-01-11 math notes"
 date:       2019-01-11
 author:     "msg"
 header-img: "img/posts/05.jpg"
