@@ -15,6 +15,8 @@ tags:
     - 学习
 ---
 
+### 001、tf.squeeze
+
 ```python
 squeeze(
     input,
@@ -23,7 +25,6 @@ squeeze(
     squeeze_dims=None
 )
 ```
-### 001、tf.squeeze
 
 该函数返回一个张量，这个张量是将原始input中所有维度为1的那些维都删掉的结果
 
