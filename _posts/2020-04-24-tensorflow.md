@@ -46,7 +46,7 @@ tf.shape(tf.squeeze(t, [2, 4]))  # [1, 2, 3, 1]，标号从零开始，只删掉
 ```
 
 
-### 002、tf.rsqrt
+### 002、tf.math.rsqrt
 
 ```python
 rsqrt(
