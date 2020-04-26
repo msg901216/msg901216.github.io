@@ -44,3 +44,17 @@ tf.shape(tf.squeeze(t))   # [2, 3]， 默认删除所有为1的维度
 # 't' 是一个维度[1, 2, 1, 3, 1, 1]的张量
 tf.shape(tf.squeeze(t, [2, 4]))  # [1, 2, 3, 1]，标号从零开始，只删掉了2和4维的1
 ```
+
+
+### 002、tf.rsqrt
+
+```python
+rsqrt(
+    x,
+    name=None
+)
+```
+
+tf.rsqrt 函数用于计算 x 元素的平方根的倒数.
+
+$$y = 1 / \sqrt{x}$$
