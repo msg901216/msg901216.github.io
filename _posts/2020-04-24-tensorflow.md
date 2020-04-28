@@ -64,8 +64,8 @@ $$y = 1 / \sqrt{x}$$
 
 ```python
 tf.math.floor(
-    x,
-    name=None
+    x,
+    name=None
 )
 ```
 
