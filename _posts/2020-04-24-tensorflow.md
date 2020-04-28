@@ -71,6 +71,8 @@ tf.math.floor(
 
 ### 004、tf.linalg.band_part
 
+> update: 2020-04-28
+
 函数原型：
 
 ```python
