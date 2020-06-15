@@ -143,50 +143,98 @@ $\bigsqcup$
 ### 010、希腊字母
 
 
-$A	\alpha$
+$A$
 
-$B	\beta$
+$B$
 
-$\Gamma	\gamma$
+$\Gamma$
 
-$\Delta	\delta$
+$\Delta$
 
-$E	\epsilon$
+$E$
 
-$Z	\zeta$
+$Z$
 
-$H	\eta$
+$H$
 
-$\Theta	\theta$
+$\Theta$
 
-$I	\iota$
+$I$
 
-$K	\kappa$
+$K$
 
-$Lambda	\lambda$
+$Lambda$
 
-$M	\mu$
+$M$
 
-$N	\nu$
+$N$
 
-$Xi	\xi$
+$Xi$
 
-$O	\omicron$
+$O$
 
-$\Pi	\pi$
+$\Pi$
 
-$P	\rho$
+$P$
 
-$\Sigma	\sigma$
+$\Sigma$
 
-$T	\tau$
+$T$
 
-$\Upsilon	\upsilon$
+$\Upsilon$
 
-$\Phi	\phi$
+$\Phi$
 
-$X	\chi$
+$X$
 
-$\Psi	\psi$
+$\Psi$
 
-$\Omega	\omega$
+$\Omega$
+
+$\alpha$
+
+$\beta$
+
+$\gamma$
+
+$\delta$
+
+$\epsilon$
+
+$\zeta$
+
+$\eta$
+
+$\theta$
+
+$\iota$
+
+$\kappa$
+
+$\lambda$
+
+$\mu$
+
+$\nu$
+
+$\xi$
+
+$\omicron$
+
+$\pi$
+
+$\rho$
+
+$\sigma$
+
+$\tau$
+
+$\upsilon$
+
+$\phi$
+
+$\chi$
+
+$\psi$
+
+$\omega$
