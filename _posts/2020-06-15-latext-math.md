@@ -29,3 +29,24 @@ $\frac{1}{3} 与 \cfrac{1}{3}$
 ### 004、开方
 
 $\sqrt[3]{X}$和$\sqrt{5 - x}$
+
+### 005、关系运算符
+
+$\pm$
+$\times$
+$\div$
+$\mid$
+$\nmid$
+$\cdot$
+$\circ$
+$\ast$
+$\bigodot$
+$\bigotimes$
+$\bigoplus$
+$\leq$
+$\geq$
+$\neq$
+$\approx$
+$\equiv$
+$\sum$
+$\prod$
