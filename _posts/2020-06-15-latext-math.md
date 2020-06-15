@@ -140,3 +140,53 @@ $\biguplus$
 
 $\bigsqcup$
 
+### 010、希腊字母
+
+
+$A	\alpha$
+
+$B	\beta$
+
+$\Gamma	\gamma$
+
+$\Delta	\delta$
+
+$E	\epsilon$
+
+$Z	\zeta$
+
+$H	\eta$
+
+$\Theta	\theta$
+
+$I	\iota$
+
+$K	\kappa$
+
+$Lambda	\lambda$
+
+$M	\mu$
+
+$N	\nu$
+
+$Xi	\xi$
+
+$O	\omicron$
+
+$\Pi	\pi$
+
+$P	\rho$
+
+$\Sigma	\sigma$
+
+$T	\tau$
+
+$\Upsilon	\upsilon$
+
+$\Phi	\phi$
+
+$X	\chi$
+
+$\Psi	\psi$
+
+$\Omega	\omega$
