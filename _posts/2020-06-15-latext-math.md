@@ -93,3 +93,23 @@ $\cot$
 $\sec$
 
 $\csc$
+
+### 008、微积分运算符
+
+$\prime$
+
+$\int$
+
+$\iint$
+
+$\iiint$
+
+$\oint$
+
+$\lim$
+
+$\infty$
+
+$\nabla$
+
+$\mathrm{d}$
