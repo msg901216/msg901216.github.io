@@ -113,3 +113,30 @@ $\infty$
 $\nabla$
 
 $\mathrm{d}$
+
+### 009、集合运算符
+
+$\emptyset$
+
+$\in$
+
+$\notin$
+
+$\subset$
+
+$\subseteq$
+
+$\supseteq$
+
+$\bigcap$
+
+$\bigcup$
+
+$\bigvee$
+
+$\bigwedge$
+
+$\biguplus$
+
+$\bigsqcup$
+
